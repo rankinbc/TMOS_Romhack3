@@ -1,0 +1,6 @@
+﻿Music Track Pointer data ~0113e4  
+
+
+Bottom menu data ~1985c
+
+ObjectSet / WorldEnemy data ~3701e  (2 bytes)  , changing affects multiple screens
