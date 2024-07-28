@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.Core
 {
-	public interface ITmosData
-	{
-		TmosRomObjectMemoryDataOffset GetWorldScreenDataOffset(byte[] rom, int index);
+	//public interface ITmosData
+	//{
+	//	TmosRomObjectMemoryDataOffset GetWorldScreenDataOffset(byte[] rom, int index);
 
-		TmosWorldScreen GetWorldScreen(byte[] rom, int index);
+	//	TmosWorldScreen GetWorldScreen(byte[] rom, int index);
 
-		TmosTileSection GetTileSection(byte[] rom, int index, int offset);
+	//	TmosTileSection GetTileSection(byte[] rom, int index, int offset);
 
-		TmosTile GetTile(byte[] rom, int index);
+	//	TmosTile GetTile(byte[] rom, int index);
 
-		TmosMiniTile GetMiniTile(byte[] rom, int index);
+	//	TmosMiniTile GetMiniTile(byte[] rom, int index);
 
-		TmosWorldScreenTileGrid GetWorldScreenTiles(byte[] rom, TmosWorldScreen ws);
-	}
+	//	TmosWorldScreenTileGrid GetWorldScreenTiles(byte[] rom, TmosWorldScreen ws);
+	//}
 }

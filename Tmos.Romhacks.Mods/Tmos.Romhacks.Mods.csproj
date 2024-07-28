@@ -46,6 +46,7 @@
     <Compile Include="Definitions\MiniTileDefinitions.cs" />
     <Compile Include="Definitions\WSContentDefinitions.cs" />
     <Compile Include="Enum\Direction.cs" />
+    <Compile Include="Enum\KnownValueLibrary\WSContentTypeKVLibrary.cs" />
     <Compile Include="Interfaces\IMiniTile.cs" />
     <Compile Include="Interfaces\ITile.cs" />
     <Compile Include="TmosModRom.cs" />

@@ -20,6 +20,8 @@ namespace Tmos.Romhacks.Core
             return worldScreenDataOffset;
         }
 
+
+        #region GetDataObjects
         public static TmosWorldScreen GetWorldScreen(byte[] rom, int index)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.WorldScreen);
@@ -36,13 +38,7 @@ namespace Tmos.Romhacks.Core
             return worldScreenTile;
         }
 
-        public static void SaveWorldScreen(byte[] rom, int index, byte[] data)
-        {
-			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.WorldScreen);
-			SaveDataStructure(rom, def, index, data);
-        }
-
-        public static TmosTileSection GetTileSectionStartAddress(byte[] rom, int index, int offset)
+        public static TmosTileSection GetTileSection(byte[] rom, int index, int offset)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
             byte[] selectedData = GetDataStructure(rom, def, index, offset);
@@ -50,87 +46,76 @@ namespace Tmos.Romhacks.Core
 
             return tileSection;
         }
-        public static TmosTileSection GetTileSection(byte[] rom, int index, int offset)
+
+        public static TmosTile GetTile(byte[] rom, int index)
         {
-			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
-			byte[] selectedData = GetDataStructure(rom, def, index ,offset);
-            TmosTileSection tileSection = new TmosTileSection(selectedData);
-    
-            return tileSection;
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
+            byte[] selectedData = GetDataStructure(rom, def, index, 0);
+            TmosTile tile = new TmosTile(selectedData);
+            return tile;
         }
+
+        public static byte[] GetTileData(byte[] rom)
+        {
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
+            byte[] selectedData = GetDataStructure(rom, def.Address, def.ObjectSize * def.Count, 0, 0);
+            return selectedData;
+        }
+
+        public static TmosMiniTile GetMiniTile(byte[] rom, int index)
+        {
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.MiniTile);
+            byte[] selectedData = GetDataStructure(rom, def, index, 0);
+            TmosMiniTile tile = new TmosMiniTile(selectedData);
+            return tile;
+        }
+
+
+
+
+        //public static TmosTileSection GetTileSectionStartAddress(byte[] rom, int index, int offset)
+        //{
+        //    var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
+        //    byte[] selectedData = GetDataStructure(rom, def, index, offset);
+        //    TmosTileSection tileSection = new TmosTileSection(selectedData);
+
+        //    return tileSection;
+        //}
+
+        #endregion GetDataObjects
+
+        public static void SaveWorldScreen(byte[] rom, int index, byte[] data)
+        {
+			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.WorldScreen);
+			SaveDataStructure(rom, def, index, data);
+        }
+
+        public static void SaveWorldScreenTile(byte[] rom, int index, byte[] data)
+        {
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.WorldScreenTile);
+            SaveDataStructure(rom, def, index, data);
+        }
+
         public static void SaveTileSection(byte[] rom, int index, int offset, byte[] data)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
             SaveDataStructure(rom, def, index, offset, data);
         }
 
-        public static TmosTile GetTile(byte[] rom, int index)
+        public static void SaveTile(byte[] rom, int index, byte[] data)
         {
-			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
-			byte[] selectedData = GetDataStructure(rom, def, index,0);
-            TmosTile tile = new TmosTile(selectedData);
-            return tile;
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
+            SaveDataStructure(rom, def, index, data);
         }
 
-        public static TmosMiniTile GetMiniTile(byte[] rom, int index)
+        public static void SaveMiniTile(byte[] rom, int index, byte[] data)
         {
-			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.MiniTile);
-			byte[] selectedData = GetDataStructure(rom, def, index,0);
-            TmosMiniTile tile = new TmosMiniTile(selectedData);
-            return tile;
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.MiniTile);
+            SaveDataStructure(rom, def, index, data);
         }
 
-        public static byte[] GetTileData(byte[] rom)
-        {
-			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
-			byte[] selectedData = GetDataStructure(rom, def.Address, def.ObjectSize * def.Count, 0, 0);
-            return selectedData;
-        }
-
-
-        //     public static TmosWorldScreenTileGrid GetWorldScreenTiles(byte[] rom, TmosWorldScreen ws)
-        //     {
-        //var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
-        //int bottomTileDataStartIndex = 0;
-        //         int topTileDataStartIndex = 0;
-
-
-        //         if (ws.DataPointer >= 0x40 && ws.DataPointer < 0x8f)
-        //         {
-        //             bottomTileDataStartIndex = 0x2000 / def.ObjectSize;
-        //             topTileDataStartIndex = 0;
-        //         }
-
-        //         else if (ws.DataPointer >= 0x8f && ws.DataPointer < 0xA0)
-        //         {
-        //             bottomTileDataStartIndex = 0;
-        //             topTileDataStartIndex = 0x2000 / def.ObjectSize;
-        //         }
-        //         else if (ws.DataPointer >= 0xC0)
-        //         {
-        //             topTileDataStartIndex = 0x2000 / def.ObjectSize;
-        //             bottomTileDataStartIndex = 0x2000 / def.ObjectSize;
-        //         }
-
-        //         TmosWorldScreenTileGrid wsTiles = new TmosWorldScreenTileGrid();
-        //         wsTiles.TopTiles = GetTileSection(rom, ws.TopTiles, topTileDataStartIndex);
-        //         wsTiles.BottomTiles = GetTileSection(rom, ws.BottomTiles, bottomTileDataStartIndex);
-
-
-
-
-        //         return wsTiles;
-
-        //     }
-
-
-        //private static byte[] GetDataStructureMemory(byte[] bytes, TmosRomObjectInfo dataStructure)
-        //{
-        //          return GetDataStructure(bytes, dataStructure.Address, dataStructure.ObjectSize * dataStructure.Count,0,0);
-        //}
-
-
-
+  
+        #region DataStructure
         private static byte[] GetDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int index, int additionalOffset)
         {
             byte[] structure = new byte[dataStructure.ObjectSize];
@@ -149,7 +134,6 @@ namespace Tmos.Romhacks.Core
             return structure;
         }
 
-
         private static void SaveDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int index, int offset, byte[] structureByteContent)
         {
             int objectOffsetFromBeginningOfArray = (dataStructure.ObjectSize * index) + offset;
@@ -160,38 +144,7 @@ namespace Tmos.Romhacks.Core
         {
             Array.Copy(structureByteContent, 0, bytes, absoluteAddress, dataStructure.ObjectSize);
         }
-
-
-        //WORKING
-        //private static byte[] GetDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int index, int byteOffset)
-        //{
-        //    byte[] structure = new byte[dataStructure.ObjectSize];
-        //    int sourceOffset = dataStructure.Address + (dataStructure.ObjectSize * index) + byteOffset;
-        //    Array.Copy(bytes, sourceOffset, structure, 0, dataStructure.ObjectSize);
-        //    return structure;
-        //}
-
-        //private static byte[] GetDataStructure(byte[] bytes, int address, int length, int index, int byteOffset)
-        //{
-        //    byte[] structure = new byte[length];
-        //    int sourceOffset = address + (length * index) + byteOffset;
-        //    Array.Copy(bytes, sourceOffset, structure, 0, length);
-        //    return structure;
-        //}
-
-        //private static void SaveDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int index, int offset, byte[] structureByteContent)
-        //{
-        //    int addressWithOffset = dataStructure.Address + (dataStructure.ObjectSize * index) + offset;
-        //    SaveDataStructure(bytes, dataStructure, addressWithOffset, structureByteContent);
-        //}
-        //private static void SaveDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int address, byte[] structureByteContent)
-        //{
-
-        //    byte[] structure = new byte[dataStructure.ObjectSize];
-        //    int sourceOffset = dataStructure.Address + (dataStructure.ObjectSize * index);
-
-        //    Array.Copy(structureByteContent, 0, bytes, sourceOffset, dataStructure.ObjectSize);
-        //}
+        #endregion DataStructure
     }
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Tmos.Romhacks.Core;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
 using static Tmos.Romhacks.Mods.Definitions.WSContentDefinitions;
 using static Tmos.Romhacks.Mods.TileDefinitions;
@@ -18,32 +19,28 @@ namespace Tmos.Romhacks.Mods
 		public string Name { get; set; }
 		public string Description { get; set; }
 
-		public bool IsWalkable { get; set; } //TODO: Figure out how to actually calculate instead of using hard-coded definitions
+		public bool IsWalkable { get; set; } //FUTURE TODO: Figure out how to actually calculate instead of using hard-coded definitions
 
 		public string ImagePath { get; set; }
-
-
 		public byte? Value { get; set; }
 
 	}
 
 	public class TileDefinitions
 	{
-		public enum TileType
+		public enum TileType //Not sure if this is a good idea. Should probably just stick to identifying by the byte value
 		{
-			UNKNOWN,
-			Grass,
-			Tree,
-			GrassBushes,
-			Water,
-			WaterTopEdge,
-			Desert,
-			DesertTrees,
-			Lava,
+			UNKNOWN, //Handles all other values
+            Desert = 0x23,
+            Water = 0x3F,
+            Lava = 0x42,
+            GrassBushes = 0x43,
+            WaterTopEdge = 0x44,
+            Grass = 0x46,
+			Tree = 0x47,
+            DesertTrees = 0x6F,
 
-			//todo: remove unidentified instance for known values
-			
-		}
+        }
 
 		private static readonly TileType[] baseTileTypes = new TileType[9999];
 
@@ -109,7 +106,9 @@ namespace Tmos.Romhacks.Mods
 		{
 			return new List<TileDefinition>()
 			{
-				new TileDefinition() { TileType=TileType.Grass, Name = "Grass", IsWalkable=true,                ImagePath="46.png" },
+                new TileDefinition() { TileType=TileType.Grass, Name = "Grass", IsWalkable=true,                ImagePath="46.png" },
+
+                new TileDefinition() { TileType=TileType.Grass, Name = "Grass", IsWalkable=true,                ImagePath="46.png" },
 				new TileDefinition() { TileType=TileType.Tree, Name = "Tree" , IsWalkable=false,                ImagePath="47.png"},
 				new TileDefinition() { TileType=TileType.GrassBushes, Name = "Grass Bushes" , IsWalkable=false, ImagePath="43.png"},
 				new TileDefinition() { TileType=TileType.Water, Name = "Water", IsWalkable=false,               ImagePath="3f.png" },

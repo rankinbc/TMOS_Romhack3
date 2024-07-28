@@ -28,55 +28,79 @@ namespace Tmos.Romhacks.Core
             File.WriteAllBytes(filePath, Bytes);
         }
 
-        public byte[] LoadTileData()
-        {
-            return GetTileData(Bytes);
-        }
+
+
+        #region Load Data
 
         public TmosWorldScreen LoadWorldScreen(int index)
         {
             return TmosData.GetWorldScreen(Bytes, index);
         }
+        public TmosWorldScreenTile LoadWorldScreenTile(int index)
+        {
+            return TmosData.GetWorldScreenTile(Bytes, index);
+        }
+        public TmosTileSection LoadTileSection(int index, int tileDataOffset)
+        {
+            return TmosData.GetTileSection(Bytes, index, tileDataOffset);
+        }
+        public TmosTile LoadTile(int index)
+        {
+            return TmosData.GetTile(Bytes, index);
+        }
+        public byte[] LoadTileData()
+        {
+            return GetTileData(Bytes);
+        }
+        public TmosMiniTile LoadMiniTile(int index)
+        {
+            return TmosData.GetMiniTile(Bytes, index);
+        }
 
+        #endregion Load Data
 
-
+        #region SaveData
         public void SaveWorldScreen(int index, TmosWorldScreen worldScreen)
         {
             TmosData.SaveWorldScreen(Bytes,index, worldScreen.GetBytes());
         }
 
-        public TmosWorldScreenTile LoadWorldScreenTile(int index)
+        public void SaveWorldScreenTile(int index, TmosWorldScreenTile worldScreenTile)
         {
-            return TmosData.GetWorldScreenTile(Bytes, index);
+            TmosData.SaveWorldScreenTile(Bytes, index, worldScreenTile.GetBytes());
         }
 
-        public TmosRomObjectMemoryDataOffset LoadWorldScreenDataOffset(int index)
-        {
-            return TmosData.GetWorldScreenDataOffset(Bytes, index);
-        }
-
-        public TmosTileSection LoadTileSection(int index, int tileDataOffset)
-        {
-            return TmosData.GetTileSection(Bytes, index, tileDataOffset);
-        }
-        public TmosTileSection GetWSTileSectionIndex(int index, byte dataPointer, int tileDataOffset)
-        {
-            return TmosData.GetTileSection(Bytes, index, tileDataOffset);
-        }
         public void SaveTileSection(int index, int tileDataOffset, byte[] data)
         {
-             TmosData.SaveTileSection(Bytes, index, tileDataOffset, data);
+            TmosData.SaveTileSection(Bytes, index, tileDataOffset, data);
         }
 
-        public TmosTile LoadTile(int index)
+        public void SaveTile(int index, TmosTile tile)
         {
-            return TmosData.GetTile(Bytes, index);
+            TmosData.SaveTile(Bytes, index, tile.GetBytes());
         }
 
-        public TmosMiniTile LoadMiniTile(int index)
+        public void SaveMiniTile(int index, TmosMiniTile miniTile)
         {
-            return TmosData.GetMiniTile(Bytes, index);
+            TmosData.SaveMiniTile(Bytes, index, miniTile.GetBytes());
         }
+        #endregion SaveData
+
+
+        //public TmosRomObjectMemoryDataOffset LoadWorldScreenDataOffset(int index)
+        //{ 
+        //    return TmosData.GetWorldScreenDataOffset(Bytes, index);
+        //}
+     
+        //public TmosTileSection GetWSTileSectionIndex(int index, byte dataPointer, int tileDataOffset)
+        //{
+        //    return TmosData.GetTileSection(Bytes, index, tileDataOffset);
+        //}
+      
+
+   
+
+      
 
         //public TmosWorldScreenTiles LoadWorldScreenTiles(TmosWorldScreen ws)
         //{

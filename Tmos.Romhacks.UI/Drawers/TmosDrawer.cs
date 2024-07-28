@@ -14,7 +14,7 @@ using TMOS_Romhack.DataViewer;
 
 namespace Tmos.Romhacks.UI.Drawers
 {
-    public class TmosDrawer
+    public class TmosDrawer //TODO: Seperate this class out into different drawers. Make an interface to allow different render strategies
     {
         public class MapDrawOptions
         {
@@ -69,9 +69,10 @@ namespace Tmos.Romhacks.UI.Drawers
             };
         }
 
-        //Copied from TMOS RomHack 1
-        public void DrawMap(PictureBox pbSurface, TmosModWorldScreen[] worldScreens, TmosRomhack1DrawerWorldMap map, MapDrawOptions options, int selectedWSIndex)
+            //Copied from TMOS RomHack 1
+            public void DrawMap(PictureBox pbSurface, TmosModWorldScreen[] worldScreens, MapDrawOptions options, int selectedWSIndex)
         {
+            TmosRomhack1DrawerWorldMap map = new TmosRomhack1DrawerWorldMap(worldScreens);
             map.InitalizeData();
             map.LoadWorldMap(selectedWSIndex, 16, 16);
 
@@ -98,59 +99,57 @@ namespace Tmos.Romhacks.UI.Drawers
                     //}
                      bgbrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
 
-                    // g.FillRectangle(bgbrush, rect);
-                    // g.DrawRectangle(Pens.LightGreen, rect);
+                     g.FillRectangle(bgbrush, rect);
+                     g.DrawRectangle(Pens.LightGreen, rect);
 
 
                     //Draw Tiles on map
-                    //  if (cb_fill_map_tiles.Checked)
-                    if (true)
-                    {
-                        RectangleF tileRect;
-
-                        Color groundColor = getWSGroundColor(ws.WorldScreenColor);
-
-                        float TILEVIEW_SIZE_X = (float)rect.Width / TILES_X_COUNT;
-                        float TILEVIEW_SIZE_Y = (float)rect.Height / TILES_Y_COUNT;
-                        for (int y = 0; y < TILES_Y_COUNT; y++)
+                   //   if (options.TileDrawOptions.ShowImage)
+                        if (false)
                         {
-                            for (int x = 0; x < TILES_X_COUNT; x++)
+                            RectangleF tileRectF;
+
+                            Color groundColor = getWSGroundColor(ws.WorldScreenColor);
+
+                            float TILEVIEW_SIZE_X = (float)rect.Width / TILES_X_COUNT;
+                            float TILEVIEW_SIZE_Y = (float)rect.Height / TILES_Y_COUNT;
+                            for (int y = 0; y < TILES_Y_COUNT; y++)
                             {
-                                Point location = new Point(options.TileSize * x, options.TileSize * y);
+                                for (int x = 0; x < TILES_X_COUNT; x++)
+                                {
+                                    Point location = new Point(options.TileSize * x, options.TileSize * y);
 
-                                tileRect = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
-                                Tile tile = ws.GetTileGrid()[x, y];
+                                    tileRectF = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
+                                    Tile tile = ws.GetTileGrid()[x, y];
 
-                                DrawTile(g, tile, location, options.TileSize / 20, groundColor, options.TileDrawOptions);
+                                    DrawTile(g, tile, location, options.TileSize / 20, groundColor, options.TileDrawOptions);
+
+                                    RectangleF tileRect = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
+
+                                    Brush brush = new SolidBrush(groundColor);   //here
+                                    g.FillRectangle(brush, tileRect);
 
 
+                                    g.DrawRectangle(Pens.Black, rect);
+                                    try
+                                    {
+                                        Image image = new Bitmap(tile.GetImagePath());
+                                        g.DrawImage(image, tileRect);
+                                    }
+                                    catch { }
 
-                                //  Rectangle tileRect = new Rectangle(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
-
-                                //Brush brush = new SolidBrush(groundColor);   //here
-                                // g.FillRectangle(brush, tileRect);
-
-                                //grid
-                                //  g.DrawRectangle(Pens.Black, rect);
-
-                                //if (TileImagePaths.ContainsKey(tileValue.ToString("X2")))
-                                //{
-                                //    Image image = new Bitmap(@"Images/TileImages/" + TileImagePaths[tileValue.ToString("X2")]);
-                                //    g.DrawImage(image, tileRect);
-                                //}
-
+                                }
                             }
                         }
-                    }
 
 
-                    /*if (selectedIndex == wsIndex)
-                    {
-                        Brush brush = new SolidBrush(Color.FromArgb(40, 50, 50, 50));
-                        g.FillRectangle(brush, rect);
-                    }*/
+                /*if (selectedIndex == wsIndex)
+                {
+                    Brush brush = new SolidBrush(Color.FromArgb(40, 50, 50, 50));
+                    g.FillRectangle(brush, rect);
+                }*/
 
-                    Font drawFont = new Font("Arial", 7);
+                Font drawFont = new Font("Arial", 7);
 
 
 

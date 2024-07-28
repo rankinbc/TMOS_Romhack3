@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tmos.Romhacks.Mods.Definitions;
 using static Tmos.Romhacks.Mods.Definitions.WSContentDefinitions;
+using static Tmos.Romhacks.Mods.Enum.KnownValueLibrary.WSContentTypeKVLibrary;
 
 namespace Tmos.Romhacks.Mods.TypedTmosObjects
 {

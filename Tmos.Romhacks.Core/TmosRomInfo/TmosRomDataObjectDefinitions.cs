@@ -8,22 +8,12 @@ using Tmos.Romhacks.Core.TmosRomInfo;
 
 namespace Tmos.Romhacks.Core.TmosRomInfo
 {
-	
 
 
-	//Known types that exist in the ROM and the relevant data (don't include items that are best-effort defined in this project because the true structure in the ROM is unknown)
-	public enum TmosRomObjectType
-	{
-		WorldScreenDataOffset,
-		WorldScreen,
-		WorldScreenTile,
-		Tile,
-		TileSection,
-		MiniTile,
-		RandomEncounterGroup,
-		RandomEncounterLineup,
-	}
-	public class TmosRomObjectInfo
+
+    //Known types that exist in the ROM and the relevant data (don't include items that are best-effort defined in this project because the true structure in the ROM is unknown)
+  
+    public class TmosRomObjectInfo
 	{
 		public TmosRomObjectType TmosDataObjectType { get; set; }
 		public string Name { get; set; }

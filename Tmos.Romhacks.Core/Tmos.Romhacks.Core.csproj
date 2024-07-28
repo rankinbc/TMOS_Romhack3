@@ -55,6 +55,7 @@
     <Compile Include="TmosRomDataObjects\TmosTileSection.cs" />
     <Compile Include="TmosRomDataObjects\TmosWorldScreen.cs" />
     <Compile Include="TmosRomDataObjects\TmosRomObjectMemoryDataOffset.cs" />
+    <Compile Include="TmosRomInfo\TmosRomObjectType.cs" />
     <Compile Include="TmosWorldScreenTileGrid.cs" />
   </ItemGroup>
   <ItemGroup>
