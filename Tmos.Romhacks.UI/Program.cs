@@ -15,13 +15,13 @@ namespace Tmos.Romhacks.UI
         static void Main()
         {
 
-            for(byte b = 0x00; b < 0xFF; b++)
+            for (byte b = 0x00; b < 0xFF; b++)
             {
                 // Console.WriteLine("case 0x" + b.ToString("X2") + ": return Tile.Tile0x" + b.ToString("X2") + ";");
                 // Console.WriteLine("Tile0x" + b.ToString("X2") + ",");
                 Console.WriteLine("{Tile.Tile0x" + b.ToString("X2") + ",\"" + b.ToString("X2") + "\"},");
             }
-      
+
 
 
 

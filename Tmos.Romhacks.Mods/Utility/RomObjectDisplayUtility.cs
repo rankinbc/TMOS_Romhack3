@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tmos.Romhacks.Mods
+namespace Tmos.Romhacks.Mods.Utility
 {
-    public class Utility
+    public class RomObjectDisplayUtility
     {
-          public static int HexStringToInt(string hex)
+        public static int HexStringToInt(string hex)
         {
             byte[] bytes = Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
@@ -18,6 +18,10 @@ namespace Tmos.Romhacks.Mods
             return Convert.ToInt32(bytes[0]);
         }
 
+        //public static string ToTileSectionDataDisplay(byte value, byte[] tmosTileSectionValues)
+        //{
+        //     return $"0x{value.ToString("X2")} ({tmosTileSectionValues[i])})";
+        //}
         public static string ToDecimalAndHexDisplayValue(int value)
         {
             return $"{value} ({value.ToString("X2")})";

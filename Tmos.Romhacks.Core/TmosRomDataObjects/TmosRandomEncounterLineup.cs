@@ -8,7 +8,9 @@ namespace Tmos.Romhacks.Core.TmosRomDataObjects
 {
 	public class TmosRandomEncounterLineup : TmosRomObject
 	{
-		public TmosRandomEncounterLineup(byte[] bytes)
+        public TmosRandomEncounterLineup() : base(null) { }
+
+        public TmosRandomEncounterLineup(byte[] bytes)
 			: base(bytes)
 		{
 		}

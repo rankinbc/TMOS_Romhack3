@@ -12,20 +12,20 @@ using Tmos.Romhacks.Core.TmosRomInfo;
 using Tmos.Romhacks.Mods.Definitions;
 using Tmos.Romhacks.Mods.Enum;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
+using Tmos.Romhacks.Mods.Utility;
 
 namespace Tmos.Romhacks.Mods
 {
     public class TmosModRom
     {
         TmosRom _romData; //Underlying bytes 
-
         public TmosModWorldScreenTile[] WorldScreenTiles { get; set; }
         private TmosModWorldScreen[] _worldScreens { get; set; }
         public TmosTileSection[] TileSections { get; set; }
         public TmosTile[] Tiles { get; set; }
         public TmosMiniTile[] MiniTiles { get; set; }
-
-        
+        public TmosRandomEncounterGroup[] RandomEncounterGroups { get; set; }
+        public TmosRandomEncounterLineup[] RandomEncounterLineups { get; set; }
 
         public byte[] TileData { get; set; } //Entire tile data section from rom
 
@@ -44,6 +44,8 @@ namespace Tmos.Romhacks.Mods
             LoadTileDataFromRom(_romData);
             LoadTilesFromRom(_romData);
             LoadMiniTilesFromRom(_romData);
+            LoadRandomEncounterGroupsFromRom(_romData);
+            LoadRandomEncounterLineupsFromRom(_romData);
         }
 
         public void LoadTileDataFromRom(TmosRom tmosRom)
@@ -77,22 +79,22 @@ namespace Tmos.Romhacks.Mods
         {
             TmosModWorldScreen ws = new TmosModWorldScreen(bytes)
             {
-                 ParentWorld = bytes[(int)TmosWorldScreen.DataContent.ParentWorld],
-                AmbientSound = bytes[(int)TmosWorldScreen.DataContent.AmbientSound],
-                Content = bytes[(int)TmosWorldScreen.DataContent.Content],
-                ObjectSet = bytes[(int)TmosWorldScreen.DataContent.ObjectSet],
-                ScreenIndexRight = bytes[(int)TmosWorldScreen.DataContent.ScreenIndexRight],
-                ScreenIndexLeft = bytes[(int)TmosWorldScreen.DataContent.ScreenIndexLeft],
-                ScreenIndexDown = bytes[(int)TmosWorldScreen.DataContent.ScreenIndexDown],
-                ScreenIndexUp = bytes[(int)TmosWorldScreen.DataContent.ScreenIndexUp],
-                DataPointer = bytes[(int)TmosWorldScreen.DataContent.DataPointer],
-                ExitPosition = bytes[(int)TmosWorldScreen.DataContent.ExitPosition],
-                TopTiles = bytes[(int)TmosWorldScreen.DataContent.TopTiles],
-                BottomTiles = bytes[(int)TmosWorldScreen.DataContent.BottomTiles],
-                WorldScreenColor = bytes[(int)TmosWorldScreen.DataContent.WorldScreenColor],
-                SpritesColor = bytes[(int)TmosWorldScreen.DataContent.SpritesColor],
-                Unknown = bytes[(int)TmosWorldScreen.DataContent.Unknown],
-                Event = bytes[(int)TmosWorldScreen.DataContent.Event],
+                 ParentWorld = bytes[(int)WSProperty.ParentWorld],
+                AmbientSound = bytes[(int)WSProperty.AmbientSound],
+                Content = bytes[(int)WSProperty.Content],
+                ObjectSet = bytes[(int)WSProperty.ObjectSet],
+                ScreenIndexRight = bytes[(int)WSProperty.ScreenIndexRight],
+                ScreenIndexLeft = bytes[(int)WSProperty.ScreenIndexLeft],
+                ScreenIndexDown = bytes[(int)WSProperty.ScreenIndexDown],
+                ScreenIndexUp = bytes[(int)WSProperty.ScreenIndexUp],
+                DataPointer = bytes[(int)WSProperty.DataPointer],
+                ExitPosition = bytes[(int)WSProperty.ExitPosition],
+                TopTiles = bytes[(int)WSProperty.TopTiles],
+                BottomTiles = bytes[(int)WSProperty.BottomTiles],
+                WorldScreenColor = bytes[(int)WSProperty.WorldScreenColor],
+                SpritesColor = bytes[(int)WSProperty.SpritesColor],
+                Unknown = bytes[(int)WSProperty.Unknown],
+                Event = bytes[(int)WSProperty.Event],
             };
 
             ws = RefreshWorldScreen(ws);
@@ -145,7 +147,7 @@ namespace Tmos.Romhacks.Mods
 
       
 
-        public TmosModWorldScreen[] GetTmosModWorldScreens(bool reload)
+        public TmosModWorldScreen[] GetTmosModWorldScreens(bool reload = false)
         {
             if (reload)
             {
@@ -187,20 +189,22 @@ namespace Tmos.Romhacks.Mods
         public int GetTmosWorldScreenNeighborAbsoluteIndex(int absoluteWorldScreenIndex, Direction direction)
         {
             TmosModWorldScreen ws = _worldScreens[absoluteWorldScreenIndex];
-            int relativeIndex = ws.GetNeighborWorldScreenRelativeIndex(direction);
+            int wsNeighborRelativeIndex = ws.GetNeighborWorldScreenRelativeIndex(direction);
             int chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex).ChapterNumber;
-            int neighborWSabsoluteIndex = TmosChapterDefinitions.GetAbsoluteWorldScreenIndex(chapter, relativeIndex);
-            return neighborWSabsoluteIndex;
+            int neighborWsAbsoluteIndex = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, wsNeighborRelativeIndex);
+            return neighborWsAbsoluteIndex;
         }
         public int GetTmosWorldScreenNeighborAbsoluteIndex(int chapterIndex, int chapterRelativeWorldScreenIndex, Direction direction)
         {
-            int wsAbsoluteIndex = TmosChapterDefinitions.GetAbsoluteWorldScreenIndex(chapterIndex, chapterRelativeWorldScreenIndex);
+
+           // int wsAbsoluteIndex = TmosChapterDefinitions.GetAbsoluteWorldScreenIndex(chapterIndex, chapterRelativeWorldScreenIndex);
+            int wsAbsoluteIndex = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapterIndex, chapterRelativeWorldScreenIndex);
             TmosModWorldScreen ws = _worldScreens[wsAbsoluteIndex];
-            int neighborWSabsoluteIndex = TmosChapterDefinitions.GetAbsoluteWorldScreenIndex(chapterIndex, chapterRelativeWorldScreenIndex);
-            return neighborWSabsoluteIndex;
+            int neighborWsAbsoluteIndex = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapterIndex, chapterRelativeWorldScreenIndex);
+            return neighborWsAbsoluteIndex;
         }
 
-        public int GetTmosWorldScreenChapterIndex(int absoluteWorldScreenIndex)
+        public static int GetTmosWorldScreenChapterIndex(int absoluteWorldScreenIndex)
         {
             TmosChapter chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
             // return TmosChapterDefinitions.GetChapterRelativeWorldScreenIndex(chapter.ChapterNumber, absoluteWorldScreenIndex);
@@ -310,9 +314,6 @@ namespace Tmos.Romhacks.Mods
         #endregion TmosTileSections
 
         #region TmosTiles
-
-
-        #endregion TmosTiles
         public void LoadTilesFromRom(TmosRom tmosRom)
         {
             Tiles = new TmosTile[255];
@@ -323,6 +324,9 @@ namespace Tmos.Romhacks.Mods
                 Tiles[i] = tmosTile;
             }
         }
+
+        #endregion TmosTiles
+
 
         #region TmosMiniTiles
 
@@ -338,6 +342,39 @@ namespace Tmos.Romhacks.Mods
         }
 
         #endregion TmosMiniTiles
+
+
+        #region TmosRandomEncounterGroups
+
+        public void LoadRandomEncounterGroupsFromRom(TmosRom tmosRom)
+        {
+            RandomEncounterGroups = new TmosRandomEncounterGroup[255];
+
+            for (int i = 0; i < RandomEncounterGroups.Length; i++)
+            {
+                TmosRandomEncounterGroup tmosRandomEncounterGroup = tmosRom.LoadRandomEncounterGroup(i);
+                RandomEncounterGroups[i] = tmosRandomEncounterGroup;
+            }
+        }
+
+        #endregion TmosRandomEncounterGroups
+
+        #region TmosRandomEncounterLineups
+
+        public void LoadRandomEncounterLineupsFromRom(TmosRom tmosRom)
+        {
+            RandomEncounterLineups = new TmosRandomEncounterLineup[255];
+
+            for (int i = 0; i < RandomEncounterLineups.Length; i++)
+            {
+                TmosRandomEncounterLineup tmosRandomEncounterLineup = tmosRom.LoadRandomEncounterLineup(i);
+                RandomEncounterLineups[i] = tmosRandomEncounterLineup;
+            }
+        }
+
+        #endregion TmosRandomEncounterLineups
+
+
 
     
     }

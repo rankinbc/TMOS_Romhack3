@@ -8,7 +8,10 @@ namespace Tmos.Romhacks.Core
 {
    public class TmosTile : TmosRomObject
 	{
-        public TmosTile(byte[] bytes) : base(bytes)
+        public TmosTile() : base(null)
+        {
+        }
+        public TmosTile(byte[] bytes = null) : base(bytes)
 		{
 		}
 

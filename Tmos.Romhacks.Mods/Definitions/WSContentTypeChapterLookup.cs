@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
 {
-    //WS Content Types
-    //0x80 - 0x8F content values are different between chapters
-    //The rest is universal between chapters ?
-
-
-    public static class WSContentTypeKVLibrary
+    //Gets the correct WSContent for the specified chapter
+     public static class WSContentTypeChapterLookup
     {
         public static WSContentType GetWSContentType(byte content, int? chapter = null)
         {
-            //Fetch the correct WSContentType using the content byte value and chapter
-
+            //0x80 - 0x8F are Chapter-specific content types
             if (content > 0x8A && content < 0x8F) //Content is different based on the chapter
             {
                 if (chapter == 0)
@@ -97,7 +92,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                     }
                 }
             }
-            else //Content is universal between chapters (need to match up the byte value to the correct WSContentType)
+            else //Content is universal between chapters 
             {
                 WSContentTypeByteValue wsContentTypeByteValue = (WSContentTypeByteValue)content;
                 switch (wsContentTypeByteValue)
@@ -170,95 +165,6 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
         }
 
 
-        public enum WSContentType //Only known types, not tied to world screen content byte value (contains all chapter specific items)
-        {
-            Nothing,
-            WizardBattleOnEnter,
-            FrozenPalace,
-            FirstMosque,
-            Gilga,
-            Gilga2,
-            Curly,
-            Curly2,
-            Troll,
-            Troll2,
-            Salamander,
-            Salamander2,
-            GoraGora,
-            GoraGora2,
-            University_40, //Should Universities be combined?
-            University_41,
-            University_42,
-            University_43,
-            University_44,
-            University_50,
-            University_55,
-            Shop_60, //Should Shops be combined?
-            Shop_61,
-            Shop_62,
-            Shop_63,
-            Shop_64,
-            Shop_65,
-            Shop_66,
-            Shop_7B,
-            Shop_7C,
-            Shop_7D,
-            Mosque,
-            Troopers,
-            Jad,
-            Faruk,
-            Dogos,
-            Kebabu,
-            AquaPalace,
-            WiseManMonecom,
-            AchelatoPrincess,
-            SabaronTalk,
-            GunMeca,
-            Lah,
-            Supica,
-            Epin,
-            WisemanRaincome,
-            Princess1,
-            Princess2,
-            NewBornCimaronTree,
-            CimaronTree,
-            Supapa,
-            Mustafa,
-            FrozenPalace2,
-            Gubibi,
-            Rainy,
-            YuflaPalace,
-            Rostam,
-            KingFiesal,
-            WisemanMoscome,
-            Hasan,
-            Kaji,
-            LegendSword,
-            ArmorofLight,
-            PalaceEntrance,
-            SabaronFinal,
-            OnlyOneJarYouCanGoThrough,
-            RupiasLady,
-            Rupias,
-            Hotel_A0,
-            Hotel_A1,
-            Hotel_A2,
-            Hotel_A3,
-            Hotel_A4,
-            Hotel_A5,
-            Hotel_A6,
-            Hotel_A7,
-            Hotel_A8,
-            Hotel_A9,
-            Hotel_B0,
-            RupiaSeedPlant,
-            RupiaTree_BD,
-            Casino_1_BE,
-            TimeDoorEnter,
-            TimeDoorExit_C7,
-            TimeDoorExit,
-            Battle
-        }
 
         public enum WSContentTypeByteValue  //The values that are used on world screens to represent the content
         {
@@ -521,57 +427,57 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
         }
 
 
-        enum WSContentTypeCh1
-        {
-            Jad = 0x80,
-            Faruk = 0x81,
-            Kebabu = 0x82,
-            AquaPalace = 0x83,
-            WiseManMonecom = 0x84,
-            AchelatoPrincess = 0x85,
-            Sabaron = 0x86,
-        }
+        //enum WSContentTypeCh1
+        //{
+        //    Jad = 0x80,
+        //    Faruk = 0x81,
+        //    Kebabu = 0x82,
+        //    AquaPalace = 0x83,
+        //    WiseManMonecom = 0x84,
+        //    AchelatoPrincess = 0x85,
+        //    Sabaron = 0x86,
+        //}
 
-        enum WSContentTypeCh2
-        {
-            GunMeca = 0x87,
-            Lah = 0x88,
-            Supica = 0x89,
-            Epin = 0x8A,
-            WisemanRaincome = 0x8B,
-            Princess = 0x8C,
-        }
+        //enum WSContentTypeCh2
+        //{
+        //    GunMeca = 0x87,
+        //    Lah = 0x88,
+        //    Supica = 0x89,
+        //    Epin = 0x8A,
+        //    WisemanRaincome = 0x8B,
+        //    Princess = 0x8C,
+        //}
 
-        enum WSContentTypeCh3
-        {
-            NewBornCimaronTree = 0x80,
-            CimaronTree = 0x81,
-            Supapa = 0x82,
-            Mustafa = 0x83,
-            FrozenPalace = 0x84,
-        }
-        enum WSContentTypeCh4
-        {
-            Wiseman = 0x86,
-            Gubibi = 0x80,
-            Rainy = 0x81,
-            YuflaPalace = 0x82,
-            Rostam = 0x83,
-            HeroRostamsSword = 0x84,
-            Fiesal = 0x85,
-        }
+        //enum WSContentTypeCh3
+        //{
+        //    NewBornCimaronTree = 0x80,
+        //    CimaronTree = 0x81,
+        //    Supapa = 0x82,
+        //    Mustafa = 0x83,
+        //    FrozenPalace = 0x84,
+        //}
+        //enum WSContentTypeCh4
+        //{
+        //    Wiseman = 0x86,
+        //    Gubibi = 0x80,
+        //    Rainy = 0x81,
+        //    YuflaPalace = 0x82,
+        //    Rostam = 0x83,
+        //    HeroRostamsSword = 0x84,
+        //    Fiesal = 0x85,
+        //}
 
-        enum WSContentTypeCh5
-        {
-            Hasan = 0x80,
-            Kaji = 0x81,
-            LegendSword = 0x82,
-            ArmorofLight = 0x83,
-            PalaceEntrance = 0x84,
-            SabaronFinal = 0x85,
-            JarHint = 0x86,
-            Libcom = 0x87,
-            Rupias = 0x88,
-        }
+        //enum WSContentTypeCh5
+        //{
+        //    Hasan = 0x80,
+        //    Kaji = 0x81,
+        //    LegendSword = 0x82,
+        //    ArmorofLight = 0x83,
+        //    PalaceEntrance = 0x84,
+        //    SabaronFinal = 0x85,
+        //    JarHint = 0x86,
+        //    Libcom = 0x87,
+        //    Rupias = 0x88,
+        //}
     }
 }

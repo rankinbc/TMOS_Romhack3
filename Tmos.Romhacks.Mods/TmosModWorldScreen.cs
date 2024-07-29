@@ -23,49 +23,24 @@ namespace Tmos.Romhacks.Mods
         public TmosTileSection TileSectionBottom { get; set; }  //Have to be kept up to date with loaded rom data
 
         private byte[] _data;
-        //public byte[] GetBytes()
-        //{
-        //    return _data;
-        //}
+
         public byte[] GetBytes() { return _data; }
-        public byte ParentWorld { get { return _data[(int)DataContent.ParentWorld]; } set { _data[(int)DataContent.ParentWorld] = value; } }
-        public byte AmbientSound { get { return _data[(int)DataContent.AmbientSound]; } set { _data[(int)DataContent.AmbientSound] = value; } }
-        public byte Content { get { return _data[(int)DataContent.Content]; } set { _data[(int)DataContent.Content] = value; } }
-        public byte ObjectSet { get { return _data[(int)DataContent.ObjectSet]; } set { _data[(int)DataContent.ObjectSet] = value; } }
-        public byte ScreenIndexRight { get { return _data[(int)DataContent.ScreenIndexRight]; } set { _data[(int)DataContent.ScreenIndexRight] = value; } }
-        public byte ScreenIndexLeft { get { return _data[(int)DataContent.ScreenIndexLeft]; } set { _data[(int)DataContent.ScreenIndexLeft] = value; } }
-        public byte ScreenIndexDown { get { return _data[(int)DataContent.ScreenIndexDown]; } set { _data[(int)DataContent.ScreenIndexDown] = value; } }
-        public byte ScreenIndexUp { get { return _data[(int)DataContent.ScreenIndexUp]; } set { _data[(int)DataContent.ScreenIndexUp] = value; } }
-        public byte DataPointer { get { return _data[(int)DataContent.DataPointer]; } set { _data[(int)DataContent.DataPointer] = value; } }
-        public byte ExitPosition { get { return _data[(int)DataContent.ExitPosition]; } set { _data[(int)DataContent.ExitPosition] = value; } }
-        public byte TopTiles { get { return _data[(int)DataContent.TopTiles]; } set { _data[(int)DataContent.TopTiles] = value; } }
-        public byte BottomTiles { get { return _data[(int)DataContent.BottomTiles]; } set { _data[(int)DataContent.BottomTiles] = value; } }
-        public byte WorldScreenColor { get { return _data[(int)DataContent.WorldScreenColor]; } set { _data[(int)DataContent.WorldScreenColor] = value; } }
-        public byte SpritesColor { get { return _data[(int)DataContent.SpritesColor]; } set { _data[(int)DataContent.SpritesColor] = value; } }
-        public byte Unknown { get { return _data[(int)DataContent.Unknown]; } set { _data[(int)DataContent.Unknown] = value; } }
-        public byte Event { get { return _data[(int)DataContent.Event]; } set { _data[(int)DataContent.Event] = value; } }
-
-
-
-        //These will hopefully be made into usable objects like the ones above, instead of a byte value, but for now just loading up the byte value straight from the ROM data
-        //public byte ParentWorld { get; set; }
-        //public byte AmbientSound { get; set; }
-        //  public byte Content { get; set; } 
-        //public byte ObjectSet { get; set; }
-        //public byte ScreenIndexRight { get; set; }
-        //public byte ScreenIndexLeft { get; set; }
-        //public byte ScreenIndexDown { get; set; }
-        //public byte ScreenIndexUp { get; set; }
-        //public byte DataPointer { get; set; }
-        //public byte ExitPosition { get; set; }
-        //public byte TopTiles { get; set; }
-        //public byte BottomTiles { get; set; }
-        //public byte WorldScreenColor { get; set; }
-        //public byte SpritesColor { get; set; }
-        //public byte Unknown { get; set; }
-        //public byte Event { get; set; }
-
-
+        public byte ParentWorld { get { return _data[(int)WSProperty.ParentWorld]; } set { _data[(int)WSProperty.ParentWorld] = value; } }
+        public byte AmbientSound { get { return _data[(int)WSProperty.AmbientSound]; } set { _data[(int)WSProperty.AmbientSound] = value; } }
+        public byte Content { get { return _data[(int)WSProperty.Content]; } set { _data[(int)WSProperty.Content] = value; } }
+        public byte ObjectSet { get { return _data[(int)WSProperty.ObjectSet]; } set { _data[(int)WSProperty.ObjectSet] = value; } }
+        public byte ScreenIndexRight { get { return _data[(int)WSProperty.ScreenIndexRight]; } set { _data[(int)WSProperty.ScreenIndexRight] = value; } }
+        public byte ScreenIndexLeft { get { return _data[(int)WSProperty.ScreenIndexLeft]; } set { _data[(int)WSProperty.ScreenIndexLeft] = value; } }
+        public byte ScreenIndexDown { get { return _data[(int)WSProperty.ScreenIndexDown]; } set { _data[(int)WSProperty.ScreenIndexDown] = value; } }
+        public byte ScreenIndexUp { get { return _data[(int)WSProperty.ScreenIndexUp]; } set { _data[(int)WSProperty.ScreenIndexUp] = value; } }
+        public byte DataPointer { get { return _data[(int)WSProperty.DataPointer]; } set { _data[(int)WSProperty.DataPointer] = value; } }
+        public byte ExitPosition { get { return _data[(int)WSProperty.ExitPosition]; } set { _data[(int)WSProperty.ExitPosition] = value; } }
+        public byte TopTiles { get { return _data[(int)WSProperty.TopTiles]; } set { _data[(int)WSProperty.TopTiles] = value; } }
+        public byte BottomTiles { get { return _data[(int)WSProperty.BottomTiles]; } set { _data[(int)WSProperty.BottomTiles] = value; } }
+        public byte WorldScreenColor { get { return _data[(int)WSProperty.WorldScreenColor]; } set { _data[(int)WSProperty.WorldScreenColor] = value; } }
+        public byte SpritesColor { get { return _data[(int)WSProperty.SpritesColor]; } set { _data[(int)WSProperty.SpritesColor] = value; } }
+        public byte Unknown { get { return _data[(int)WSProperty.Unknown]; } set { _data[(int)WSProperty.Unknown] = value; } }
+        public byte Event { get { return _data[(int)WSProperty.Event]; } set { _data[(int)WSProperty.Event] = value; } }
 
 
         public TmosModWorldScreen(byte[] data)
@@ -75,22 +50,22 @@ namespace Tmos.Romhacks.Mods
             //TileSectionTop = new TmosTileSection(TopTiles);
             //TileSectionBottom = new TmosTileSection(BottomTiles);
 
-            ParentWorld = data[(int)DataContent.ParentWorld];
-            AmbientSound = data[(int)DataContent.AmbientSound];
-            Content = data[(int)DataContent.Content];
-            ObjectSet = data[(int)DataContent.ObjectSet];
-            ScreenIndexRight = data[(int)DataContent.ScreenIndexRight];
-            ScreenIndexLeft = data[(int)DataContent.ScreenIndexLeft];
-            ScreenIndexDown = data[(int)DataContent.ScreenIndexDown];
-            ScreenIndexUp = data[(int)DataContent.ScreenIndexUp];
-            DataPointer = data[(int)DataContent.DataPointer];
-            ExitPosition = data[(int)DataContent.ExitPosition];
-            TopTiles = data[(int)DataContent.TopTiles];
-            BottomTiles = data[(int)DataContent.BottomTiles];
-            WorldScreenColor = data[(int)DataContent.WorldScreenColor];
-            SpritesColor = data[(int)DataContent.SpritesColor];
-            Unknown = data[(int)DataContent.Unknown];
-            Event = data[(int)DataContent.Event];
+            ParentWorld = data[(int)WSProperty.ParentWorld];
+            AmbientSound = data[(int)WSProperty.AmbientSound];
+            Content = data[(int)WSProperty.Content];
+            ObjectSet = data[(int)WSProperty.ObjectSet];
+            ScreenIndexRight = data[(int)WSProperty.ScreenIndexRight];
+            ScreenIndexLeft = data[(int)WSProperty.ScreenIndexLeft];
+            ScreenIndexDown = data[(int)WSProperty.ScreenIndexDown];
+            ScreenIndexUp = data[(int)WSProperty.ScreenIndexUp];
+            DataPointer = data[(int)WSProperty.DataPointer];
+            ExitPosition = data[(int)WSProperty.ExitPosition];
+            TopTiles = data[(int)WSProperty.TopTiles];
+            BottomTiles = data[(int)WSProperty.BottomTiles];
+            WorldScreenColor = data[(int)WSProperty.WorldScreenColor];
+            SpritesColor = data[(int)WSProperty.SpritesColor];
+            Unknown = data[(int)WSProperty.Unknown];
+            Event = data[(int)WSProperty.Event];
 
         }
 

@@ -9,6 +9,10 @@ namespace Tmos.Romhacks.Core
     public class TmosMiniTile : TmosRomObject
     {
         //Contains a 2x2 grid of bytes representing smaller tiles (micro-tiles) //From PPU?
+        public TmosMiniTile()
+            : base(null)
+        {
+        }
         public TmosMiniTile(byte[] bytes)
             : base(bytes)
 		{

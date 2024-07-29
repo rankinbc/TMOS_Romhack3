@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tmos.Romhacks.Mods", "Tmos.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{E627E9BC-0468-4BF5-A7BE-3A9045B42A9D}"
 	ProjectSection(SolutionItems) = preProject
+		DevelopmentNotes.txt = DevelopmentNotes.txt
 		Tmos.Romhacks.Core\ROMNotes.txt = Tmos.Romhacks.Core\ROMNotes.txt
 	EndProjectSection
 EndProject

@@ -146,6 +146,8 @@ namespace Tmos.Romhacks.UI
             this.tb_worldScreen_selectedWorldScreen_data = new System.Windows.Forms.RichTextBox();
             this.pb_worldScreen = new System.Windows.Forms.PictureBox();
             this.tab_tileSection = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_tileSection_data_save = new System.Windows.Forms.Button();
@@ -158,6 +160,7 @@ namespace Tmos.Romhacks.UI
             this.lb_worldScreenTiles = new System.Windows.Forms.ListBox();
             this.tb_tileSection_selectedTileSection_data = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tb_miniTile_data_byte4 = new System.Windows.Forms.TextBox();
             this.tb_miniTile_data_byte3 = new System.Windows.Forms.TextBox();
             this.tb_miniTile_data_byte2 = new System.Windows.Forms.TextBox();
@@ -165,6 +168,7 @@ namespace Tmos.Romhacks.UI
             this.lb_miniTile = new System.Windows.Forms.ListBox();
             this.pb_tileSection = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tb_tile_data_byte4 = new System.Windows.Forms.TextBox();
             this.tb_tile_data_byte3 = new System.Windows.Forms.TextBox();
             this.tb_tile_data_byte2 = new System.Windows.Forms.TextBox();
@@ -172,7 +176,13 @@ namespace Tmos.Romhacks.UI
             this.lb_tile = new System.Windows.Forms.ListBox();
             this.pb_tile = new System.Windows.Forms.PictureBox();
             this.lb_tileSection = new System.Windows.Forms.ListBox();
-            this.tab_tiles = new System.Windows.Forms.TabPage();
+            this.tab_encounters = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.rtb_encounterLineups_data = new System.Windows.Forms.RichTextBox();
+            this.lb_encounterLinups = new System.Windows.Forms.ListBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.rtb_encounterGroups_data = new System.Windows.Forms.RichTextBox();
+            this.lb_encounterGroups = new System.Windows.Forms.ListBox();
             this.btn_refreshWorldScreenList = new System.Windows.Forms.Button();
             this.gb_drawOptions = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -203,12 +213,16 @@ namespace Tmos.Romhacks.UI
             this.tab_worldScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_worldScreen)).BeginInit();
             this.tab_tileSection.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile_Image)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tileSection)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile)).BeginInit();
+            this.tab_encounters.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.gb_drawOptions.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -656,7 +670,7 @@ namespace Tmos.Romhacks.UI
             this.tabControl1.Controls.Add(this.tab_map);
             this.tabControl1.Controls.Add(this.tab_worldScreen);
             this.tabControl1.Controls.Add(this.tab_tileSection);
-            this.tabControl1.Controls.Add(this.tab_tiles);
+            this.tabControl1.Controls.Add(this.tab_encounters);
             this.tabControl1.Location = new System.Drawing.Point(418, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -722,6 +736,7 @@ namespace Tmos.Romhacks.UI
             // 
             // tab_tileSection
             // 
+            this.tab_tileSection.Controls.Add(this.groupBox6);
             this.tab_tileSection.Controls.Add(this.label7);
             this.tab_tileSection.Controls.Add(this.label6);
             this.tab_tileSection.Controls.Add(this.btn_tileSection_data_save);
@@ -739,6 +754,26 @@ namespace Tmos.Romhacks.UI
             this.tab_tileSection.TabIndex = 2;
             this.tab_tileSection.Text = "TileSection";
             this.tab_tileSection.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Location = new System.Drawing.Point(820, 480);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(64, 46);
+            this.groupBox6.TabIndex = 21;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "MicroTile";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Unknown";
             // 
             // label7
             // 
@@ -780,8 +815,8 @@ namespace Tmos.Romhacks.UI
             // 
             // lv_tileSection_values
             // 
-            this.lv_tileSection_values.BackColor = System.Drawing.SystemColors.Window;
-            this.lv_tileSection_values.GridLines = true;
+            this.lv_tileSection_values.Activation = System.Windows.Forms.ItemActivation.TwoClick;
+            this.lv_tileSection_values.BackColor = System.Drawing.Color.Gainsboro;
             this.lv_tileSection_values.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lv_tileSection_values.HideSelection = false;
             this.lv_tileSection_values.LabelEdit = true;
@@ -791,7 +826,7 @@ namespace Tmos.Romhacks.UI
             this.lv_tileSection_values.Size = new System.Drawing.Size(532, 169);
             this.lv_tileSection_values.TabIndex = 15;
             this.lv_tileSection_values.UseCompatibleStateImageBehavior = false;
-            this.lv_tileSection_values.View = System.Windows.Forms.View.Tile;
+            this.lv_tileSection_values.View = System.Windows.Forms.View.Details;
             this.lv_tileSection_values.SelectedIndexChanged += new System.EventHandler(this.lv_tileSection_values_SelectedIndexChanged);
             // 
             // groupBox5
@@ -852,6 +887,7 @@ namespace Tmos.Romhacks.UI
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.tb_miniTile_data_byte4);
             this.groupBox4.Controls.Add(this.tb_miniTile_data_byte3);
             this.groupBox4.Controls.Add(this.tb_miniTile_data_byte2);
@@ -864,30 +900,39 @@ namespace Tmos.Romhacks.UI
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "MiniTile";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(130, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 13);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "MicroTile Values";
+            // 
             // tb_miniTile_data_byte4
             // 
-            this.tb_miniTile_data_byte4.Location = new System.Drawing.Point(171, 43);
+            this.tb_miniTile_data_byte4.Location = new System.Drawing.Point(171, 66);
             this.tb_miniTile_data_byte4.Name = "tb_miniTile_data_byte4";
             this.tb_miniTile_data_byte4.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte4.TabIndex = 27;
             // 
             // tb_miniTile_data_byte3
             // 
-            this.tb_miniTile_data_byte3.Location = new System.Drawing.Point(131, 43);
+            this.tb_miniTile_data_byte3.Location = new System.Drawing.Point(131, 66);
             this.tb_miniTile_data_byte3.Name = "tb_miniTile_data_byte3";
             this.tb_miniTile_data_byte3.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte3.TabIndex = 26;
             // 
             // tb_miniTile_data_byte2
             // 
-            this.tb_miniTile_data_byte2.Location = new System.Drawing.Point(171, 17);
+            this.tb_miniTile_data_byte2.Location = new System.Drawing.Point(171, 40);
             this.tb_miniTile_data_byte2.Name = "tb_miniTile_data_byte2";
             this.tb_miniTile_data_byte2.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte2.TabIndex = 25;
             // 
             // tb_miniTile_data_byte1
             // 
-            this.tb_miniTile_data_byte1.Location = new System.Drawing.Point(131, 17);
+            this.tb_miniTile_data_byte1.Location = new System.Drawing.Point(131, 40);
             this.tb_miniTile_data_byte1.Name = "tb_miniTile_data_byte1";
             this.tb_miniTile_data_byte1.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte1.TabIndex = 24;
@@ -914,6 +959,7 @@ namespace Tmos.Romhacks.UI
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.tb_tile_data_byte4);
             this.groupBox3.Controls.Add(this.tb_tile_data_byte3);
             this.groupBox3.Controls.Add(this.tb_tile_data_byte2);
@@ -927,30 +973,39 @@ namespace Tmos.Romhacks.UI
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tile";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(138, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "MiniTile Values";
+            // 
             // tb_tile_data_byte4
             // 
-            this.tb_tile_data_byte4.Location = new System.Drawing.Point(180, 53);
+            this.tb_tile_data_byte4.Location = new System.Drawing.Point(181, 65);
             this.tb_tile_data_byte4.Name = "tb_tile_data_byte4";
             this.tb_tile_data_byte4.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte4.TabIndex = 31;
             // 
             // tb_tile_data_byte3
             // 
-            this.tb_tile_data_byte3.Location = new System.Drawing.Point(140, 53);
+            this.tb_tile_data_byte3.Location = new System.Drawing.Point(141, 65);
             this.tb_tile_data_byte3.Name = "tb_tile_data_byte3";
             this.tb_tile_data_byte3.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte3.TabIndex = 30;
             // 
             // tb_tile_data_byte2
             // 
-            this.tb_tile_data_byte2.Location = new System.Drawing.Point(180, 27);
+            this.tb_tile_data_byte2.Location = new System.Drawing.Point(181, 39);
             this.tb_tile_data_byte2.Name = "tb_tile_data_byte2";
             this.tb_tile_data_byte2.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte2.TabIndex = 29;
             // 
             // tb_tile_data_byte1
             // 
-            this.tb_tile_data_byte1.Location = new System.Drawing.Point(140, 27);
+            this.tb_tile_data_byte1.Location = new System.Drawing.Point(141, 39);
             this.tb_tile_data_byte1.Name = "tb_tile_data_byte1";
             this.tb_tile_data_byte1.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte1.TabIndex = 28;
@@ -968,11 +1023,12 @@ namespace Tmos.Romhacks.UI
             // pb_tile
             // 
             this.pb_tile.BackColor = System.Drawing.Color.White;
-            this.pb_tile.Location = new System.Drawing.Point(140, 196);
+            this.pb_tile.Location = new System.Drawing.Point(140, 304);
             this.pb_tile.Name = "pb_tile";
-            this.pb_tile.Size = new System.Drawing.Size(127, 134);
+            this.pb_tile.Size = new System.Drawing.Size(44, 26);
             this.pb_tile.TabIndex = 11;
             this.pb_tile.TabStop = false;
+            this.pb_tile.Visible = false;
             // 
             // lb_tileSection
             // 
@@ -984,14 +1040,75 @@ namespace Tmos.Romhacks.UI
             this.lb_tileSection.TabIndex = 8;
             this.lb_tileSection.SelectedIndexChanged += new System.EventHandler(this.lb_tileSection_SelectedIndexChanged);
             // 
-            // tab_tiles
+            // tab_encounters
             // 
-            this.tab_tiles.Location = new System.Drawing.Point(4, 22);
-            this.tab_tiles.Name = "tab_tiles";
-            this.tab_tiles.Size = new System.Drawing.Size(1029, 870);
-            this.tab_tiles.TabIndex = 3;
-            this.tab_tiles.Text = "Tiles";
-            this.tab_tiles.UseVisualStyleBackColor = true;
+            this.tab_encounters.Controls.Add(this.groupBox11);
+            this.tab_encounters.Controls.Add(this.groupBox10);
+            this.tab_encounters.Location = new System.Drawing.Point(4, 22);
+            this.tab_encounters.Name = "tab_encounters";
+            this.tab_encounters.Size = new System.Drawing.Size(1029, 870);
+            this.tab_encounters.TabIndex = 3;
+            this.tab_encounters.Text = "Encounters";
+            this.tab_encounters.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.rtb_encounterLineups_data);
+            this.groupBox11.Controls.Add(this.lb_encounterLinups);
+            this.groupBox11.Location = new System.Drawing.Point(490, 12);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(515, 398);
+            this.groupBox11.TabIndex = 1;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Encounter Lineups";
+            // 
+            // rtb_encounterLineups_data
+            // 
+            this.rtb_encounterLineups_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtb_encounterLineups_data.Location = new System.Drawing.Point(140, 18);
+            this.rtb_encounterLineups_data.Name = "rtb_encounterLineups_data";
+            this.rtb_encounterLineups_data.Size = new System.Drawing.Size(324, 187);
+            this.rtb_encounterLineups_data.TabIndex = 31;
+            this.rtb_encounterLineups_data.Text = "";
+            // 
+            // lb_encounterLinups
+            // 
+            this.lb_encounterLinups.FormattingEnabled = true;
+            this.lb_encounterLinups.Location = new System.Drawing.Point(14, 18);
+            this.lb_encounterLinups.Margin = new System.Windows.Forms.Padding(2);
+            this.lb_encounterLinups.Name = "lb_encounterLinups";
+            this.lb_encounterLinups.Size = new System.Drawing.Size(121, 368);
+            this.lb_encounterLinups.TabIndex = 30;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.rtb_encounterGroups_data);
+            this.groupBox10.Controls.Add(this.lb_encounterGroups);
+            this.groupBox10.Location = new System.Drawing.Point(13, 12);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(471, 398);
+            this.groupBox10.TabIndex = 0;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Encounter Groups";
+            // 
+            // rtb_encounterGroups_data
+            // 
+            this.rtb_encounterGroups_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtb_encounterGroups_data.Location = new System.Drawing.Point(141, 18);
+            this.rtb_encounterGroups_data.Name = "rtb_encounterGroups_data";
+            this.rtb_encounterGroups_data.Size = new System.Drawing.Size(324, 187);
+            this.rtb_encounterGroups_data.TabIndex = 29;
+            this.rtb_encounterGroups_data.Text = "";
+            // 
+            // lb_encounterGroups
+            // 
+            this.lb_encounterGroups.FormattingEnabled = true;
+            this.lb_encounterGroups.Location = new System.Drawing.Point(15, 18);
+            this.lb_encounterGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.lb_encounterGroups.Name = "lb_encounterGroups";
+            this.lb_encounterGroups.Size = new System.Drawing.Size(121, 368);
+            this.lb_encounterGroups.TabIndex = 28;
+            this.lb_encounterGroups.SelectedIndexChanged += new System.EventHandler(this.lb_encounterGroups_SelectedIndexChanged);
             // 
             // btn_refreshWorldScreenList
             // 
@@ -1168,6 +1285,7 @@ namespace Tmos.Romhacks.UI
             this.menuStrip1.Size = new System.Drawing.Size(1510, 24);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -1251,6 +1369,8 @@ namespace Tmos.Romhacks.UI
             ((System.ComponentModel.ISupportInitialize)(this.pb_worldScreen)).EndInit();
             this.tab_tileSection.ResumeLayout(false);
             this.tab_tileSection.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile_Image)).EndInit();
@@ -1260,6 +1380,9 @@ namespace Tmos.Romhacks.UI
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile)).EndInit();
+            this.tab_encounters.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.gb_drawOptions.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -1336,7 +1459,7 @@ namespace Tmos.Romhacks.UI
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox tb_worldScreenTile;
         private System.Windows.Forms.ListBox lb_worldScreenTiles;
-        private System.Windows.Forms.TabPage tab_tiles;
+        private System.Windows.Forms.TabPage tab_encounters;
         private System.Windows.Forms.PictureBox pb_tile_Image;
         private System.Windows.Forms.GroupBox gb_drawOptions;
         private System.Windows.Forms.CheckBox cb_drawOptions_worldScreen_showBorders;
@@ -1374,6 +1497,16 @@ namespace Tmos.Romhacks.UI
         private TextBox tb_tile_data_byte2;
         private TextBox tb_tile_data_byte1;
         private Button btn_loadDefaultRom;
+        private GroupBox groupBox6;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private GroupBox groupBox11;
+        private RichTextBox rtb_encounterLineups_data;
+        private ListBox lb_encounterLinups;
+        private GroupBox groupBox10;
+        private RichTextBox rtb_encounterGroups_data;
+        private ListBox lb_encounterGroups;
     }
 }
 

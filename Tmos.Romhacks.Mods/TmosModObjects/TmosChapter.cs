@@ -18,29 +18,19 @@ namespace Tmos.Romhacks.Mods.TypedTmosObjects
 
 		public string Name { get; set; }
 
-		TmosRomObjectMemoryDataOffset WorldScreenDataOffset { get; set; } //Should be the offset of the world screen data where the WorldScreens begin for this chapter
+		//TmosRomObjectMemoryDataOffset WorldScreenDataOffset { get; set; } //Should be the offset of the world screen data where the WorldScreens begin for this chapter
 
         //public TmosRomObjectMemoryDataOffset WSContentOffset{get;set;} //TODO: Figure out how to calculate what a WSContent value is based on the chapter number, value (and anything else that is needed)
-
-   //     public int GetFirstWorldScreenAbsoluteIndex()
-   //     {
-			////Do this based on chapter offset instead of hardcoded - this will need to be done if chapter offsets are to be modified   
-   //     }
 
         public int GetWorldScreenIndexOffset()
 		{
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.WorldScreen);
-           // int endOfData = def.Address + (def.Count * def.ObjectSize);
 			int beginningOfData = def.Address;
 
 			int totalWSMemory = WorldScreenDataStartAddress - beginningOfData;
 			return totalWSMemory / def.ObjectSize;
-
-           // int worldScreenDataBytes = (endOfData - WorldScreenDataStartAddress);
-           // return worldScreenDataBytes / def.ObjectSize;
-            //return (endOfData - WorldScreenDataStartAddress) / def.ObjectSize; ////HERE - THIS CALCULATION IS WRONG  NEEDS TO BE 0 for Chapter 0
         }
-		//TODO: Make the properties below be determined by the ROM, instead of them being hardcoded 
+		//Future TODO: Make the properties below be determined by the ROM, instead of them being hardcoded 
 		public int WorldScreenDataStartAddress { get; set; }
 		//public int WorldScreenCount { get; set; }
 		public int RandomEncounterGroupDataOffset { get; set; }

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tmos.Romhacks.Core
+namespace Tmos.Romhacks.Mods.Enum.Tiles
 {
-    public class Class1
+    public enum MiniTileType //Unfinished
     {
+        TreeTopRight,
+        TreeTopLeft
+        
     }
 }

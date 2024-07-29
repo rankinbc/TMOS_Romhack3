@@ -41,10 +41,10 @@ namespace TMOS_Romhack.DataViewer
         }
 
 
-        public void LoadWorldMap(int currentScreenIndex, int x, int y)
+        public void LoadWorldMap(int absoluteWorldScreenIndex, int x, int y)
         {
 
-            TmosModWorldScreen worldScreen = _worldScreenCollection[currentScreenIndex];
+            TmosModWorldScreen worldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
 
             /*  if (worldScreen.IsWizardScreen())
               {
@@ -72,10 +72,10 @@ namespace TMOS_Romhack.DataViewer
               }*/
 
 
-            _mapIndexUsed[currentScreenIndex] = true;
+            _mapIndexUsed[absoluteWorldScreenIndex] = true;
            // _parentForm.lv_worldScreens.Items[currentScreenIndex].ForeColor = Color.Green;
             _worldScreens[x, y] = worldScreen;
-            _worldScreenIds[x, y] = currentScreenIndex;
+            _worldScreenIds[x, y] = absoluteWorldScreenIndex;
 
             if (worldScreen.ScreenIndexRight < 0xF0 && !_mapIndexUsed[worldScreen.ScreenIndexRight] &&
                 _worldScreenCollection[worldScreen.ScreenIndexRight].ParentWorld == worldScreen.ParentWorld)

@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.Core.TmosRomDataObjects
 {
-    public class TmosWorldScreenTile : TmosRomObject
+    public class TmosRandomEncounterGroup : TmosRomObject
     {
-        public TmosWorldScreenTile()
-            : base(null)
+        public TmosRandomEncounterGroup() : base(null)
         {
         }
-        public TmosWorldScreenTile(byte[] bytes)
-            : base(bytes)
+        public TmosRandomEncounterGroup(byte[] data): base(data)
         {
         }
-
-
-
     }
 }

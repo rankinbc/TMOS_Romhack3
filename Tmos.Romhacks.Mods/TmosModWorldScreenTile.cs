@@ -9,10 +9,10 @@ namespace Tmos.Romhacks.Mods
 {
     public class TmosModWorldScreenTile
     {
-        public byte TileIndex { get; set; } //Index of tile data objects
+        public byte TileIndexValue { get; set; } //Index of tile data objects
         public TmosModWorldScreenTile(byte[] data)
         {
-            TileIndex = data[0];
+            TileIndexValue = data[0];
         }
     }
 }

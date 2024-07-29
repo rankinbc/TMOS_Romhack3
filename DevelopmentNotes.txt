@@ -1,0 +1,6 @@
+
+
+Folder terms:
+
+Enums - The identifiers
+Definitions - The compiled objects with their properties

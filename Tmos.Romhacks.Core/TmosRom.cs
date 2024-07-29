@@ -56,6 +56,14 @@ namespace Tmos.Romhacks.Core
         {
             return TmosData.GetMiniTile(Bytes, index);
         }
+        public TmosRandomEncounterLineup LoadRandomEncounterLineup(int index)
+        {
+            return TmosData.GetRandomEncounterLineup(Bytes, index);
+        }
+        public TmosRandomEncounterGroup LoadRandomEncounterGroup(int index)
+        {
+            return TmosData.GetRandomEncounterGroup(Bytes, index);
+        }
 
         #endregion Load Data
 
@@ -84,31 +92,19 @@ namespace Tmos.Romhacks.Core
         {
             TmosData.SaveMiniTile(Bytes, index, miniTile.GetBytes());
         }
+
+        public void SaveRandomEncounterLineup(int index, TmosRandomEncounterLineup randomEncounterLineup)
+        {
+            TmosData.SaveRandomEncounterLineup(Bytes, index, randomEncounterLineup.GetBytes());
+        }
+
+        public void SaveRandomEncounterGroup(int index, TmosRandomEncounterGroup randomEncounterGroup)
+        {
+            TmosData.SaveRandomEncounterGroup(Bytes, index, randomEncounterGroup.GetBytes());
+        }
         #endregion SaveData
 
 
-        //public TmosRomObjectMemoryDataOffset LoadWorldScreenDataOffset(int index)
-        //{ 
-        //    return TmosData.GetWorldScreenDataOffset(Bytes, index);
-        //}
-     
-        //public TmosTileSection GetWSTileSectionIndex(int index, byte dataPointer, int tileDataOffset)
-        //{
-        //    return TmosData.GetTileSection(Bytes, index, tileDataOffset);
-        //}
-      
-
-   
-
-      
-
-        //public TmosWorldScreenTiles LoadWorldScreenTiles(TmosWorldScreen ws)
-        //{
-        //    return TmosData.GetWorldScreenTiles(Bytes, ws);
-        //}
-
-
-    
 
 
     }

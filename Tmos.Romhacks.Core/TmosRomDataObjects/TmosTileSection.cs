@@ -8,18 +8,11 @@ namespace Tmos.Romhacks.Core
 {
     public  class TmosTileSection : TmosRomObject
 	{
-  
+        public TmosTileSection() : base(null)
+        {
+        }
         public TmosTileSection(byte[] data) : base(data)
 		{
-        }
-
-        //public byte GetTileValue(int x, int y)
-        //{
-        //	return GetTileSectionGrid()[x, y]; //TODO make more efficient
-        //}
-        public byte[] GetBytes()
-        {
-            return _data;
         }
 
         public void UpdateBytes(byte[] newData)
