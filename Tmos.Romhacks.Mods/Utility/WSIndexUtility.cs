@@ -17,7 +17,7 @@ namespace Tmos.Romhacks.Mods.Utility
         //Gets the WS index relative to the first absoluteWorldScreen in the chapter
         public static byte GetChapterRelativeWorldScreenIndex(int absoluteWorldScreenIndex)
         {
-            TmosChapter wsChapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
+            TmosChapter wsChapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
             return (byte)(absoluteWorldScreenIndex - wsChapter.GetWorldScreenIndexOffset());
         }
 
@@ -32,6 +32,7 @@ namespace Tmos.Romhacks.Mods.Utility
 
         #region WSDirectionalNeighbors
 
+     
         public static int GetNeighborWorldScreenAbsoluteIndex(int chapter, TmosModWorldScreen ws,  Direction direction)
         {
             byte relativeIndex = GetNeighborWorldScreenRelativeIndex(ws, direction);

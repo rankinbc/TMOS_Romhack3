@@ -63,6 +63,7 @@
     <Compile Include="TmosModObjects\WorldScreenProperties\WSContent.cs" />
     <Compile Include="Definitions\TileDefinitions.cs" />
     <Compile Include="Utility\ByteDisplayUtility.cs" />
+    <Compile Include="Utility\ChapterUtility.cs" />
     <Compile Include="Utility\RomObjectDisplayUtility.cs" />
     <Compile Include="Utility\WSIndexUtility.cs" />
   </ItemGroup>

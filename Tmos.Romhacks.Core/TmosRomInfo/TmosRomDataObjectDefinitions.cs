@@ -56,7 +56,8 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             Name = "TileSection",
             Address = TmosRomKnownAddresses.TmoRomObjectArrays.TileSectionStartAddress,
             ObjectSize = 32,
-            Count = 940
+            //Count = 940
+            Count = 473
         };
 
         public static TmosRomObjectInfo RomInfo_WorldScreenTile = new TmosRomObjectInfo
@@ -76,7 +77,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             Description = "Information about a tile",
             Address = TmosRomKnownAddresses.TmoRomObjectArrays.TileStartAddress,
             ObjectSize = 4,
-            Count = 5 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
+            Count =  255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
 
         public static TmosRomObjectInfo RomInfo_MiniTile = new TmosRomObjectInfo
@@ -86,7 +87,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             Description = "The mini tiles that make up a tile (2x2)",
             Address = TmosRomKnownAddresses.TmoRomObjectArrays.MiniTileStartAddress,
             ObjectSize = 4,
-            Count = 20 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
+            Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
 
         public static TmosRomObjectInfo RomInfo_RandomEncounterGroup = new TmosRomObjectInfo
@@ -95,7 +96,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             Name = "RandomEncounterGroup",
             Address = TmosRomKnownAddresses.TmoRomObjectArrays.RandomEncounterGroupStartAddress,
             ObjectSize = 32,
-            Count = 58 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
+            Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
 
         public static TmosRomObjectInfo RomInfo_RandomEncounterLineup = new TmosRomObjectInfo
@@ -104,7 +105,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             Name = "RandomEncounterLineup",
             Address = TmosRomKnownAddresses.TmoRomObjectArrays.RandomEncounterLineupStartAddress,
             ObjectSize = 8,
-            Count = 6 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
+            Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
 
     }

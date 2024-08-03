@@ -97,7 +97,7 @@ namespace Tmos.Romhacks.UI
 
                 if (File.Exists(imagePath))
                     {
-                    Bitmap bmp = new Bitmap(Image.FromFile(imagePath), new Size(64, 64));
+                    Bitmap bmp = new Bitmap(Image.FromFile(imagePath), new Size(40, 40));
                     string key = ImageFileManager.GetTileImagePath((byte)i).Replace(".png","");
                     imageList.Images.Add(key, bmp);
                 }
@@ -110,14 +110,14 @@ namespace Tmos.Romhacks.UI
             lv_tileSection_values.Columns.Add("x5");
             lv_tileSection_values.Columns.Add("x6");
           
-            lv_tileSection_values.TileSize = new Size(128, 128);
-            lv_tileSection_values.LabelEdit = false;
+            lv_tileSection_values.TileSize = new Size(40, 40);
+            lv_tileSection_values.LabelEdit = true;
             lv_tileSection_values.FullRowSelect = false;
             lv_tileSection_values.GridLines = true;
             lv_tileSection_values.SmallImageList = imageList;
             lv_tileSection_values.StateImageList = imageList;
             lv_tileSection_values.LargeImageList = imageList;
-            lv_tileSection_values.View = View.SmallIcon;
+            lv_tileSection_values.View = View.Tile;
 
             for (int i = 0; i < 24; i++)
             {
@@ -179,10 +179,7 @@ namespace Tmos.Romhacks.UI
             }
         }
 
-        private void nud_drawOptions_worldScreen_showTileImages_ValueChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
+      
 
         #endregion InitializeFormItems
 
@@ -194,6 +191,15 @@ namespace Tmos.Romhacks.UI
             //{
                 Draw();
            // }
+        }
+
+        private void nud_drawOptions_worldScreen_showTileImages_ValueChanged(object sender, EventArgs e)
+        {
+            Draw();
+        }
+        private void nud_drawOptions_map_tileSize_ValueChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
 
         #region File IO
@@ -394,7 +400,16 @@ namespace Tmos.Romhacks.UI
             TmosRandomEncounterGroup selectedRandomEncounterGroup = _tmosMod.RandomEncounterGroups[randomEncounterGroupIndex];
 
             rtb_encounterGroups_data.Clear();
-            foreach (var rg in selectedRandomEncounterGroup.GetBytes())
+
+            rtb_encounterGroups_data.Text += selectedRandomEncounterGroup.WorldScreen.ToString("X2");
+            rtb_encounterGroups_data.Text += selectedRandomEncounterGroup.WorldScreen.ToString("X2");
+            rtb_encounterGroups_data.Text += selectedRandomEncounterGroup.WorldScreen.ToString("X2");
+
+            foreach (var rg in new byte[]{ 
+                selectedRandomEncounterGroup.WorldScreen, 
+                selectedRandomEncounterGroup.MonsterGroup, 
+                selectedRandomEncounterGroup.Unknown 
+            })
             {
                 rtb_encounterGroups_data.Text += rg.ToString("X2") + " ";
             }
@@ -403,7 +418,19 @@ namespace Tmos.Romhacks.UI
         {
             TmosRandomEncounterLineup selectedRandomEncounterLineup = _tmosMod.RandomEncounterLineups[randomEncounterLineupIndex];
             rtb_encounterLineups_data.Clear();
-            foreach (var rg in selectedRandomEncounterLineup.GetBytes())
+
+
+            foreach (var rg in new byte[]
+            {
+                selectedRandomEncounterLineup.Startbyte,
+                selectedRandomEncounterLineup.Slot1,
+                selectedRandomEncounterLineup.Slot2,
+                selectedRandomEncounterLineup.Slot3,
+                selectedRandomEncounterLineup.Slot4,
+                selectedRandomEncounterLineup.Slot5,
+                selectedRandomEncounterLineup.Slot6,
+                selectedRandomEncounterLineup.Slot7,
+            })
             {
                 rtb_encounterLineups_data.Text += rg.ToString("X2") + " ";
             }
@@ -413,14 +440,14 @@ namespace Tmos.Romhacks.UI
         private void SelectWorldScreen(int absoluteWorldScreenIndex)
         {
             List<TmosChapter> chapters = TmosChapterDefinitions.GetTmosChapters();
-            TmosChapter chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
+            TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
 
             int adjustedWorldScreenIndex = absoluteWorldScreenIndex;
             _selectedWorldScreenIndex = adjustedWorldScreenIndex;
 
             for (int i = 0; i < chapter.ChapterNumber; i++)
             {
-                adjustedWorldScreenIndex -= TmosChapterDefinitions.CalculateWorldScreenCount(chapters[i], chapters);
+                adjustedWorldScreenIndex -= ChapterUtility.CalculateWorldScreenCount(chapters[i], chapters);
             }
 
             TmosModWorldScreen selectedScreen = _tmosMod.GetTmosModWorldScreen(absoluteWorldScreenIndex);
@@ -459,16 +486,29 @@ namespace Tmos.Romhacks.UI
 
         private void UpdateWorldScreenDataListView(TmosModWorldScreen worldScreen)
             {
+                 int currentChapter = ChapterUtility.GetChapterOfWorldScreen(_selectedWorldScreenIndex).ChapterNumber;
 
                 lv_variables.Items[0].SubItems[1].Text = worldScreen.ParentWorld.ToString("X2");
                 lv_variables.Items[1].SubItems[1].Text = worldScreen.AmbientSound.ToString("X2");
-                lv_variables.Items[2].SubItems[1].Text = worldScreen.WSContent.Value.ToString("X2");
-                lv_variables.Items[3].SubItems[1].Text = worldScreen.ObjectSet.ToString("X2");
-                lv_variables.Items[4].SubItems[1].Text = worldScreen.ScreenIndexRight.ToString("X2");
-                lv_variables.Items[5].SubItems[1].Text = worldScreen.ScreenIndexLeft.ToString("X2");
-                lv_variables.Items[6].SubItems[1].Text = worldScreen.ScreenIndexDown.ToString("X2");
-                lv_variables.Items[7].SubItems[1].Text = worldScreen.ScreenIndexUp.ToString("X2");
-                lv_variables.Items[8].SubItems[1].Text = worldScreen.DataPointer.ToString("X2");
+                lv_variables.Items[2].SubItems[1].Text = worldScreen.Content.ToString("X2");
+          
+                lv_variables.Items[2].SubItems[2].Text = worldScreen.WSContent.Name;
+
+                 lv_variables.Items[3].SubItems[1].Text = worldScreen.ObjectSet.ToString("X2");
+
+            lv_variables.Items[4].SubItems[1].Text = worldScreen.ScreenIndexRight.ToString("X2");
+            lv_variables.Items[4].SubItems[2].Text = $"Absolute Index:{WSIndexUtility.GetAbsoluteWorldScreenIndex(currentChapter, worldScreen.ScreenIndexRight)}";
+
+            lv_variables.Items[5].SubItems[1].Text = worldScreen.ScreenIndexLeft.ToString("X2");
+            lv_variables.Items[5].SubItems[2].Text = $"Absolute Index:{WSIndexUtility.GetAbsoluteWorldScreenIndex(currentChapter, worldScreen.ScreenIndexLeft)}";
+
+            lv_variables.Items[6].SubItems[1].Text = worldScreen.ScreenIndexDown.ToString("X2");
+            lv_variables.Items[6].SubItems[2].Text = $"Absolute Index:{WSIndexUtility.GetAbsoluteWorldScreenIndex(currentChapter, worldScreen.ScreenIndexDown)}";
+
+            lv_variables.Items[7].SubItems[1].Text = worldScreen.ScreenIndexUp.ToString("X2");
+            lv_variables.Items[7].SubItems[2].Text = $"Absolute Index:{WSIndexUtility.GetAbsoluteWorldScreenIndex(currentChapter, worldScreen.ScreenIndexUp)}";
+
+            lv_variables.Items[8].SubItems[1].Text = worldScreen.DataPointer.ToString("X2");
                 lv_variables.Items[9].SubItems[1].Text = worldScreen.ExitPosition.ToString("X2");
                 lv_variables.Items[10].SubItems[1].Text = worldScreen.TopTiles.ToString("X2");
                 lv_variables.Items[11].SubItems[1].Text = worldScreen.BottomTiles.ToString("X2");
@@ -626,7 +666,7 @@ namespace Tmos.Romhacks.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Save Modified WS Directions
+            // Save Modified WS Directions
             try
             {
                 TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
@@ -640,54 +680,63 @@ namespace Tmos.Romhacks.UI
                 {
                     destinationWS.ScreenIndexDown = (byte)_selectedWorldScreenIndex;
                 }
-                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, destinationWS);
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, currentWS);
+                _tmosMod.UpdateTmosModWorldScreen(screenIndexUpWorldScreenIndex, destinationWS);
             }
             catch { }
 
-            //try
-            //{
-            //    TmosModWorldScreen currentWS = _randomizerMod.WorldScreens[_selectedWorldScreenIndex];
+            try
+            {
+                TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
 
-            //    currentWS.ScreenIndexDown = Convert.ToByte(tb_direction_down.Text);
-            //    int screenIndexUpWorldScreenIndex = currentWS.ScreenIndexUp;
-            //    TmosModWorldScreen destinationWS = _randomizerMod.WorldScreens[currentWS.ScreenIndexDown];
+                currentWS.ScreenIndexDown = Convert.ToByte(tb_direction_down.Text);
+                int screenIndexDownWorldScreenIndex = currentWS.ScreenIndexDown;
+                TmosModWorldScreen destinationWS = _tmosMod.GetTmosModWorldScreen(screenIndexDownWorldScreenIndex);
 
-            //    if (cb_link_back.Checked)
-            //    {
-            //        destinationWS.ScreenIndexUp = (byte)_selectedWorldScreenIndex;
-            //    }
-            //}
-            //catch { }
+                if (cb_link_back.Checked)
+                {
+                    destinationWS.ScreenIndexUp = (byte)_selectedWorldScreenIndex;
+                }
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, currentWS);
+                _tmosMod.UpdateTmosModWorldScreen(screenIndexDownWorldScreenIndex, destinationWS);
+            }
+            catch { }
 
-            //try
-            //{
-            //    TmosModWorldScreen currentWS = _randomizerMod.WorldScreens[_selectedWorldScreenIndex];
+            try
+            {
+                TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
 
-            //    currentWS.ScreenIndexRight = Convert.ToByte(tb_direction_right.Text);
+                currentWS.ScreenIndexRight = Convert.ToByte(tb_direction_right.Text);
+                int screenIndexRightWorldScreenIndex = currentWS.ScreenIndexRight;
 
-            //    TmosModWorldScreen destinationWS = _randomizerMod.WorldScreens[currentWS.ScreenIndexRight];
+                TmosModWorldScreen destinationWS = _tmosMod.GetTmosModWorldScreen(screenIndexRightWorldScreenIndex);
 
-            //    if (cb_link_back.Checked)
-            //    {
-            //        destinationWS.ScreenIndexLeft = (byte)_selectedWorldScreenIndex;
-            //    }
-            //}
-            //catch { }
+                if (cb_link_back.Checked)
+                {
+                    destinationWS.ScreenIndexLeft = (byte)_selectedWorldScreenIndex;
+                }
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, currentWS);
+                _tmosMod.UpdateTmosModWorldScreen(screenIndexRightWorldScreenIndex, destinationWS);
+            }
+            catch { }
 
-            //try
-            //{
-            //    TmosModWorldScreen currentWS = _randomizerMod.WorldScreens[_selectedWorldScreenIndex];
+            try
+            {
+                TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
 
-            //    currentWS.ScreenIndexLeft = Convert.ToByte(tb_direction_left.Text);
+                currentWS.ScreenIndexLeft = Convert.ToByte(tb_direction_left.Text);
+                int screenIndexLeftWorldScreenIndex = currentWS.ScreenIndexLeft;
 
-            //    TmosModWorldScreen destinationWS = _randomizerMod.WorldScreens[currentWS.ScreenIndexLeft];
+                TmosModWorldScreen destinationWS = _tmosMod.GetTmosModWorldScreen(screenIndexLeftWorldScreenIndex);
 
-            //    if (cb_link_back.Checked)
-            //    {
-            //        destinationWS.ScreenIndexRight = (byte)_selectedWorldScreenIndex;
-            //    }
-            //}
-            //catch { }
+                if (cb_link_back.Checked)
+                {
+                    destinationWS.ScreenIndexRight = (byte)_selectedWorldScreenIndex;
+                }
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, currentWS);
+                _tmosMod.UpdateTmosModWorldScreen(screenIndexLeftWorldScreenIndex, destinationWS);
+            }
+            catch { }
         }
 
         private void btn_testDirections_Click(object sender, EventArgs e)
@@ -730,30 +779,37 @@ namespace Tmos.Romhacks.UI
         private void lb_tileSection_top_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ws = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
+            if (ws.TopTiles != lb_tileSection_top.SelectedIndex)
+            {
+                ws.TopTiles = (byte)lb_tileSection_top.SelectedIndex; //chapter offset?
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, ws);
 
-            ws.TopTiles = (byte)lb_tileSection_top.SelectedIndex; //chapter offset?
-            _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, ws);
+                //int topTileSectionAbsoluteIndex = _tmosMod.GetWSTileSectionTopAbsoluteIndex(_selectedWorldScreenIndex);
+                //SelectTileSection(topTileSectionAbsoluteIndex);
 
-            //int topTileSectionAbsoluteIndex = _tmosMod.GetWSTileSectionTopAbsoluteIndex(_selectedWorldScreenIndex);
-            //SelectTileSection(topTileSectionAbsoluteIndex);
-
-            DrawWorldScreen();
+                Draw();
+            }
+          
         }
 
         private void lb_tileSection_bottom_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ws = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
 
-            ws.BottomTiles = (byte)lb_tileSection_bottom.SelectedIndex; //chapter offset?
-            _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, ws);
+            if (ws.BottomTiles != lb_tileSection_bottom.SelectedIndex)
+            {
+                ws.BottomTiles = (byte)lb_tileSection_bottom.SelectedIndex; //chapter offset?
+                _tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, ws);
 
-            //int bottomTileSectionAbsoluteIndex = _tmosMod.GetWSTileSectionBottomAbsoluteIndex(_selectedWorldScreenIndex);
-            //SelectTileSection(bottomTileSectionAbsoluteIndex);
+                //int bottomTileSectionAbsoluteIndex = _tmosMod.GetWSTileSectionBottomAbsoluteIndex(_selectedWorldScreenIndex);
+                //SelectTileSection(bottomTileSectionAbsoluteIndex);
 
-            DrawWorldScreen();
+                Draw();
 
-            //_tmosMod.UpdateWorldScreenBottomTileSection(_selectedWorldScreenIndex, lb_tileSection_bottom.SelectedIndex);
-            //RefreshWorldScreenDrawing();
+                //_tmosMod.UpdateWorldScreenBottomTileSection(_selectedWorldScreenIndex, lb_tileSection_bottom.SelectedIndex);
+                //RefreshWorldScreenDrawing();
+            }
+
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -808,23 +864,32 @@ namespace Tmos.Romhacks.UI
         private void DrawMap()
         {
             var wsDrawOptions = GetDrawOptions();
-            //wsDrawOptions.ShowTileImages = true;
+          //  wsDrawOptions. = true;
             wsDrawOptions.ShowInfo = false;
             //wsDrawOptions.TileDrawOptions.ShowInfo = false;
 
             var mapDrawOptions = new MapDrawOptions()
             {
                 WorldScreenDrawOptions = wsDrawOptions,
-                TileSize = wsDrawOptions.TileSize,
+                TileSize = (int)nud_drawOptions_map_tileSize.Value,
                 TileDrawOptions = wsDrawOptions.TileDrawOptions
             };
 
+            //Clear graphics on pb_worldmap
+            pb_worldMap.Image = new Bitmap(pb_worldMap.Width, pb_worldMap.Height);
+
             _drawer.DrawMap(pb_worldMap, _tmosMod.GetTmosModWorldScreens(false), mapDrawOptions, _selectedWorldScreenIndex);
+            pb_worldMap.Refresh();
         }
         private void DrawWorldScreen()
         {
             TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(_selectedWorldScreenIndex);
-            _drawer.DrawWorldScreen(pb_worldScreen, currentWS, GetDrawOptions(), _selectedWorldScreenIndex);
+
+            pb_worldScreen.Image = new Bitmap(pb_worldScreen.Width, pb_worldScreen.Height);
+            
+
+            _drawer.DrawWorldScreen(pb_worldScreen,currentWS, GetDrawOptions(), _selectedWorldScreenIndex);
+            pb_worldScreen.Refresh();
         }
         private void btn_redraw_worldScreen_Click(object sender, EventArgs e)
         {
@@ -867,6 +932,25 @@ namespace Tmos.Romhacks.UI
             }
         }
 
+        private void lb_encounterGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_selectedRandomEncounterGroupIndex != lb_encounterGroups.SelectedIndex)
+            {
+                _selectedRandomEncounterGroupIndex = lb_encounterGroups.SelectedIndex;
+                SelectRandomEncounterGroup(_selectedRandomEncounterGroupIndex);
+            }
+        }
+
+
+        private void lb_encounterLinups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_selectedRandomEncounterLineupIndex != lb_encounterLinups.SelectedIndex)
+            {
+                _selectedRandomEncounterLineupIndex = lb_encounterLinups.SelectedIndex;
+                SelectRandomEncounterLinuep(_selectedRandomEncounterLineupIndex);
+            }
+        }
+
         private void pb_tileSection_Click(object sender, EventArgs e)
         {
             if (_selectedTileSectionIndex != lb_tileSection.SelectedIndex)
@@ -876,6 +960,8 @@ namespace Tmos.Romhacks.UI
                // SelectTileSection(lb_tileSection.SelectedIndex);
             }
         }
+
+
 
         private void lv_tileSection_values_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -915,14 +1001,53 @@ namespace Tmos.Romhacks.UI
             Console.WriteLine(s += Environment.NewLine);
         }
 
-        private void lb_encounterGroups_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
+
+        private void pb_worldMap_Click(object sender, EventArgs e)
+        {
+            Point mousePosition = pb_worldMap.PointToClient(Cursor.Position);
+
+            int tileX = mousePosition.X / (int)nud_drawOptions_map_tileSize.Value;
+            int tileY = mousePosition.Y / (int)nud_drawOptions_map_tileSize.Value;
+
+            Point worldScreenCoords = _drawer.Map.GetWorldScreenCoordsFromGrid(tileX, tileY);
+
+            if (lv_worldScreens.Items.Count > 0)
+            {
+                int selectedWorldIndex = _drawer.Map._worldScreenIds[worldScreenCoords.X, worldScreenCoords.Y];
+                lv_worldScreens.Items[selectedWorldIndex].Selected = true;
+                lv_worldScreens.Items[selectedWorldIndex].Focused = true;
+                lv_worldScreens.TopItem = lv_worldScreens.Items[selectedWorldIndex];
+                lv_worldScreens.Select();
+
+                Output("selected " + selectedWorldIndex);
+
+                //MouseEventArgs me = (MouseEventArgs)e;
+                //if (me.Button == System.Windows.Forms.MouseButtons.Right)
+                //{
+                //    tb_screencollect.Text += "0x" + selectedWorldIndex.ToString("X2") + ",";
+                //}
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tabControl = sender as TabControl;
+            if (tabControl != null && tabControl.SelectedTab == tab_worldScreen)
+            {
+                pb_worldScreen.Refresh();       
+            }
+            else if (tabControl != null && tabControl.SelectedTab == tab_map)
+            {
+                pb_worldMap.Refresh();
+            }
+            Draw();
+        }
+
+       
     }
 }

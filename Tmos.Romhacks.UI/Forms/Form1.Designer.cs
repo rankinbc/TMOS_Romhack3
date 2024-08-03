@@ -31,68 +31,68 @@ namespace Tmos.Romhacks.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ParentWorld", System.Drawing.Color.Black, System.Drawing.Color.LightGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Ambient Sound"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Content"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ObjectSet"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexRight"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexLeft"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexDown"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexUp"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem73 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "DataPointer"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem74 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ExitPosition"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem75 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "TopTiles"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem76 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "BottomTiles"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem77 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "WorldScreenColor"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem78 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "SpriteColor"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem79 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Unknown"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem80 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Event"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
@@ -130,7 +130,6 @@ namespace Tmos.Romhacks.UI
             this.btn_move_down = new System.Windows.Forms.Button();
             this.tb_direction_down = new System.Windows.Forms.TextBox();
             this.btn_move_up = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.cb_link_back = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -142,6 +141,7 @@ namespace Tmos.Romhacks.UI
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_map = new System.Windows.Forms.TabPage();
             this.pb_worldMap = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tab_worldScreen = new System.Windows.Forms.TabPage();
             this.tb_worldScreen_selectedWorldScreen_data = new System.Windows.Forms.RichTextBox();
             this.pb_worldScreen = new System.Windows.Forms.PictureBox();
@@ -205,6 +205,10 @@ namespace Tmos.Romhacks.UI
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_loadDefaultRom = new System.Windows.Forms.Button();
+            this.nud_drawOptions_map_tileSize = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -224,11 +228,13 @@ namespace Tmos.Romhacks.UI
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.gb_drawOptions.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_worldScreen_showTileImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -237,9 +243,9 @@ namespace Tmos.Romhacks.UI
             // 
             // tb_output
             // 
-            this.tb_output.Location = new System.Drawing.Point(422, 910);
+            this.tb_output.Location = new System.Drawing.Point(9, 180);
             this.tb_output.Name = "tb_output";
-            this.tb_output.Size = new System.Drawing.Size(1029, 36);
+            this.tb_output.Size = new System.Drawing.Size(403, 62);
             this.tb_output.TabIndex = 1;
             this.tb_output.Text = "";
             // 
@@ -324,10 +330,10 @@ namespace Tmos.Romhacks.UI
             this.lv_worldScreens.GridLines = true;
             this.lv_worldScreens.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lv_worldScreens.HideSelection = false;
-            this.lv_worldScreens.Location = new System.Drawing.Point(5, 76);
+            this.lv_worldScreens.Location = new System.Drawing.Point(5, 56);
             this.lv_worldScreens.MultiSelect = false;
             this.lv_worldScreens.Name = "lv_worldScreens";
-            this.lv_worldScreens.Size = new System.Drawing.Size(407, 613);
+            this.lv_worldScreens.Size = new System.Drawing.Size(407, 319);
             this.lv_worldScreens.TabIndex = 14;
             this.lv_worldScreens.UseCompatibleStateImageBehavior = false;
             this.lv_worldScreens.View = System.Windows.Forms.View.Details;
@@ -537,16 +543,6 @@ namespace Tmos.Romhacks.UI
             this.btn_move_up.UseVisualStyleBackColor = true;
             this.btn_move_up.Click += new System.EventHandler(this.btn_move_up_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(663, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "World Screen";
-            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
@@ -599,48 +595,48 @@ namespace Tmos.Romhacks.UI
             this.lv_variables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lv_variables.FullRowSelect = true;
             this.lv_variables.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup5.Name = "listViewGroup1";
             this.lv_variables.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup5});
             this.lv_variables.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lv_variables.HideSelection = false;
-            listViewItem1.IndentCount = 1;
-            listViewItem1.UseItemStyleForSubItems = false;
-            listViewItem2.UseItemStyleForSubItems = false;
-            listViewItem3.UseItemStyleForSubItems = false;
-            listViewItem4.UseItemStyleForSubItems = false;
-            listViewItem5.UseItemStyleForSubItems = false;
-            listViewItem6.UseItemStyleForSubItems = false;
-            listViewItem7.UseItemStyleForSubItems = false;
-            listViewItem8.UseItemStyleForSubItems = false;
-            listViewItem9.UseItemStyleForSubItems = false;
-            listViewItem10.UseItemStyleForSubItems = false;
-            listViewItem11.UseItemStyleForSubItems = false;
-            listViewItem12.UseItemStyleForSubItems = false;
-            listViewItem13.UseItemStyleForSubItems = false;
-            listViewItem14.UseItemStyleForSubItems = false;
-            listViewItem15.UseItemStyleForSubItems = false;
-            listViewItem16.UseItemStyleForSubItems = false;
+            listViewItem65.IndentCount = 1;
+            listViewItem65.UseItemStyleForSubItems = false;
+            listViewItem66.UseItemStyleForSubItems = false;
+            listViewItem67.UseItemStyleForSubItems = false;
+            listViewItem68.UseItemStyleForSubItems = false;
+            listViewItem69.UseItemStyleForSubItems = false;
+            listViewItem70.UseItemStyleForSubItems = false;
+            listViewItem71.UseItemStyleForSubItems = false;
+            listViewItem72.UseItemStyleForSubItems = false;
+            listViewItem73.UseItemStyleForSubItems = false;
+            listViewItem74.UseItemStyleForSubItems = false;
+            listViewItem75.UseItemStyleForSubItems = false;
+            listViewItem76.UseItemStyleForSubItems = false;
+            listViewItem77.UseItemStyleForSubItems = false;
+            listViewItem78.UseItemStyleForSubItems = false;
+            listViewItem79.UseItemStyleForSubItems = false;
+            listViewItem80.UseItemStyleForSubItems = false;
             this.lv_variables.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16});
-            this.lv_variables.Location = new System.Drawing.Point(603, 7);
+            listViewItem65,
+            listViewItem66,
+            listViewItem67,
+            listViewItem68,
+            listViewItem69,
+            listViewItem70,
+            listViewItem71,
+            listViewItem72,
+            listViewItem73,
+            listViewItem74,
+            listViewItem75,
+            listViewItem76,
+            listViewItem77,
+            listViewItem78,
+            listViewItem79,
+            listViewItem80});
+            this.lv_variables.Location = new System.Drawing.Point(1, 381);
             this.lv_variables.MultiSelect = false;
             this.lv_variables.Name = "lv_variables";
             this.lv_variables.Scrollable = false;
@@ -676,6 +672,7 @@ namespace Tmos.Romhacks.UI
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1037, 896);
             this.tabControl1.TabIndex = 19;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tab_map
             // 
@@ -691,12 +688,23 @@ namespace Tmos.Romhacks.UI
             // 
             // pb_worldMap
             // 
-            this.pb_worldMap.BackColor = System.Drawing.Color.White;
-            this.pb_worldMap.Location = new System.Drawing.Point(6, 28);
+            this.pb_worldMap.BackColor = System.Drawing.Color.Gainsboro;
+            this.pb_worldMap.Location = new System.Drawing.Point(6, 81);
             this.pb_worldMap.Name = "pb_worldMap";
-            this.pb_worldMap.Size = new System.Drawing.Size(1005, 836);
+            this.pb_worldMap.Size = new System.Drawing.Size(1005, 783);
             this.pb_worldMap.TabIndex = 3;
             this.pb_worldMap.TabStop = false;
+            this.pb_worldMap.Click += new System.EventHandler(this.pb_worldMap_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(663, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "World Screen";
             // 
             // tab_worldScreen
             // 
@@ -704,7 +712,6 @@ namespace Tmos.Romhacks.UI
             this.tab_worldScreen.Controls.Add(this.cb_link_back);
             this.tab_worldScreen.Controls.Add(this.button1);
             this.tab_worldScreen.Controls.Add(this.btn_testDirections);
-            this.tab_worldScreen.Controls.Add(this.lv_variables);
             this.tab_worldScreen.Controls.Add(this.pb_worldScreen);
             this.tab_worldScreen.Controls.Add(this.groupBox2);
             this.tab_worldScreen.Controls.Add(this.groupBox1);
@@ -726,11 +733,10 @@ namespace Tmos.Romhacks.UI
             // 
             // pb_worldScreen
             // 
-            this.pb_worldScreen.BackColor = System.Drawing.Color.White;
-            this.pb_worldScreen.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pb_worldScreen.Location = new System.Drawing.Point(3, 319);
+            this.pb_worldScreen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pb_worldScreen.Location = new System.Drawing.Point(5, 316);
             this.pb_worldScreen.Name = "pb_worldScreen";
-            this.pb_worldScreen.Size = new System.Drawing.Size(1023, 548);
+            this.pb_worldScreen.Size = new System.Drawing.Size(758, 548);
             this.pb_worldScreen.TabIndex = 2;
             this.pb_worldScreen.TabStop = false;
             // 
@@ -807,9 +813,9 @@ namespace Tmos.Romhacks.UI
             // rtb_tileSection_data
             // 
             this.rtb_tileSection_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtb_tileSection_data.Location = new System.Drawing.Point(147, 217);
+            this.rtb_tileSection_data.Location = new System.Drawing.Point(147, 270);
             this.rtb_tileSection_data.Name = "rtb_tileSection_data";
-            this.rtb_tileSection_data.Size = new System.Drawing.Size(458, 257);
+            this.rtb_tileSection_data.Size = new System.Drawing.Size(484, 204);
             this.rtb_tileSection_data.TabIndex = 16;
             this.rtb_tileSection_data.Text = "";
             // 
@@ -823,10 +829,11 @@ namespace Tmos.Romhacks.UI
             this.lv_tileSection_values.Location = new System.Drawing.Point(147, 42);
             this.lv_tileSection_values.MultiSelect = false;
             this.lv_tileSection_values.Name = "lv_tileSection_values";
-            this.lv_tileSection_values.Size = new System.Drawing.Size(532, 169);
+            this.lv_tileSection_values.Size = new System.Drawing.Size(361, 222);
             this.lv_tileSection_values.TabIndex = 15;
+            this.lv_tileSection_values.TileSize = new System.Drawing.Size(50, 30);
             this.lv_tileSection_values.UseCompatibleStateImageBehavior = false;
-            this.lv_tileSection_values.View = System.Windows.Forms.View.Details;
+            this.lv_tileSection_values.View = System.Windows.Forms.View.SmallIcon;
             this.lv_tileSection_values.SelectedIndexChanged += new System.EventHandler(this.lv_tileSection_values_SelectedIndexChanged);
             // 
             // groupBox5
@@ -1053,6 +1060,7 @@ namespace Tmos.Romhacks.UI
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.label13);
             this.groupBox11.Controls.Add(this.rtb_encounterLineups_data);
             this.groupBox11.Controls.Add(this.lb_encounterLinups);
             this.groupBox11.Location = new System.Drawing.Point(490, 12);
@@ -1079,9 +1087,11 @@ namespace Tmos.Romhacks.UI
             this.lb_encounterLinups.Name = "lb_encounterLinups";
             this.lb_encounterLinups.Size = new System.Drawing.Size(121, 368);
             this.lb_encounterLinups.TabIndex = 30;
+            this.lb_encounterLinups.SelectedIndexChanged += new System.EventHandler(this.lb_encounterLinups_SelectedIndexChanged);
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.label12);
             this.groupBox10.Controls.Add(this.rtb_encounterGroups_data);
             this.groupBox10.Controls.Add(this.lb_encounterGroups);
             this.groupBox10.Location = new System.Drawing.Point(13, 12);
@@ -1112,12 +1122,13 @@ namespace Tmos.Romhacks.UI
             // 
             // btn_refreshWorldScreenList
             // 
-            this.btn_refreshWorldScreenList.Location = new System.Drawing.Point(320, 46);
+            this.btn_refreshWorldScreenList.Location = new System.Drawing.Point(316, 12);
             this.btn_refreshWorldScreenList.Name = "btn_refreshWorldScreenList";
             this.btn_refreshWorldScreenList.Size = new System.Drawing.Size(96, 23);
             this.btn_refreshWorldScreenList.TabIndex = 19;
             this.btn_refreshWorldScreenList.Text = "Refresh WS List";
             this.btn_refreshWorldScreenList.UseVisualStyleBackColor = true;
+            this.btn_refreshWorldScreenList.Visible = false;
             this.btn_refreshWorldScreenList.Click += new System.EventHandler(this.btn_refreshWorldScreenList_Click);
             // 
             // gb_drawOptions
@@ -1125,19 +1136,22 @@ namespace Tmos.Romhacks.UI
             this.gb_drawOptions.Controls.Add(this.groupBox9);
             this.gb_drawOptions.Controls.Add(this.groupBox8);
             this.gb_drawOptions.Controls.Add(this.groupBox7);
-            this.gb_drawOptions.Controls.Add(this.btn_redraw_worldScreen);
+            this.gb_drawOptions.Controls.Add(this.tb_output);
             this.gb_drawOptions.Location = new System.Drawing.Point(0, 694);
             this.gb_drawOptions.Name = "gb_drawOptions";
-            this.gb_drawOptions.Size = new System.Drawing.Size(416, 232);
+            this.gb_drawOptions.Size = new System.Drawing.Size(416, 248);
             this.gb_drawOptions.TabIndex = 19;
             this.gb_drawOptions.TabStop = false;
             this.gb_drawOptions.Text = "Draw Options";
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.label11);
+            this.groupBox9.Controls.Add(this.nud_drawOptions_map_tileSize);
+            this.groupBox9.Controls.Add(this.btn_redraw_worldScreen);
             this.groupBox9.Location = new System.Drawing.Point(9, 19);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(301, 65);
+            this.groupBox9.Size = new System.Drawing.Size(301, 40);
             this.groupBox9.TabIndex = 23;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Map";
@@ -1146,7 +1160,7 @@ namespace Tmos.Romhacks.UI
             // 
             this.groupBox8.Controls.Add(this.cb_drawOptions_worldScreen_showInfo);
             this.groupBox8.Controls.Add(this.cb_drawOptions_worldScreen_showBorders);
-            this.groupBox8.Location = new System.Drawing.Point(12, 92);
+            this.groupBox8.Location = new System.Drawing.Point(9, 59);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(301, 65);
             this.groupBox8.TabIndex = 22;
@@ -1184,7 +1198,7 @@ namespace Tmos.Romhacks.UI
             this.groupBox7.Controls.Add(this.cb_drawOptions_worldScreenTile_showInfo);
             this.groupBox7.Controls.Add(this.nud_drawOptions_worldScreen_showTileImages);
             this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(12, 163);
+            this.groupBox7.Location = new System.Drawing.Point(6, 130);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(404, 51);
             this.groupBox7.TabIndex = 21;
@@ -1234,7 +1248,7 @@ namespace Tmos.Romhacks.UI
             0,
             0,
             0});
-            this.nud_drawOptions_worldScreen_showTileImages.Location = new System.Drawing.Point(280, 25);
+            this.nud_drawOptions_worldScreen_showTileImages.Location = new System.Drawing.Point(284, 24);
             this.nud_drawOptions_worldScreen_showTileImages.Maximum = new decimal(new int[] {
             150,
             0,
@@ -1267,7 +1281,7 @@ namespace Tmos.Romhacks.UI
             // btn_redraw_worldScreen
             // 
             this.btn_redraw_worldScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_redraw_worldScreen.Location = new System.Drawing.Point(348, 37);
+            this.btn_redraw_worldScreen.Location = new System.Drawing.Point(167, -10);
             this.btn_redraw_worldScreen.Margin = new System.Windows.Forms.Padding(2);
             this.btn_redraw_worldScreen.Name = "btn_redraw_worldScreen";
             this.btn_redraw_worldScreen.Size = new System.Drawing.Size(63, 20);
@@ -1340,6 +1354,55 @@ namespace Tmos.Romhacks.UI
             this.btn_loadDefaultRom.UseVisualStyleBackColor = true;
             this.btn_loadDefaultRom.Click += new System.EventHandler(this.btn_loadDefaultRom_Click);
             // 
+            // nud_drawOptions_map_tileSize
+            // 
+            this.nud_drawOptions_map_tileSize.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.Location = new System.Drawing.Point(39, 14);
+            this.nud_drawOptions_map_tileSize.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.Name = "nud_drawOptions_map_tileSize";
+            this.nud_drawOptions_map_tileSize.Size = new System.Drawing.Size(120, 20);
+            this.nud_drawOptions_map_tileSize.TabIndex = 4;
+            this.nud_drawOptions_map_tileSize.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.ValueChanged += new System.EventHandler(this.nud_drawOptions_map_tileSize_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(27, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Size";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(141, 208);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 39);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Byte 0: WorldScreen\r\nByte 1: MonsterGroup\r\nByte 2: Unknown\r\n";
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(140, 208);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(137, 39);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Byte 0: StartByte\r\nBytes 1-7: Enemy Slots\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1349,8 +1412,8 @@ namespace Tmos.Romhacks.UI
             this.Controls.Add(this.gb_drawOptions);
             this.Controls.Add(this.btn_refreshWorldScreenList);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.lv_variables);
             this.Controls.Add(this.lv_worldScreens);
-            this.Controls.Add(this.tb_output);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -1383,7 +1446,10 @@ namespace Tmos.Romhacks.UI
             this.tab_encounters.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.gb_drawOptions.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1392,6 +1458,7 @@ namespace Tmos.Romhacks.UI
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1414,7 +1481,6 @@ namespace Tmos.Romhacks.UI
         private System.Windows.Forms.Button btn_move_down;
         private System.Windows.Forms.TextBox tb_direction_down;
         private System.Windows.Forms.Button btn_move_up;
-        private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ListView lv_worldScreens;
         private System.Windows.Forms.ColumnHeader col_WorldScreenId;
         private System.Windows.Forms.ColumnHeader col_ParentWorld;
@@ -1507,6 +1573,11 @@ namespace Tmos.Romhacks.UI
         private GroupBox groupBox10;
         private RichTextBox rtb_encounterGroups_data;
         private ListBox lb_encounterGroups;
+        private Label label3;
+        private Label label11;
+        private NumericUpDown nud_drawOptions_map_tileSize;
+        private Label label13;
+        private Label label12;
     }
 }
 

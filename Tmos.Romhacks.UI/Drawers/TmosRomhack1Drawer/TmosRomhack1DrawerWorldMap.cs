@@ -6,20 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tmos.Romhacks.Mods;
+using Tmos.Romhacks.Mods.Definitions;
+using Tmos.Romhacks.Mods.TypedTmosObjects;
+using Tmos.Romhacks.Mods.Utility;
 
 namespace TMOS_Romhack.DataViewer
 {
     public class TmosRomhack1DrawerWorldMap
     {
+        const int MAX_MAP_SIZE_X = 60;
+        const int MAX_MAP_SIZE_Y = 60;
+
         TmosModWorldScreen[] _worldScreenCollection;
         bool[] _mapIndexUsed;
         public TmosModWorldScreen[,] _worldScreens { get; set; }
         public int[,] _worldScreenIds { get; set; }
 
-        int farthestLeftTilePosition;
-        int farthestRightTilePosition;
-        int farthestTopTilePosition;
-        int farthestBottomTilePosition;
+        int currentFarthestLeftTilePosition;
+        int currentFarthestRightTilePosition;
+        int currentFarthestTopTilePosition;
+        int currentFarthestBottomTilePosition;
 
         public TmosRomhack1DrawerWorldMap(TmosModWorldScreen[] worldScreens )
         {
@@ -30,22 +36,34 @@ namespace TMOS_Romhack.DataViewer
 
         public void InitalizeData()
         {
-            _worldScreens = new TmosModWorldScreen[32, 32];
-            _worldScreenIds = new int[32, 32];
-            _mapIndexUsed = new bool[255];
+            _worldScreens = new TmosModWorldScreen[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+            _worldScreenIds = new int[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+            _mapIndexUsed = new bool[_worldScreenCollection.Length];
 
-            farthestLeftTilePosition = 16;
-            farthestRightTilePosition = 16;
-            farthestTopTilePosition = 16;
-            farthestBottomTilePosition = 16;
+            currentFarthestLeftTilePosition = MAX_MAP_SIZE_X / 2;
+            currentFarthestRightTilePosition = MAX_MAP_SIZE_X / 2;
+            currentFarthestTopTilePosition = MAX_MAP_SIZE_Y / 2;
+            currentFarthestBottomTilePosition = MAX_MAP_SIZE_Y / 2;
         }
-
 
         public void LoadWorldMap(int absoluteWorldScreenIndex, int x, int y)
         {
+            TmosModWorldScreen rootWorldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
+            TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
+
+            
+
+            _mapIndexUsed[absoluteWorldScreenIndex] = true;
+
+            CrawlWorldMap(absoluteWorldScreenIndex, x, y, chapter.ChapterNumber);
+        }
+
+        //Only reason chapter is passed is to avoid loading chapter from ws every time
+        public void CrawlWorldMap(int absoluteWorldScreenIndex, int x, int y, int chapter)
+        {
 
             TmosModWorldScreen worldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
-
+          //  TmosChapter chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
             /*  if (worldScreen.IsWizardScreen())
               {
                   _mapIndexUsed[currentScreenIndex] = true;
@@ -77,56 +95,61 @@ namespace TMOS_Romhack.DataViewer
             _worldScreens[x, y] = worldScreen;
             _worldScreenIds[x, y] = absoluteWorldScreenIndex;
 
-            if (worldScreen.ScreenIndexRight < 0xF0 && !_mapIndexUsed[worldScreen.ScreenIndexRight] &&
-                _worldScreenCollection[worldScreen.ScreenIndexRight].ParentWorld == worldScreen.ParentWorld)
+            int worldScreenNeighborAbsoluteIndex_Right = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, worldScreen.ScreenIndexRight);
+            int worldScreenNeighborAbsoluteIndex_Left = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, worldScreen.ScreenIndexLeft);
+            int worldScreenNeighborAbsoluteIndex_Up = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, worldScreen.ScreenIndexUp);
+            int worldScreenNeighborAbsoluteIndex_Down = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, worldScreen.ScreenIndexDown);
+
+
+            if (worldScreen.ScreenIndexRight < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Right] &&
+                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Right].ParentWorld == worldScreen.ParentWorld)
             {
                 int xRight = x + 1;
-                if (farthestRightTilePosition < xRight) farthestRightTilePosition = xRight;
-                LoadWorldMap(worldScreen.ScreenIndexRight, xRight, y);
+                if (currentFarthestRightTilePosition < xRight) currentFarthestRightTilePosition = xRight;
+                CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Right, xRight, y, chapter);
 
             }
-            if (worldScreen.ScreenIndexLeft < 0xF0 && !_mapIndexUsed[worldScreen.ScreenIndexLeft] &&
-                _worldScreenCollection[worldScreen.ScreenIndexLeft].ParentWorld == worldScreen.ParentWorld)
+            if (worldScreen.ScreenIndexLeft < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Left] &&
+                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Left].ParentWorld == worldScreen.ParentWorld)
             {
                 int xLeft = x - 1;
-                if (farthestLeftTilePosition > xLeft) farthestLeftTilePosition = xLeft;
-                LoadWorldMap(worldScreen.ScreenIndexLeft, xLeft, y);
+                if (currentFarthestLeftTilePosition > xLeft) currentFarthestLeftTilePosition = xLeft;
+                CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Left, xLeft, y, chapter);
 
             }
-            if (worldScreen.ScreenIndexDown < 0xF0 && !_mapIndexUsed[worldScreen.ScreenIndexDown] &&
-                _worldScreenCollection[worldScreen.ScreenIndexDown].ParentWorld == worldScreen.ParentWorld)
+            if (worldScreen.ScreenIndexDown < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Down] &&
+                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Down].ParentWorld == worldScreen.ParentWorld)
             {
                 int yDown = y - 1;
-                if (farthestBottomTilePosition > yDown) farthestBottomTilePosition = yDown;
-                LoadWorldMap(worldScreen.ScreenIndexDown, x, yDown);
+                if (currentFarthestBottomTilePosition > yDown) currentFarthestBottomTilePosition = yDown;
+                CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Down, x, yDown, chapter);
 
             }
-            if (worldScreen.ScreenIndexUp < 0xF0 && !_mapIndexUsed[worldScreen.ScreenIndexUp] &&
-                _worldScreenCollection[worldScreen.ScreenIndexUp].ParentWorld == worldScreen.ParentWorld)
+            if (worldScreen.ScreenIndexUp < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Up] &&
+                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Up].ParentWorld == worldScreen.ParentWorld)
             {
                 int yUp = y + 1;
-                if (farthestTopTilePosition < yUp)
-                    farthestTopTilePosition = yUp;
-                LoadWorldMap(worldScreen.ScreenIndexUp, x, yUp);
+                if (currentFarthestTopTilePosition < yUp) currentFarthestTopTilePosition = yUp;
+                CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Up, x, yUp, chapter);
 
             }
 
         }
 
-        public Dictionary<int, Rectangle> DrawWorldMap(int tileSizeX, int tileSizeY)
+        public Dictionary<int, Rectangle> DrawWorldMapGrid(int tileSizeX, int tileSizeY)
         {
             Dictionary<int, Rectangle> rects = new Dictionary<int, Rectangle>();
-            int x = farthestLeftTilePosition;
-            int y = farthestBottomTilePosition;
+            int x = currentFarthestLeftTilePosition;
+            int y = currentFarthestBottomTilePosition;
 
             int grid_position_x = 0;
 
 
-            for (x = farthestLeftTilePosition; x <= farthestRightTilePosition; x++, grid_position_x++)
+            for (x = currentFarthestLeftTilePosition; x <= currentFarthestRightTilePosition; x++, grid_position_x++)
             {
-                int grid_position_y = Math.Abs(farthestTopTilePosition - farthestBottomTilePosition);
+                int grid_position_y = Math.Abs(currentFarthestTopTilePosition - currentFarthestBottomTilePosition);
 
-                for (y = farthestBottomTilePosition; y <= farthestTopTilePosition; y++, grid_position_y--)
+                for (y = currentFarthestBottomTilePosition; y <= currentFarthestTopTilePosition; y++, grid_position_y--)
                 {
 
                     if (_worldScreens[x, y] != null)
@@ -141,9 +164,14 @@ namespace TMOS_Romhack.DataViewer
         public Point GetWorldScreenCoordsFromGrid(int tileX, int tileY)
         {
             Point p = new Point();
-            p.X = farthestLeftTilePosition + tileX;
-            p.Y = farthestTopTilePosition - tileY; /// n - tiley
+            p.X = currentFarthestLeftTilePosition + tileX;
+            p.Y = currentFarthestTopTilePosition - tileY; /// n - tiley
             return p;
+        }
+
+        public int GetWorldScreenRelativeIndexAtPosition(int x, int y)
+        {
+            return _worldScreenIds[x, y];
         }
     }
 }

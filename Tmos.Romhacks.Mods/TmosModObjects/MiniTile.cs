@@ -16,7 +16,6 @@ namespace Tmos.Romhacks.Mods.TypedTmosObjects
 		public MiniTile(byte[] bytes) : base(bytes)
 		{
 			//TODO: Determine what the 4 byters are and update local properties - I think "microtiles" 2x2 divided the same way
-			_isWalkable = _data[1] == 0x01; //Guessing that the second byte is the walkable byte
 		}
 		public MiniTile(MiniTileDefinition miniTiletDefinition) : base(new byte[] { 0x00, Convert.ToByte(miniTiletDefinition.IsWalkable), 0x00 })
 		{

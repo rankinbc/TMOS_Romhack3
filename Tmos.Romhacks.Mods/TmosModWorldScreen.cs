@@ -86,6 +86,15 @@ namespace Tmos.Romhacks.Mods
             return wsContent.Value;
         }
 
+        public bool IsWizardScreen()
+        {
+            return WSContent.ContentType == WSContentType.WizardBattleOnEnter;
+        }
+        public bool IsBattleScreen()
+        {
+            return WSContent.ContentType == WSContentType.Battle;
+        }
+
 
 
         #region Directional Tests
