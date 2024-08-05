@@ -59,12 +59,12 @@ namespace Tmos.Romhacks.UI.Drawers
         private static Dictionary<byte, Image> TileImageCache = new Dictionary<byte, Image>();
 
 
-        public TmosRomhack1DrawerWorldMap Map;
+        public GridMapper1 Map;
 
         public void DrawMap(PictureBox pbSurface, TmosModWorldScreen[] worldScreens, MapDrawOptions options, int selectedWSAbsoluteIndex)
         {
             if (worldScreens == null) { return; }
-            Map = new TmosRomhack1DrawerWorldMap(worldScreens);
+            Map = new GridMapper1(worldScreens);
             Map.InitalizeData();
    
             Map.LoadWorldMap(selectedWSAbsoluteIndex, 30, 30);

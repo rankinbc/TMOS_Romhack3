@@ -24,7 +24,7 @@ namespace Tmos.Romhacks.Mods.Utility
         }
         public static string ToDecimalAndHexDisplayValue(int value)
         {
-            return $"{value} ({value.ToString("X2")})";
+            return $"{value} (0x{value.ToString("X2")})";
         }
 
         public static string ToHexDisplayValue(int value)

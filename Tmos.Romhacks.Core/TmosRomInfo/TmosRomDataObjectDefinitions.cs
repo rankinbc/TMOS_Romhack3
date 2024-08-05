@@ -15,7 +15,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
         {
             return GetTmosRomObjectInfoDefinitions().FirstOrDefault(o => o.TmosDataObjectType == tmosRomObjectType);
         }
-        public static List<TmosRomObjectInfo> GetTmosRomObjectInfoDefinitions()
+        public static List<TmosRomObjectInfo> GetTmosRomObjectInfoDefinitions() //Arrays
         {
             return new List<TmosRomObjectInfo>
             {

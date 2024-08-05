@@ -28,8 +28,6 @@ namespace Tmos.Romhacks.Core
             File.WriteAllBytes(filePath, Bytes);
         }
 
-
-
         #region Load Data
 
         public TmosWorldScreen LoadWorldScreen(int index)
@@ -102,7 +100,11 @@ namespace Tmos.Romhacks.Core
         {
             TmosData.SaveRandomEncounterGroup(Bytes, index, randomEncounterGroup.GetBytes());
         }
+
+       
         #endregion SaveData
+
+
 
 
 

@@ -12,7 +12,7 @@ using Tmos.Romhacks.Mods.Utility;
 
 namespace TMOS_Romhack.DataViewer
 {
-    public class TmosRomhack1DrawerWorldMap
+    public class GridMapper1
     {
         const int MAX_MAP_SIZE_X = 60;
         const int MAX_MAP_SIZE_Y = 60;
@@ -31,7 +31,7 @@ namespace TMOS_Romhack.DataViewer
         int currentFarthestTopTilePosition;
         int currentFarthestBottomTilePosition;
 
-        public TmosRomhack1DrawerWorldMap(TmosModWorldScreen[] worldScreens )
+        public GridMapper1(TmosModWorldScreen[] worldScreens )
         {
             _worldScreenCollection = worldScreens;
 

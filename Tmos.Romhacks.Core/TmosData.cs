@@ -42,6 +42,8 @@ namespace Tmos.Romhacks.Core
         {
             SaveDataObject(rom, index, data, TmosRomObjectType.WorldScreen);
         }
+
+
         #endregion WorldScreen
 
         #region WorldScreenTile
@@ -156,6 +158,8 @@ namespace Tmos.Romhacks.Core
         {
             Array.Copy(structureByteContent, 0, bytes, address, objectSize);
         }
+
+       
         #endregion DataStructure
 
         #region Info
