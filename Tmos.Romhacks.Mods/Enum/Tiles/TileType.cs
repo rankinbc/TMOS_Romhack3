@@ -8,7 +8,7 @@ namespace Tmos.Romhacks.Mods.Enum
 {
     public enum TileType //Not sure if this is a good idea. Should probably just stick to identifying by the byte value
     {
-        UNKNOWN, //Handles all other values
+        NotDefined = 0x00, //Handles all other values
         Desert = 0x23,
         Water = 0x3F,
         Lava = 0x42,

@@ -101,25 +101,35 @@ namespace Tmos.Romhacks.Mods
 
         public bool CollisionTest_Right_IsCompatable(TmosModWorldScreen destinationWS)
         {
-            if (ScreenIndexRight == 0xFF) return true;
-
-
-            //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
             Tile[,] tileGrid = GetTileGrid();
-            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
-
             Tile[] tileGrid_RightEdge = new Tile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 tileGrid_RightEdge[y] = tileGrid[7, y];
             }
+            if (ScreenIndexRight == 0xFF)
+            {
+                if (tileGrid_RightEdge.All(t => !t.IsWalkable()))
+                {
+                    return true;
+                }
+                else
+                {
+                    //Console.WriteLine("fail right");
+                    return false;
+                }
+            }
+            //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
+
+            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
 
             Tile[] destinationTileGrid_LeftEdge = new Tile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 destinationTileGrid_LeftEdge[y] = destinationTileGrid[0, y];
             }
+
 
             bool[] compatableCollisionTiles = new bool[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
@@ -138,7 +148,6 @@ namespace Tmos.Romhacks.Mods
 
         public bool CollisionTest_Left_IsCompatable(TmosModWorldScreen destinationWS)
         {
-            if (ScreenIndexLeft == 0xFF) return true;
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
             Tile[,] tileGrid = GetTileGrid();
@@ -148,6 +157,18 @@ namespace Tmos.Romhacks.Mods
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 tileGrid_LeftEdge[y] = tileGrid[0, y];
+            }
+            if (ScreenIndexLeft == 0xFF)
+            {
+                if (tileGrid_LeftEdge.All(t => !t.IsWalkable()))
+                {
+                    return true;
+                }
+                else
+                {
+                  //  Console.WriteLine("fail left");
+                    return false;
+                }
             }
 
             Tile[] destinationTileGrid_RightEdge = new Tile[6];
@@ -173,7 +194,7 @@ namespace Tmos.Romhacks.Mods
 
         public bool CollisionTest_Up_IsCompatable(TmosModWorldScreen destinationWS)
         {
-            if (ScreenIndexUp == 0xFF) return true;
+          //  if (ScreenIndexUp == 0xFF) return true;
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
             Tile[,] tileGrid = GetTileGrid();
@@ -183,6 +204,19 @@ namespace Tmos.Romhacks.Mods
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 tileGrid_TopEdge[x] = tileGrid[x, 0];
+              
+            }
+            if (ScreenIndexUp == 0xFF)
+            {
+                if (tileGrid_TopEdge.All(t => !t.IsWalkable()))
+                {
+                    return true;
+                }
+                else
+                {
+                  //  Console.WriteLine("fail up");
+                    return false;
+                }
             }
 
             Tile[] destinationTileGrid_BottomEdge = new Tile[8];
@@ -208,7 +242,7 @@ namespace Tmos.Romhacks.Mods
 
         public bool CollisionTest_Down_IsCompatable(TmosModWorldScreen destinationWS)
         {
-            if (ScreenIndexDown == 0xFF) return true;
+           // if (ScreenIndexDown == 0xFF) return true;
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
             Tile[,] tileGrid = GetTileGrid();
@@ -217,13 +251,28 @@ namespace Tmos.Romhacks.Mods
             Tile[] tileGrid_BottomEdge = new Tile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
-                tileGrid_BottomEdge[x] = tileGrid[x, 5];
+                tileGrid_BottomEdge[x] = tileGrid[x, 5]; 
             }
+
+            if (ScreenIndexDown == 0xFF)
+            {
+                if (tileGrid_BottomEdge.All(t => !t.IsWalkable()))
+                {
+                    return true;
+                }
+                else
+                {
+                   // Console.WriteLine("fail down");
+                    return false;
+                }
+            }
+
 
             Tile[] destinationTileGrid_TopEdge = new Tile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 destinationTileGrid_TopEdge[x] = destinationTileGrid[x, 0];
+
             }
 
             bool[] compatableCollisionTiles = new bool[8];

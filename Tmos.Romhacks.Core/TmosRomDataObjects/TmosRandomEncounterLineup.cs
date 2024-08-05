@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.Core.TmosRomDataObjects
 {
-	public class TmosRandomEncounterLineup : TmosRomObject
+    //The enemy party of a random encounter, each slot is a monster (eg. Samrima, Meldo etc..) todo: Determine byte values for monsters
+    public class TmosRandomEncounterLineup : TmosRomObject
 	{
         public TmosRandomEncounterLineup() : base(null) { }
 

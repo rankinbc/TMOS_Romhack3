@@ -27,10 +27,34 @@ namespace Tmos.Romhacks.Mods.TypedTmosObjects
 			return _isWalkable;
 		}
 
-		//public bool IsWalkable()
-		//{
-		//	//TODO: Determine how to retrieve information on whether a tile is walkable
-		//	throw new NotImplementedException("It is still unknown how to determine whether a MiniTile is walkable");
-		//}
-	}
+        //public bool IsWalkable()
+        //{
+        //	//TODO: Determine how to retrieve information on whether a tile is walkable
+        //	throw new NotImplementedException("It is still unknown how to determine whether a MiniTile is walkable");
+        //}
+
+        //public MicroTile MicroTile_TopLeft
+        //{
+        //    get { return MicroTiles[0]; }
+        //    set { MicroTiles[0] = value; }
+        //}
+
+        //public MicroTile MicroTile2_TopRight
+        //{
+        //    get { return MicroTiles[1]; }
+        //    set { MicroTiles[1] = value; }
+        //}
+
+        //public MicroTile MicroTile3_BottomLeft
+        //{
+        //    get { return MicroTiles[2]; }
+        //    set { MicroTiles[2] = value; }
+        //}
+
+        //public MicroTile MicroTile4_BottomRight
+        //{
+        //    get { return MicroTiles[3]; }
+        //    set { MicroTiles[3] = value; }
+        //}
+    }
 }

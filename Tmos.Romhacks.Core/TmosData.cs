@@ -25,6 +25,7 @@ namespace Tmos.Romhacks.Core
             throw new InvalidOperationException($"Type {typeof(T).Name} does not have a suitable constructor.");
         }
 
+
         public static void SaveDataObject(byte[] rom, int index, byte[] data, TmosRomObjectType objectType, int offset = 0)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(objectType);
@@ -121,7 +122,11 @@ namespace Tmos.Romhacks.Core
         }
         #endregion RandomEncounterLineup
 
+
+
         #region DataStructure
+
+
         private static byte[] GetDataStructure(byte[] bytes, TmosRomObjectInfo dataStructure, int index, int additionalOffset)
         {
             byte[] structure = new byte[dataStructure.ObjectSize];
@@ -152,5 +157,25 @@ namespace Tmos.Romhacks.Core
             Array.Copy(structureByteContent, 0, bytes, address, objectSize);
         }
         #endregion DataStructure
+
+        #region Info
+
+        public static int GetTmosRomObjectOffset(TmosRomObjectType tmosRomObjectType, int index)
+        {
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(tmosRomObjectType);
+            int objectOffsetFromBeginningOfArray = (def.ObjectSize * index);
+            return objectOffsetFromBeginningOfArray;
+        }
+        public static int GetTmosRomObjectAddress(TmosRomObjectType tmosRomObjectType, int index, int additionalOffset = 0)
+        {
+            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(tmosRomObjectType);
+            int beginningOfArrayAddress = def.Address;
+            int objectOffsetFromBeginningOfArray = GetTmosRomObjectOffset(tmosRomObjectType, index) + additionalOffset;
+
+            int addressOfObject = beginningOfArrayAddress + objectOffsetFromBeginningOfArray;
+            return addressOfObject;
+        }
+
+        #endregion Info
     }
 }

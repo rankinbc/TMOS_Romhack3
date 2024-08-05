@@ -35,7 +35,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             TmosDataObjectType = TmosRomObjectType.WorldScreenDataOffset,
             Name = "WorldScreenDataOffset",
             Description = "Value the offset of world screen data for a chapter",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.WorldScreenDataStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.WorldScreenDataStartAddress,
             ObjectSize = 2,
             Count = 5
         };
@@ -45,7 +45,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             TmosDataObjectType = TmosRomObjectType.WorldScreen,
             Name = "WorldScreen",
             Description = "World screens in the game",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.WorldScreenStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.WorldScreenStartAddress,
             ObjectSize = 16, // number of bytes
             Count = 739 // number of objects in the array
         };
@@ -54,20 +54,22 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
         {
             TmosDataObjectType = TmosRomObjectType.TileSection,
             Name = "TileSection",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.TileSectionStartAddress,
+            Description = "Groups of bytes that represent tiles. The WorldScreen TopTiles and BottomTiles bytes point to TileSection objects",
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.TileSectionStartAddress,
             ObjectSize = 32,
             //Count = 940
-            Count = 473
+            Count = 471
+            //Count = 728
         };
 
         public static TmosRomObjectInfo RomInfo_WorldScreenTile = new TmosRomObjectInfo
         {
             TmosDataObjectType = TmosRomObjectType.WorldScreenTile,
             Name = "WorldScreenTile",
-            Description = "Tiles used by World Screen tile sections",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.WorldScreenTileDataStartAddress,
+            Description = "Tile layout data used by WorldScreen TileSections",
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.WorldScreenTileDataStartAddress,
             ObjectSize = 1,
-            Count = 11777 // Guessing data ends at 0x3ff87
+            Count = 11912
         };
 
         public static TmosRomObjectInfo RomInfo_Tile = new TmosRomObjectInfo
@@ -75,7 +77,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             TmosDataObjectType = TmosRomObjectType.Tile,
             Name = "Tile",
             Description = "Information about a tile",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.TileStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.TileStartAddress,
             ObjectSize = 4,
             Count =  255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
@@ -85,7 +87,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
             TmosDataObjectType = TmosRomObjectType.MiniTile,
             Name = "MiniTile",
             Description = "The mini tiles that make up a tile (2x2)",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.MiniTileStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.MiniTileStartAddress,
             ObjectSize = 4,
             Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
@@ -94,7 +96,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
         {
             TmosDataObjectType = TmosRomObjectType.RandomEncounterGroup,
             Name = "RandomEncounterGroup",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.RandomEncounterGroupStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.RandomEncounterGroupStartAddress,
             ObjectSize = 32,
             Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };
@@ -103,7 +105,7 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
         {
             TmosDataObjectType = TmosRomObjectType.RandomEncounterLineup,
             Name = "RandomEncounterLineup",
-            Address = TmosRomKnownAddresses.TmoRomObjectArrays.RandomEncounterLineupStartAddress,
+            Address = TmosRomKnownAddresses.TmosRomObjectArrays.RandomEncounterLineupStartAddress,
             ObjectSize = 8,
             Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
         };

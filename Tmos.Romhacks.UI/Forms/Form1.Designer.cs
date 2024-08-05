@@ -31,68 +31,68 @@ namespace Tmos.Romhacks.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewItem listViewItem81 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ParentWorld", System.Drawing.Color.Black, System.Drawing.Color.LightGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem82 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Ambient Sound"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem83 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Content"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem84 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ObjectSet"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem85 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexRight"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem86 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexLeft"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem87 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexDown"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem88 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ScreenIndexUp"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem73 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem89 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "DataPointer"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem74 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem90 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "ExitPosition"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem75 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem91 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "TopTiles"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem76 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem92 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "BottomTiles"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem77 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem93 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "WorldScreenColor"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem78 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem94 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "SpriteColor"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem79 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem95 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Unknown"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
-            System.Windows.Forms.ListViewItem listViewItem80 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
+            System.Windows.Forms.ListViewItem listViewItem96 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Event"),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "0x00", System.Drawing.SystemColors.ButtonFace, System.Drawing.Color.DimGray, new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
             new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "")}, -1);
@@ -101,6 +101,9 @@ namespace Tmos.Romhacks.UI
             this.lb_tileSection_top = new System.Windows.Forms.ListBox();
             this.lb_tileSection_bottom = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnlbl_worldSection_bottomTiles_view = new System.Windows.Forms.Label();
+            this.btnlbl_worldSection_topTiles_view = new System.Windows.Forms.Label();
+            this.lbl_worldScreenTileDataOffsets = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lv_worldScreens = new System.Windows.Forms.ListView();
@@ -134,47 +137,39 @@ namespace Tmos.Romhacks.UI
             this.cb_link_back = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_testDirections = new System.Windows.Forms.Button();
-            this.lv_variables = new System.Windows.Forms.ListView();
-            this.col_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col_value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.col_hint = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_map = new System.Windows.Forms.TabPage();
             this.pb_worldMap = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tab_worldScreen = new System.Windows.Forms.TabPage();
+            this.btn_worldScreen_save = new System.Windows.Forms.Button();
             this.tb_worldScreen_selectedWorldScreen_data = new System.Windows.Forms.RichTextBox();
             this.pb_worldScreen = new System.Windows.Forms.PictureBox();
             this.tab_tileSection = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.gb_microTile = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_tileSection_data_save = new System.Windows.Forms.Button();
             this.rtb_tileSection_data = new System.Windows.Forms.RichTextBox();
             this.lv_tileSection_values = new System.Windows.Forms.ListView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pb_tile_Image = new System.Windows.Forms.PictureBox();
             this.tb_worldScreenTile = new System.Windows.Forms.TextBox();
             this.lb_worldScreenTiles = new System.Windows.Forms.ListBox();
-            this.tb_tileSection_selectedTileSection_data = new System.Windows.Forms.RichTextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gb_miniTile = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_miniTile_data_byte4 = new System.Windows.Forms.TextBox();
             this.tb_miniTile_data_byte3 = new System.Windows.Forms.TextBox();
             this.tb_miniTile_data_byte2 = new System.Windows.Forms.TextBox();
             this.tb_miniTile_data_byte1 = new System.Windows.Forms.TextBox();
             this.lb_miniTile = new System.Windows.Forms.ListBox();
-            this.pb_tileSection = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gb_tile = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.pb_tile_Image = new System.Windows.Forms.PictureBox();
             this.tb_tile_data_byte4 = new System.Windows.Forms.TextBox();
             this.tb_tile_data_byte3 = new System.Windows.Forms.TextBox();
             this.tb_tile_data_byte2 = new System.Windows.Forms.TextBox();
             this.tb_tile_data_byte1 = new System.Windows.Forms.TextBox();
             this.lb_tile = new System.Windows.Forms.ListBox();
-            this.pb_tile = new System.Windows.Forms.PictureBox();
             this.lb_tileSection = new System.Windows.Forms.ListBox();
             this.tab_encounters = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -183,9 +178,16 @@ namespace Tmos.Romhacks.UI
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.rtb_encounterGroups_data = new System.Windows.Forms.RichTextBox();
             this.lb_encounterGroups = new System.Windows.Forms.ListBox();
+            this.lbl_worldScreen_info = new System.Windows.Forms.Label();
+            this.lbl_worldScreen_relativeIndex = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_selectedWorldScreenIndex = new System.Windows.Forms.TextBox();
             this.btn_refreshWorldScreenList = new System.Windows.Forms.Button();
             this.gb_drawOptions = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.nud_drawOptions_map_tileSize = new System.Windows.Forms.NumericUpDown();
+            this.btn_redraw_worldScreen = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cb_drawOptions_worldScreen_showInfo = new System.Windows.Forms.CheckBox();
             this.cb_drawOptions_worldScreen_showBorders = new System.Windows.Forms.CheckBox();
@@ -195,7 +197,6 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreenTile_showInfo = new System.Windows.Forms.CheckBox();
             this.nud_drawOptions_worldScreen_showTileImages = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_redraw_worldScreen = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,11 +205,27 @@ namespace Tmos.Romhacks.UI
             this.menu_saveRom = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.worldScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_shuffleWSTileSections = new System.Windows.Forms.ToolStripMenuItem();
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_loadDefaultRom = new System.Windows.Forms.Button();
-            this.nud_drawOptions_map_tileSize = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
+            this.col_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col_value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col_hint = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lv_variables = new System.Windows.Forms.ListView();
+            this.timer_shuffle = new System.Windows.Forms.Timer(this.components);
+            this.cb_shuffling = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btn_encounterGroup_save = new System.Windows.Forms.Button();
+            this.btn_encounterLineup_save = new System.Windows.Forms.Button();
+            this.btn_tile_save = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.btn_miniTile_save = new System.Windows.Forms.Button();
+            this.gb_tileSection = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -217,24 +234,23 @@ namespace Tmos.Romhacks.UI
             this.tab_worldScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_worldScreen)).BeginInit();
             this.tab_tileSection.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.gb_microTile.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.gb_miniTile.SuspendLayout();
+            this.gb_tile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile_Image)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_tileSection)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_tile)).BeginInit();
             this.tab_encounters.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.gb_drawOptions.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_worldScreen_showTileImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).BeginInit();
+            this.gb_tileSection.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -243,34 +259,38 @@ namespace Tmos.Romhacks.UI
             // 
             // tb_output
             // 
-            this.tb_output.Location = new System.Drawing.Point(9, 180);
+            this.tb_output.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tb_output.Location = new System.Drawing.Point(0, 808);
             this.tb_output.Name = "tb_output";
-            this.tb_output.Size = new System.Drawing.Size(403, 62);
+            this.tb_output.Size = new System.Drawing.Size(420, 75);
             this.tb_output.TabIndex = 1;
             this.tb_output.Text = "";
             // 
             // lb_tileSection_top
             // 
             this.lb_tileSection_top.FormattingEnabled = true;
-            this.lb_tileSection_top.Location = new System.Drawing.Point(4, 37);
+            this.lb_tileSection_top.Location = new System.Drawing.Point(4, 79);
             this.lb_tileSection_top.Margin = new System.Windows.Forms.Padding(2);
             this.lb_tileSection_top.Name = "lb_tileSection_top";
-            this.lb_tileSection_top.Size = new System.Drawing.Size(75, 264);
+            this.lb_tileSection_top.Size = new System.Drawing.Size(128, 225);
             this.lb_tileSection_top.TabIndex = 4;
             this.lb_tileSection_top.SelectedIndexChanged += new System.EventHandler(this.lb_tileSection_top_SelectedIndexChanged);
             // 
             // lb_tileSection_bottom
             // 
             this.lb_tileSection_bottom.FormattingEnabled = true;
-            this.lb_tileSection_bottom.Location = new System.Drawing.Point(83, 37);
+            this.lb_tileSection_bottom.Location = new System.Drawing.Point(136, 79);
             this.lb_tileSection_bottom.Margin = new System.Windows.Forms.Padding(2);
             this.lb_tileSection_bottom.Name = "lb_tileSection_bottom";
-            this.lb_tileSection_bottom.Size = new System.Drawing.Size(72, 264);
+            this.lb_tileSection_bottom.Size = new System.Drawing.Size(128, 225);
             this.lb_tileSection_bottom.TabIndex = 5;
             this.lb_tileSection_bottom.SelectedIndexChanged += new System.EventHandler(this.lb_tileSection_bottom_SelectedIndexChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnlbl_worldSection_bottomTiles_view);
+            this.groupBox1.Controls.Add(this.btnlbl_worldSection_topTiles_view);
+            this.groupBox1.Controls.Add(this.lbl_worldScreenTileDataOffsets);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lb_tileSection_bottom);
@@ -279,15 +299,49 @@ namespace Tmos.Romhacks.UI
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(159, 308);
+            this.groupBox1.Size = new System.Drawing.Size(269, 308);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tile Sections";
             // 
+            // btnlbl_worldSection_bottomTiles_view
+            // 
+            this.btnlbl_worldSection_bottomTiles_view.AutoSize = true;
+            this.btnlbl_worldSection_bottomTiles_view.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnlbl_worldSection_bottomTiles_view.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlbl_worldSection_bottomTiles_view.Location = new System.Drawing.Point(228, 62);
+            this.btnlbl_worldSection_bottomTiles_view.Name = "btnlbl_worldSection_bottomTiles_view";
+            this.btnlbl_worldSection_bottomTiles_view.Size = new System.Drawing.Size(36, 15);
+            this.btnlbl_worldSection_bottomTiles_view.TabIndex = 20;
+            this.btnlbl_worldSection_bottomTiles_view.Text = "View";
+            this.btnlbl_worldSection_bottomTiles_view.Click += new System.EventHandler(this.btnlbl_worldSection_bottomTiles_view_Click);
+            // 
+            // btnlbl_worldSection_topTiles_view
+            // 
+            this.btnlbl_worldSection_topTiles_view.AutoSize = true;
+            this.btnlbl_worldSection_topTiles_view.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnlbl_worldSection_topTiles_view.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlbl_worldSection_topTiles_view.Location = new System.Drawing.Point(96, 62);
+            this.btnlbl_worldSection_topTiles_view.Name = "btnlbl_worldSection_topTiles_view";
+            this.btnlbl_worldSection_topTiles_view.Size = new System.Drawing.Size(36, 15);
+            this.btnlbl_worldSection_topTiles_view.TabIndex = 19;
+            this.btnlbl_worldSection_topTiles_view.Text = "View";
+            this.btnlbl_worldSection_topTiles_view.Click += new System.EventHandler(this.btnlbl_worldSection_topTiles_view_Click_1);
+            // 
+            // lbl_worldScreenTileDataOffsets
+            // 
+            this.lbl_worldScreenTileDataOffsets.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_worldScreenTileDataOffsets.Location = new System.Drawing.Point(5, 16);
+            this.lbl_worldScreenTileDataOffsets.Name = "lbl_worldScreenTileDataOffsets";
+            this.lbl_worldScreenTileDataOffsets.Size = new System.Drawing.Size(127, 48);
+            this.lbl_worldScreenTileDataOffsets.TabIndex = 18;
+            this.lbl_worldScreenTileDataOffsets.Text = "DataPointer:\r\nTop Tiles Offset:\r\nBottom TIles Offset:";
+            this.lbl_worldScreenTileDataOffsets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 22);
+            this.label2.Location = new System.Drawing.Point(172, 62);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
@@ -297,7 +351,7 @@ namespace Tmos.Romhacks.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 22);
+            this.label1.Location = new System.Drawing.Point(4, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
@@ -333,7 +387,7 @@ namespace Tmos.Romhacks.UI
             this.lv_worldScreens.Location = new System.Drawing.Point(5, 56);
             this.lv_worldScreens.MultiSelect = false;
             this.lv_worldScreens.Name = "lv_worldScreens";
-            this.lv_worldScreens.Size = new System.Drawing.Size(407, 319);
+            this.lv_worldScreens.Size = new System.Drawing.Size(407, 263);
             this.lv_worldScreens.TabIndex = 14;
             this.lv_worldScreens.UseCompatibleStateImageBehavior = false;
             this.lv_worldScreens.View = System.Windows.Forms.View.Details;
@@ -442,7 +496,7 @@ namespace Tmos.Romhacks.UI
             // 
             // tb_direction_up
             // 
-            this.tb_direction_up.Location = new System.Drawing.Point(83, 29);
+            this.tb_direction_up.Location = new System.Drawing.Point(66, 7);
             this.tb_direction_up.Margin = new System.Windows.Forms.Padding(2);
             this.tb_direction_up.Name = "tb_direction_up";
             this.tb_direction_up.Size = new System.Drawing.Size(31, 20);
@@ -451,7 +505,7 @@ namespace Tmos.Romhacks.UI
             // 
             // tb_direction_left
             // 
-            this.tb_direction_left.Location = new System.Drawing.Point(44, 62);
+            this.tb_direction_left.Location = new System.Drawing.Point(2, 44);
             this.tb_direction_left.Margin = new System.Windows.Forms.Padding(2);
             this.tb_direction_left.Name = "tb_direction_left";
             this.tb_direction_left.Size = new System.Drawing.Size(31, 20);
@@ -460,7 +514,7 @@ namespace Tmos.Romhacks.UI
             // 
             // tb_direction_right
             // 
-            this.tb_direction_right.Location = new System.Drawing.Point(127, 64);
+            this.tb_direction_right.Location = new System.Drawing.Point(133, 44);
             this.tb_direction_right.Margin = new System.Windows.Forms.Padding(2);
             this.tb_direction_right.Name = "tb_direction_right";
             this.tb_direction_right.Size = new System.Drawing.Size(31, 20);
@@ -469,25 +523,25 @@ namespace Tmos.Romhacks.UI
             // 
             // btn_move_right
             // 
-            this.btn_move_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_move_right.Location = new System.Drawing.Point(159, 62);
+            this.btn_move_right.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btn_move_right.Location = new System.Drawing.Point(100, 44);
             this.btn_move_right.Margin = new System.Windows.Forms.Padding(2);
             this.btn_move_right.Name = "btn_move_right";
             this.btn_move_right.Size = new System.Drawing.Size(30, 20);
             this.btn_move_right.TabIndex = 11;
-            this.btn_move_right.Text = "Right";
+            this.btn_move_right.Text = "→";
             this.btn_move_right.UseVisualStyleBackColor = true;
             this.btn_move_right.Click += new System.EventHandler(this.btn_move_right_Click);
             // 
             // btn_move_left
             // 
-            this.btn_move_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_move_left.Location = new System.Drawing.Point(10, 61);
+            this.btn_move_left.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btn_move_left.Location = new System.Drawing.Point(36, 43);
             this.btn_move_left.Margin = new System.Windows.Forms.Padding(2);
             this.btn_move_left.Name = "btn_move_left";
             this.btn_move_left.Size = new System.Drawing.Size(30, 20);
             this.btn_move_left.TabIndex = 12;
-            this.btn_move_left.Text = "Left";
+            this.btn_move_left.Text = "←";
             this.btn_move_left.UseVisualStyleBackColor = true;
             this.btn_move_left.Click += new System.EventHandler(this.btn_move_left_Click);
             // 
@@ -501,30 +555,30 @@ namespace Tmos.Romhacks.UI
             this.groupBox2.Controls.Add(this.btn_move_left);
             this.groupBox2.Controls.Add(this.tb_direction_up);
             this.groupBox2.Controls.Add(this.tb_direction_right);
-            this.groupBox2.Location = new System.Drawing.Point(5, 52);
+            this.groupBox2.Location = new System.Drawing.Point(5, 177);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(197, 142);
+            this.groupBox2.Size = new System.Drawing.Size(167, 104);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Directions";
             // 
             // btn_move_down
             // 
-            this.btn_move_down.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_move_down.Location = new System.Drawing.Point(83, 117);
+            this.btn_move_down.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btn_move_down.Location = new System.Drawing.Point(67, 54);
             this.btn_move_down.Margin = new System.Windows.Forms.Padding(2);
             this.btn_move_down.Name = "btn_move_down";
-            this.btn_move_down.Size = new System.Drawing.Size(30, 20);
+            this.btn_move_down.Size = new System.Drawing.Size(29, 21);
             this.btn_move_down.TabIndex = 15;
-            this.btn_move_down.Text = "Down";
+            this.btn_move_down.Text = "↓";
             this.btn_move_down.UseVisualStyleBackColor = true;
             this.btn_move_down.Click += new System.EventHandler(this.btn_move_down_Click);
             // 
             // tb_direction_down
             // 
-            this.tb_direction_down.Location = new System.Drawing.Point(83, 96);
+            this.tb_direction_down.Location = new System.Drawing.Point(66, 78);
             this.tb_direction_down.Margin = new System.Windows.Forms.Padding(2);
             this.tb_direction_down.Name = "tb_direction_down";
             this.tb_direction_down.Size = new System.Drawing.Size(31, 20);
@@ -533,13 +587,13 @@ namespace Tmos.Romhacks.UI
             // 
             // btn_move_up
             // 
-            this.btn_move_up.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_move_up.Location = new System.Drawing.Point(83, 6);
+            this.btn_move_up.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_move_up.Location = new System.Drawing.Point(67, 30);
             this.btn_move_up.Margin = new System.Windows.Forms.Padding(2);
             this.btn_move_up.Name = "btn_move_up";
-            this.btn_move_up.Size = new System.Drawing.Size(30, 20);
+            this.btn_move_up.Size = new System.Drawing.Size(29, 20);
             this.btn_move_up.TabIndex = 13;
-            this.btn_move_up.Text = "Up";
+            this.btn_move_up.Text = "↑";
             this.btn_move_up.UseVisualStyleBackColor = true;
             this.btn_move_up.Click += new System.EventHandler(this.btn_move_up_Click);
             // 
@@ -552,7 +606,7 @@ namespace Tmos.Romhacks.UI
             this.cb_link_back.AutoSize = true;
             this.cb_link_back.Checked = true;
             this.cb_link_back.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_link_back.Location = new System.Drawing.Point(206, 106);
+            this.cb_link_back.Location = new System.Drawing.Point(176, 223);
             this.cb_link_back.Margin = new System.Windows.Forms.Padding(2);
             this.cb_link_back.Name = "cb_link_back";
             this.cb_link_back.Size = new System.Drawing.Size(192, 17);
@@ -563,7 +617,7 @@ namespace Tmos.Romhacks.UI
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(206, 82);
+            this.button1.Location = new System.Drawing.Point(176, 199);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(73, 20);
@@ -575,7 +629,7 @@ namespace Tmos.Romhacks.UI
             // btn_testDirections
             // 
             this.btn_testDirections.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_testDirections.Location = new System.Drawing.Point(206, 58);
+            this.btn_testDirections.Location = new System.Drawing.Point(176, 177);
             this.btn_testDirections.Margin = new System.Windows.Forms.Padding(2);
             this.btn_testDirections.Name = "btn_testDirections";
             this.btn_testDirections.Size = new System.Drawing.Size(73, 20);
@@ -583,83 +637,6 @@ namespace Tmos.Romhacks.UI
             this.btn_testDirections.Text = "Test Directions";
             this.btn_testDirections.UseVisualStyleBackColor = true;
             this.btn_testDirections.Click += new System.EventHandler(this.btn_testDirections_Click);
-            // 
-            // lv_variables
-            // 
-            this.lv_variables.BackColor = System.Drawing.Color.LightGray;
-            this.lv_variables.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lv_variables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col_name,
-            this.col_value,
-            this.col_hint});
-            this.lv_variables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lv_variables.FullRowSelect = true;
-            this.lv_variables.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup5.Name = "listViewGroup1";
-            this.lv_variables.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5});
-            this.lv_variables.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lv_variables.HideSelection = false;
-            listViewItem65.IndentCount = 1;
-            listViewItem65.UseItemStyleForSubItems = false;
-            listViewItem66.UseItemStyleForSubItems = false;
-            listViewItem67.UseItemStyleForSubItems = false;
-            listViewItem68.UseItemStyleForSubItems = false;
-            listViewItem69.UseItemStyleForSubItems = false;
-            listViewItem70.UseItemStyleForSubItems = false;
-            listViewItem71.UseItemStyleForSubItems = false;
-            listViewItem72.UseItemStyleForSubItems = false;
-            listViewItem73.UseItemStyleForSubItems = false;
-            listViewItem74.UseItemStyleForSubItems = false;
-            listViewItem75.UseItemStyleForSubItems = false;
-            listViewItem76.UseItemStyleForSubItems = false;
-            listViewItem77.UseItemStyleForSubItems = false;
-            listViewItem78.UseItemStyleForSubItems = false;
-            listViewItem79.UseItemStyleForSubItems = false;
-            listViewItem80.UseItemStyleForSubItems = false;
-            this.lv_variables.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem65,
-            listViewItem66,
-            listViewItem67,
-            listViewItem68,
-            listViewItem69,
-            listViewItem70,
-            listViewItem71,
-            listViewItem72,
-            listViewItem73,
-            listViewItem74,
-            listViewItem75,
-            listViewItem76,
-            listViewItem77,
-            listViewItem78,
-            listViewItem79,
-            listViewItem80});
-            this.lv_variables.Location = new System.Drawing.Point(1, 381);
-            this.lv_variables.MultiSelect = false;
-            this.lv_variables.Name = "lv_variables";
-            this.lv_variables.Scrollable = false;
-            this.lv_variables.ShowGroups = false;
-            this.lv_variables.Size = new System.Drawing.Size(420, 307);
-            this.lv_variables.TabIndex = 18;
-            this.lv_variables.UseCompatibleStateImageBehavior = false;
-            this.lv_variables.View = System.Windows.Forms.View.Details;
-            // 
-            // col_name
-            // 
-            this.col_name.Text = "";
-            this.col_name.Width = 125;
-            // 
-            // col_value
-            // 
-            this.col_value.Text = "";
-            this.col_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // col_hint
-            // 
-            this.col_hint.Text = "";
-            this.col_hint.Width = 300;
             // 
             // tabControl1
             // 
@@ -670,18 +647,17 @@ namespace Tmos.Romhacks.UI
             this.tabControl1.Location = new System.Drawing.Point(418, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1037, 896);
+            this.tabControl1.Size = new System.Drawing.Size(763, 871);
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tab_map
             // 
             this.tab_map.Controls.Add(this.pb_worldMap);
-            this.tab_map.Controls.Add(this.label3);
             this.tab_map.Location = new System.Drawing.Point(4, 22);
             this.tab_map.Name = "tab_map";
             this.tab_map.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_map.Size = new System.Drawing.Size(1029, 870);
+            this.tab_map.Size = new System.Drawing.Size(755, 845);
             this.tab_map.TabIndex = 0;
             this.tab_map.Text = "Map";
             this.tab_map.UseVisualStyleBackColor = true;
@@ -691,23 +667,14 @@ namespace Tmos.Romhacks.UI
             this.pb_worldMap.BackColor = System.Drawing.Color.Gainsboro;
             this.pb_worldMap.Location = new System.Drawing.Point(6, 81);
             this.pb_worldMap.Name = "pb_worldMap";
-            this.pb_worldMap.Size = new System.Drawing.Size(1005, 783);
+            this.pb_worldMap.Size = new System.Drawing.Size(742, 761);
             this.pb_worldMap.TabIndex = 3;
             this.pb_worldMap.TabStop = false;
             this.pb_worldMap.Click += new System.EventHandler(this.pb_worldMap_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(663, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "World Screen";
-            // 
             // tab_worldScreen
             // 
+            this.tab_worldScreen.Controls.Add(this.btn_worldScreen_save);
             this.tab_worldScreen.Controls.Add(this.tb_worldScreen_selectedWorldScreen_data);
             this.tab_worldScreen.Controls.Add(this.cb_link_back);
             this.tab_worldScreen.Controls.Add(this.button1);
@@ -718,104 +685,104 @@ namespace Tmos.Romhacks.UI
             this.tab_worldScreen.Location = new System.Drawing.Point(4, 22);
             this.tab_worldScreen.Name = "tab_worldScreen";
             this.tab_worldScreen.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_worldScreen.Size = new System.Drawing.Size(1029, 870);
+            this.tab_worldScreen.Size = new System.Drawing.Size(755, 845);
             this.tab_worldScreen.TabIndex = 1;
             this.tab_worldScreen.Text = "WorldScreen";
             this.tab_worldScreen.UseVisualStyleBackColor = true;
             // 
+            // btn_worldScreen_save
+            // 
+            this.btn_worldScreen_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_worldScreen_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_worldScreen_save.Location = new System.Drawing.Point(352, 110);
+            this.btn_worldScreen_save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_worldScreen_save.Name = "btn_worldScreen_save";
+            this.btn_worldScreen_save.Size = new System.Drawing.Size(83, 20);
+            this.btn_worldScreen_save.TabIndex = 18;
+            this.btn_worldScreen_save.Text = "Save WorldScreen";
+            this.btn_worldScreen_save.UseVisualStyleBackColor = true;
+            this.btn_worldScreen_save.Click += new System.EventHandler(this.btn_worldScreen_save_Click);
+            // 
             // tb_worldScreen_selectedWorldScreen_data
             // 
-            this.tb_worldScreen_selectedWorldScreen_data.Location = new System.Drawing.Point(3, 6);
+            this.tb_worldScreen_selectedWorldScreen_data.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_worldScreen_selectedWorldScreen_data.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_worldScreen_selectedWorldScreen_data.Location = new System.Drawing.Point(3, 70);
             this.tb_worldScreen_selectedWorldScreen_data.Name = "tb_worldScreen_selectedWorldScreen_data";
-            this.tb_worldScreen_selectedWorldScreen_data.Size = new System.Drawing.Size(379, 41);
+            this.tb_worldScreen_selectedWorldScreen_data.Size = new System.Drawing.Size(431, 37);
             this.tb_worldScreen_selectedWorldScreen_data.TabIndex = 3;
             this.tb_worldScreen_selectedWorldScreen_data.Text = "";
+            this.tb_worldScreen_selectedWorldScreen_data.TextChanged += new System.EventHandler(this.tb_worldScreen_selectedWorldScreen_data_TextChanged);
             // 
             // pb_worldScreen
             // 
             this.pb_worldScreen.BackColor = System.Drawing.Color.Gainsboro;
             this.pb_worldScreen.Location = new System.Drawing.Point(5, 316);
             this.pb_worldScreen.Name = "pb_worldScreen";
-            this.pb_worldScreen.Size = new System.Drawing.Size(758, 548);
+            this.pb_worldScreen.Size = new System.Drawing.Size(750, 523);
             this.pb_worldScreen.TabIndex = 2;
             this.pb_worldScreen.TabStop = false;
             // 
             // tab_tileSection
             // 
-            this.tab_tileSection.Controls.Add(this.groupBox6);
-            this.tab_tileSection.Controls.Add(this.label7);
-            this.tab_tileSection.Controls.Add(this.label6);
-            this.tab_tileSection.Controls.Add(this.btn_tileSection_data_save);
-            this.tab_tileSection.Controls.Add(this.rtb_tileSection_data);
-            this.tab_tileSection.Controls.Add(this.lv_tileSection_values);
-            this.tab_tileSection.Controls.Add(this.groupBox5);
-            this.tab_tileSection.Controls.Add(this.tb_tileSection_selectedTileSection_data);
-            this.tab_tileSection.Controls.Add(this.groupBox4);
-            this.tab_tileSection.Controls.Add(this.pb_tileSection);
-            this.tab_tileSection.Controls.Add(this.groupBox3);
-            this.tab_tileSection.Controls.Add(this.lb_tileSection);
+            this.tab_tileSection.Controls.Add(this.gb_tileSection);
+            this.tab_tileSection.Controls.Add(this.gb_microTile);
+            this.tab_tileSection.Controls.Add(this.gb_miniTile);
+            this.tab_tileSection.Controls.Add(this.gb_tile);
             this.tab_tileSection.Location = new System.Drawing.Point(4, 22);
             this.tab_tileSection.Name = "tab_tileSection";
-            this.tab_tileSection.Size = new System.Drawing.Size(1029, 870);
+            this.tab_tileSection.Size = new System.Drawing.Size(755, 845);
             this.tab_tileSection.TabIndex = 2;
             this.tab_tileSection.Text = "TileSection";
             this.tab_tileSection.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
+            // gb_microTile
             // 
-            this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Enabled = false;
-            this.groupBox6.Location = new System.Drawing.Point(820, 480);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(64, 46);
-            this.groupBox6.TabIndex = 21;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "MicroTile";
+            this.gb_microTile.Controls.Add(this.label10);
+            this.gb_microTile.Enabled = false;
+            this.gb_microTile.Location = new System.Drawing.Point(543, 480);
+            this.gb_microTile.Name = "gb_microTile";
+            this.gb_microTile.Size = new System.Drawing.Size(115, 61);
+            this.gb_microTile.TabIndex = 21;
+            this.gb_microTile.TabStop = false;
+            this.gb_microTile.Text = "MicroTile";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 19);
+            this.label10.Location = new System.Drawing.Point(26, 25);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "Unknown";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "TileSections";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(165, 26);
+            this.label6.Location = new System.Drawing.Point(142, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Tile Values";
+            this.label6.Text = "TileSection Tiles";
             // 
             // btn_tileSection_data_save
             // 
-            this.btn_tileSection_data_save.Enabled = false;
-            this.btn_tileSection_data_save.Location = new System.Drawing.Point(733, 42);
+            this.btn_tileSection_data_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_tileSection_data_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_tileSection_data_save.Location = new System.Drawing.Point(534, 151);
             this.btn_tileSection_data_save.Name = "btn_tileSection_data_save";
-            this.btn_tileSection_data_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_tileSection_data_save.Size = new System.Drawing.Size(90, 23);
             this.btn_tileSection_data_save.TabIndex = 17;
-            this.btn_tileSection_data_save.Text = "Save";
+            this.btn_tileSection_data_save.Text = "Save TileSection Tile";
             this.btn_tileSection_data_save.UseVisualStyleBackColor = true;
             this.btn_tileSection_data_save.Click += new System.EventHandler(this.btn_tileSection_data_save_Click);
             // 
             // rtb_tileSection_data
             // 
             this.rtb_tileSection_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtb_tileSection_data.Location = new System.Drawing.Point(147, 270);
+            this.rtb_tileSection_data.Location = new System.Drawing.Point(140, 28);
             this.rtb_tileSection_data.Name = "rtb_tileSection_data";
-            this.rtb_tileSection_data.Size = new System.Drawing.Size(484, 204);
+            this.rtb_tileSection_data.Size = new System.Drawing.Size(484, 117);
             this.rtb_tileSection_data.TabIndex = 16;
             this.rtb_tileSection_data.Text = "";
             // 
@@ -823,13 +790,14 @@ namespace Tmos.Romhacks.UI
             // 
             this.lv_tileSection_values.Activation = System.Windows.Forms.ItemActivation.TwoClick;
             this.lv_tileSection_values.BackColor = System.Drawing.Color.Gainsboro;
+            this.lv_tileSection_values.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lv_tileSection_values.GridLines = true;
             this.lv_tileSection_values.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lv_tileSection_values.HideSelection = false;
-            this.lv_tileSection_values.LabelEdit = true;
-            this.lv_tileSection_values.Location = new System.Drawing.Point(147, 42);
+            this.lv_tileSection_values.Location = new System.Drawing.Point(140, 276);
             this.lv_tileSection_values.MultiSelect = false;
             this.lv_tileSection_values.Name = "lv_tileSection_values";
-            this.lv_tileSection_values.Size = new System.Drawing.Size(361, 222);
+            this.lv_tileSection_values.Size = new System.Drawing.Size(347, 185);
             this.lv_tileSection_values.TabIndex = 15;
             this.lv_tileSection_values.TileSize = new System.Drawing.Size(50, 30);
             this.lv_tileSection_values.UseCompatibleStateImageBehavior = false;
@@ -839,37 +807,29 @@ namespace Tmos.Romhacks.UI
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.pb_tile_Image);
             this.groupBox5.Controls.Add(this.tb_worldScreenTile);
             this.groupBox5.Controls.Add(this.lb_worldScreenTiles);
-            this.groupBox5.Location = new System.Drawing.Point(16, 479);
+            this.groupBox5.Enabled = false;
+            this.groupBox5.Location = new System.Drawing.Point(139, 297);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(270, 333);
+            this.groupBox5.Size = new System.Drawing.Size(93, 44);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "WorldScreen Tile";
+            this.groupBox5.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 181);
+            this.label5.Location = new System.Drawing.Point(173, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Associated Image";
             // 
-            // pb_tile_Image
-            // 
-            this.pb_tile_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb_tile_Image.Location = new System.Drawing.Point(131, 197);
-            this.pb_tile_Image.Name = "pb_tile_Image";
-            this.pb_tile_Image.Size = new System.Drawing.Size(132, 130);
-            this.pb_tile_Image.TabIndex = 14;
-            this.pb_tile_Image.TabStop = false;
-            // 
             // tb_worldScreenTile
             // 
-            this.tb_worldScreenTile.Location = new System.Drawing.Point(131, 27);
+            this.tb_worldScreenTile.Location = new System.Drawing.Point(164, 27);
             this.tb_worldScreenTile.Name = "tb_worldScreenTile";
             this.tb_worldScreenTile.Size = new System.Drawing.Size(100, 20);
             this.tb_worldScreenTile.TabIndex = 14;
@@ -880,66 +840,65 @@ namespace Tmos.Romhacks.UI
             this.lb_worldScreenTiles.Location = new System.Drawing.Point(5, 27);
             this.lb_worldScreenTiles.Margin = new System.Windows.Forms.Padding(2);
             this.lb_worldScreenTiles.Name = "lb_worldScreenTiles";
-            this.lb_worldScreenTiles.Size = new System.Drawing.Size(121, 303);
+            this.lb_worldScreenTiles.Size = new System.Drawing.Size(154, 303);
             this.lb_worldScreenTiles.TabIndex = 13;
             this.lb_worldScreenTiles.SelectedIndexChanged += new System.EventHandler(this.lb_worldScreenTile_SelectedIndexChanged);
             // 
-            // tb_tileSection_selectedTileSection_data
+            // gb_miniTile
             // 
-            this.tb_tileSection_selectedTileSection_data.Location = new System.Drawing.Point(715, 177);
-            this.tb_tileSection_selectedTileSection_data.Name = "tb_tileSection_selectedTileSection_data";
-            this.tb_tileSection_selectedTileSection_data.Size = new System.Drawing.Size(184, 144);
-            this.tb_tileSection_selectedTileSection_data.TabIndex = 13;
-            this.tb_tileSection_selectedTileSection_data.Text = "";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.tb_miniTile_data_byte4);
-            this.groupBox4.Controls.Add(this.tb_miniTile_data_byte3);
-            this.groupBox4.Controls.Add(this.tb_miniTile_data_byte2);
-            this.groupBox4.Controls.Add(this.tb_miniTile_data_byte1);
-            this.groupBox4.Controls.Add(this.lb_miniTile);
-            this.groupBox4.Location = new System.Drawing.Point(582, 479);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(232, 333);
-            this.groupBox4.TabIndex = 12;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "MiniTile";
+            this.gb_miniTile.Controls.Add(this.btn_miniTile_save);
+            this.gb_miniTile.Controls.Add(this.label9);
+            this.gb_miniTile.Controls.Add(this.tb_miniTile_data_byte4);
+            this.gb_miniTile.Controls.Add(this.tb_miniTile_data_byte3);
+            this.gb_miniTile.Controls.Add(this.tb_miniTile_data_byte2);
+            this.gb_miniTile.Controls.Add(this.tb_miniTile_data_byte1);
+            this.gb_miniTile.Controls.Add(this.lb_miniTile);
+            this.gb_miniTile.Controls.Add(this.groupBox5);
+            this.gb_miniTile.Location = new System.Drawing.Point(305, 479);
+            this.gb_miniTile.Name = "gb_miniTile";
+            this.gb_miniTile.Size = new System.Drawing.Size(232, 333);
+            this.gb_miniTile.TabIndex = 12;
+            this.gb_miniTile.TabStop = false;
+            this.gb_miniTile.Text = "MiniTile";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(130, 20);
+            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label9.Location = new System.Drawing.Point(131, 11);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 13);
+            this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 33;
-            this.label9.Text = "MicroTile Values";
+            this.label9.Text = "Data";
             // 
             // tb_miniTile_data_byte4
             // 
-            this.tb_miniTile_data_byte4.Location = new System.Drawing.Point(171, 66);
+            this.tb_miniTile_data_byte4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_miniTile_data_byte4.Location = new System.Drawing.Point(171, 53);
             this.tb_miniTile_data_byte4.Name = "tb_miniTile_data_byte4";
             this.tb_miniTile_data_byte4.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte4.TabIndex = 27;
             // 
             // tb_miniTile_data_byte3
             // 
-            this.tb_miniTile_data_byte3.Location = new System.Drawing.Point(131, 66);
+            this.tb_miniTile_data_byte3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_miniTile_data_byte3.Location = new System.Drawing.Point(131, 53);
             this.tb_miniTile_data_byte3.Name = "tb_miniTile_data_byte3";
             this.tb_miniTile_data_byte3.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte3.TabIndex = 26;
             // 
             // tb_miniTile_data_byte2
             // 
-            this.tb_miniTile_data_byte2.Location = new System.Drawing.Point(171, 40);
+            this.tb_miniTile_data_byte2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_miniTile_data_byte2.Location = new System.Drawing.Point(171, 27);
             this.tb_miniTile_data_byte2.Name = "tb_miniTile_data_byte2";
             this.tb_miniTile_data_byte2.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte2.TabIndex = 25;
             // 
             // tb_miniTile_data_byte1
             // 
-            this.tb_miniTile_data_byte1.Location = new System.Drawing.Point(131, 40);
+            this.tb_miniTile_data_byte1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_miniTile_data_byte1.Location = new System.Drawing.Point(131, 27);
             this.tb_miniTile_data_byte1.Name = "tb_miniTile_data_byte1";
             this.tb_miniTile_data_byte1.Size = new System.Drawing.Size(34, 20);
             this.tb_miniTile_data_byte1.TabIndex = 24;
@@ -947,72 +906,80 @@ namespace Tmos.Romhacks.UI
             // lb_miniTile
             // 
             this.lb_miniTile.FormattingEnabled = true;
-            this.lb_miniTile.Location = new System.Drawing.Point(5, 17);
+            this.lb_miniTile.Location = new System.Drawing.Point(5, 14);
             this.lb_miniTile.Margin = new System.Windows.Forms.Padding(2);
             this.lb_miniTile.Name = "lb_miniTile";
-            this.lb_miniTile.Size = new System.Drawing.Size(121, 303);
+            this.lb_miniTile.Size = new System.Drawing.Size(121, 316);
             this.lb_miniTile.TabIndex = 14;
             this.lb_miniTile.SelectedIndexChanged += new System.EventHandler(this.lb_miniTile_SelectedIndexChanged);
             // 
-            // pb_tileSection
+            // gb_tile
             // 
-            this.pb_tileSection.BackColor = System.Drawing.Color.White;
-            this.pb_tileSection.Location = new System.Drawing.Point(677, 327);
-            this.pb_tileSection.Name = "pb_tileSection";
-            this.pb_tileSection.Size = new System.Drawing.Size(250, 138);
-            this.pb_tileSection.TabIndex = 10;
-            this.pb_tileSection.TabStop = false;
-            this.pb_tileSection.Click += new System.EventHandler(this.pb_tileSection_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.tb_tile_data_byte4);
-            this.groupBox3.Controls.Add(this.tb_tile_data_byte3);
-            this.groupBox3.Controls.Add(this.tb_tile_data_byte2);
-            this.groupBox3.Controls.Add(this.tb_tile_data_byte1);
-            this.groupBox3.Controls.Add(this.lb_tile);
-            this.groupBox3.Controls.Add(this.pb_tile);
-            this.groupBox3.Location = new System.Drawing.Point(292, 480);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(284, 333);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tile";
+            this.gb_tile.Controls.Add(this.label3);
+            this.gb_tile.Controls.Add(this.label13);
+            this.gb_tile.Controls.Add(this.btn_tile_save);
+            this.gb_tile.Controls.Add(this.label8);
+            this.gb_tile.Controls.Add(this.pb_tile_Image);
+            this.gb_tile.Controls.Add(this.tb_tile_data_byte4);
+            this.gb_tile.Controls.Add(this.tb_tile_data_byte3);
+            this.gb_tile.Controls.Add(this.tb_tile_data_byte2);
+            this.gb_tile.Controls.Add(this.tb_tile_data_byte1);
+            this.gb_tile.Controls.Add(this.lb_tile);
+            this.gb_tile.Location = new System.Drawing.Point(16, 479);
+            this.gb_tile.Name = "gb_tile";
+            this.gb_tile.Size = new System.Drawing.Size(284, 333);
+            this.gb_tile.TabIndex = 9;
+            this.gb_tile.TabStop = false;
+            this.gb_tile.Text = "Tile";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(138, 19);
+            this.label8.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label8.Location = new System.Drawing.Point(137, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 32;
-            this.label8.Text = "MiniTile Values";
+            this.label8.Text = "Data";
+            // 
+            // pb_tile_Image
+            // 
+            this.pb_tile_Image.BackColor = System.Drawing.Color.Gainsboro;
+            this.pb_tile_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_tile_Image.Location = new System.Drawing.Point(132, 197);
+            this.pb_tile_Image.Name = "pb_tile_Image";
+            this.pb_tile_Image.Size = new System.Drawing.Size(132, 130);
+            this.pb_tile_Image.TabIndex = 14;
+            this.pb_tile_Image.TabStop = false;
             // 
             // tb_tile_data_byte4
             // 
-            this.tb_tile_data_byte4.Location = new System.Drawing.Point(181, 65);
+            this.tb_tile_data_byte4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_tile_data_byte4.Location = new System.Drawing.Point(180, 52);
             this.tb_tile_data_byte4.Name = "tb_tile_data_byte4";
             this.tb_tile_data_byte4.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte4.TabIndex = 31;
             // 
             // tb_tile_data_byte3
             // 
-            this.tb_tile_data_byte3.Location = new System.Drawing.Point(141, 65);
+            this.tb_tile_data_byte3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_tile_data_byte3.Location = new System.Drawing.Point(140, 52);
             this.tb_tile_data_byte3.Name = "tb_tile_data_byte3";
             this.tb_tile_data_byte3.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte3.TabIndex = 30;
             // 
             // tb_tile_data_byte2
             // 
-            this.tb_tile_data_byte2.Location = new System.Drawing.Point(181, 39);
+            this.tb_tile_data_byte2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_tile_data_byte2.Location = new System.Drawing.Point(180, 26);
             this.tb_tile_data_byte2.Name = "tb_tile_data_byte2";
             this.tb_tile_data_byte2.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte2.TabIndex = 29;
             // 
             // tb_tile_data_byte1
             // 
-            this.tb_tile_data_byte1.Location = new System.Drawing.Point(141, 39);
+            this.tb_tile_data_byte1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_tile_data_byte1.Location = new System.Drawing.Point(140, 26);
             this.tb_tile_data_byte1.Name = "tb_tile_data_byte1";
             this.tb_tile_data_byte1.Size = new System.Drawing.Size(34, 20);
             this.tb_tile_data_byte1.TabIndex = 28;
@@ -1020,27 +987,17 @@ namespace Tmos.Romhacks.UI
             // lb_tile
             // 
             this.lb_tile.FormattingEnabled = true;
-            this.lb_tile.Location = new System.Drawing.Point(5, 27);
+            this.lb_tile.Location = new System.Drawing.Point(5, 14);
             this.lb_tile.Margin = new System.Windows.Forms.Padding(2);
             this.lb_tile.Name = "lb_tile";
-            this.lb_tile.Size = new System.Drawing.Size(121, 303);
+            this.lb_tile.Size = new System.Drawing.Size(121, 316);
             this.lb_tile.TabIndex = 13;
             this.lb_tile.SelectedIndexChanged += new System.EventHandler(this.lb_tile_SelectedIndexChanged);
-            // 
-            // pb_tile
-            // 
-            this.pb_tile.BackColor = System.Drawing.Color.White;
-            this.pb_tile.Location = new System.Drawing.Point(140, 304);
-            this.pb_tile.Name = "pb_tile";
-            this.pb_tile.Size = new System.Drawing.Size(44, 26);
-            this.pb_tile.TabIndex = 11;
-            this.pb_tile.TabStop = false;
-            this.pb_tile.Visible = false;
             // 
             // lb_tileSection
             // 
             this.lb_tileSection.FormattingEnabled = true;
-            this.lb_tileSection.Location = new System.Drawing.Point(16, 41);
+            this.lb_tileSection.Location = new System.Drawing.Point(14, 28);
             this.lb_tileSection.Margin = new System.Windows.Forms.Padding(2);
             this.lb_tileSection.Name = "lb_tileSection";
             this.lb_tileSection.Size = new System.Drawing.Size(121, 433);
@@ -1053,19 +1010,20 @@ namespace Tmos.Romhacks.UI
             this.tab_encounters.Controls.Add(this.groupBox10);
             this.tab_encounters.Location = new System.Drawing.Point(4, 22);
             this.tab_encounters.Name = "tab_encounters";
-            this.tab_encounters.Size = new System.Drawing.Size(1029, 870);
+            this.tab_encounters.Size = new System.Drawing.Size(755, 845);
             this.tab_encounters.TabIndex = 3;
             this.tab_encounters.Text = "Encounters";
             this.tab_encounters.UseVisualStyleBackColor = true;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.label13);
+            this.groupBox11.Controls.Add(this.btn_encounterLineup_save);
+            this.groupBox11.Controls.Add(this.label12);
             this.groupBox11.Controls.Add(this.rtb_encounterLineups_data);
             this.groupBox11.Controls.Add(this.lb_encounterLinups);
-            this.groupBox11.Location = new System.Drawing.Point(490, 12);
+            this.groupBox11.Location = new System.Drawing.Point(13, 416);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(515, 398);
+            this.groupBox11.Size = new System.Drawing.Size(463, 398);
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Encounter Lineups";
@@ -1075,7 +1033,7 @@ namespace Tmos.Romhacks.UI
             this.rtb_encounterLineups_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_encounterLineups_data.Location = new System.Drawing.Point(140, 18);
             this.rtb_encounterLineups_data.Name = "rtb_encounterLineups_data";
-            this.rtb_encounterLineups_data.Size = new System.Drawing.Size(324, 187);
+            this.rtb_encounterLineups_data.Size = new System.Drawing.Size(319, 41);
             this.rtb_encounterLineups_data.TabIndex = 31;
             this.rtb_encounterLineups_data.Text = "";
             // 
@@ -1091,12 +1049,13 @@ namespace Tmos.Romhacks.UI
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.label12);
+            this.groupBox10.Controls.Add(this.btn_encounterGroup_save);
+            this.groupBox10.Controls.Add(this.label15);
             this.groupBox10.Controls.Add(this.rtb_encounterGroups_data);
             this.groupBox10.Controls.Add(this.lb_encounterGroups);
             this.groupBox10.Location = new System.Drawing.Point(13, 12);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(471, 398);
+            this.groupBox10.Size = new System.Drawing.Size(331, 398);
             this.groupBox10.TabIndex = 0;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Encounter Groups";
@@ -1106,7 +1065,7 @@ namespace Tmos.Romhacks.UI
             this.rtb_encounterGroups_data.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_encounterGroups_data.Location = new System.Drawing.Point(141, 18);
             this.rtb_encounterGroups_data.Name = "rtb_encounterGroups_data";
-            this.rtb_encounterGroups_data.Size = new System.Drawing.Size(324, 187);
+            this.rtb_encounterGroups_data.Size = new System.Drawing.Size(185, 41);
             this.rtb_encounterGroups_data.TabIndex = 29;
             this.rtb_encounterGroups_data.Text = "";
             // 
@@ -1119,6 +1078,46 @@ namespace Tmos.Romhacks.UI
             this.lb_encounterGroups.Size = new System.Drawing.Size(121, 368);
             this.lb_encounterGroups.TabIndex = 28;
             this.lb_encounterGroups.SelectedIndexChanged += new System.EventHandler(this.lb_encounterGroups_SelectedIndexChanged);
+            // 
+            // lbl_worldScreen_info
+            // 
+            this.lbl_worldScreen_info.AutoSize = true;
+            this.lbl_worldScreen_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_worldScreen_info.Location = new System.Drawing.Point(3, 336);
+            this.lbl_worldScreen_info.Name = "lbl_worldScreen_info";
+            this.lbl_worldScreen_info.Size = new System.Drawing.Size(60, 24);
+            this.lbl_worldScreen_info.TabIndex = 21;
+            this.lbl_worldScreen_info.Text = "Chapter:\r\nGrid Position:";
+            this.lbl_worldScreen_info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_worldScreen_relativeIndex
+            // 
+            this.lbl_worldScreen_relativeIndex.AutoSize = true;
+            this.lbl_worldScreen_relativeIndex.Location = new System.Drawing.Point(313, 323);
+            this.lbl_worldScreen_relativeIndex.Name = "lbl_worldScreen_relativeIndex";
+            this.lbl_worldScreen_relativeIndex.Size = new System.Drawing.Size(78, 13);
+            this.lbl_worldScreen_relativeIndex.TabIndex = 20;
+            this.lbl_worldScreen_relativeIndex.Text = "Relative Index:";
+            this.lbl_worldScreen_relativeIndex.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(2, 323);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(142, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Selected World Screen:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_selectedWorldScreenIndex
+            // 
+            this.tb_selectedWorldScreenIndex.Location = new System.Drawing.Point(150, 320);
+            this.tb_selectedWorldScreenIndex.Name = "tb_selectedWorldScreenIndex";
+            this.tb_selectedWorldScreenIndex.ReadOnly = true;
+            this.tb_selectedWorldScreenIndex.Size = new System.Drawing.Size(48, 20);
+            this.tb_selectedWorldScreenIndex.TabIndex = 18;
             // 
             // btn_refreshWorldScreenList
             // 
@@ -1136,10 +1135,10 @@ namespace Tmos.Romhacks.UI
             this.gb_drawOptions.Controls.Add(this.groupBox9);
             this.gb_drawOptions.Controls.Add(this.groupBox8);
             this.gb_drawOptions.Controls.Add(this.groupBox7);
-            this.gb_drawOptions.Controls.Add(this.tb_output);
+            this.gb_drawOptions.Controls.Add(this.btn_redraw_worldScreen);
             this.gb_drawOptions.Location = new System.Drawing.Point(0, 694);
             this.gb_drawOptions.Name = "gb_drawOptions";
-            this.gb_drawOptions.Size = new System.Drawing.Size(416, 248);
+            this.gb_drawOptions.Size = new System.Drawing.Size(416, 113);
             this.gb_drawOptions.TabIndex = 19;
             this.gb_drawOptions.TabStop = false;
             this.gb_drawOptions.Text = "Draw Options";
@@ -1148,21 +1147,71 @@ namespace Tmos.Romhacks.UI
             // 
             this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Controls.Add(this.nud_drawOptions_map_tileSize);
-            this.groupBox9.Controls.Add(this.btn_redraw_worldScreen);
             this.groupBox9.Location = new System.Drawing.Point(9, 19);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(301, 40);
+            this.groupBox9.Size = new System.Drawing.Size(170, 88);
             this.groupBox9.TabIndex = 23;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Map";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(27, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Size";
+            // 
+            // nud_drawOptions_map_tileSize
+            // 
+            this.nud_drawOptions_map_tileSize.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.Location = new System.Drawing.Point(39, 14);
+            this.nud_drawOptions_map_tileSize.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.Name = "nud_drawOptions_map_tileSize";
+            this.nud_drawOptions_map_tileSize.Size = new System.Drawing.Size(43, 20);
+            this.nud_drawOptions_map_tileSize.TabIndex = 4;
+            this.nud_drawOptions_map_tileSize.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nud_drawOptions_map_tileSize.ValueChanged += new System.EventHandler(this.nud_drawOptions_map_tileSize_ValueChanged);
+            // 
+            // btn_redraw_worldScreen
+            // 
+            this.btn_redraw_worldScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_redraw_worldScreen.Location = new System.Drawing.Point(296, 18);
+            this.btn_redraw_worldScreen.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_redraw_worldScreen.Name = "btn_redraw_worldScreen";
+            this.btn_redraw_worldScreen.Size = new System.Drawing.Size(63, 20);
+            this.btn_redraw_worldScreen.TabIndex = 20;
+            this.btn_redraw_worldScreen.Text = "Redraw";
+            this.btn_redraw_worldScreen.UseVisualStyleBackColor = true;
+            this.btn_redraw_worldScreen.Click += new System.EventHandler(this.btn_redraw_worldScreen_Click);
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.cb_drawOptions_worldScreen_showInfo);
             this.groupBox8.Controls.Add(this.cb_drawOptions_worldScreen_showBorders);
-            this.groupBox8.Location = new System.Drawing.Point(9, 59);
+            this.groupBox8.Controls.Add(this.label4);
+            this.groupBox8.Controls.Add(this.nud_drawOptions_worldScreen_showTileImages);
+            this.groupBox8.Location = new System.Drawing.Point(174, 18);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(301, 65);
+            this.groupBox8.Size = new System.Drawing.Size(98, 89);
             this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "WorldScreen";
@@ -1172,7 +1221,7 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreen_showInfo.AutoSize = true;
             this.cb_drawOptions_worldScreen_showInfo.Checked = true;
             this.cb_drawOptions_worldScreen_showInfo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_drawOptions_worldScreen_showInfo.Location = new System.Drawing.Point(6, 19);
+            this.cb_drawOptions_worldScreen_showInfo.Location = new System.Drawing.Point(7, 19);
             this.cb_drawOptions_worldScreen_showInfo.Name = "cb_drawOptions_worldScreen_showInfo";
             this.cb_drawOptions_worldScreen_showInfo.Size = new System.Drawing.Size(74, 17);
             this.cb_drawOptions_worldScreen_showInfo.TabIndex = 0;
@@ -1184,7 +1233,7 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreen_showBorders.AutoSize = true;
             this.cb_drawOptions_worldScreen_showBorders.Checked = true;
             this.cb_drawOptions_worldScreen_showBorders.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_drawOptions_worldScreen_showBorders.Location = new System.Drawing.Point(5, 38);
+            this.cb_drawOptions_worldScreen_showBorders.Location = new System.Drawing.Point(7, 35);
             this.cb_drawOptions_worldScreen_showBorders.Name = "cb_drawOptions_worldScreen_showBorders";
             this.cb_drawOptions_worldScreen_showBorders.Size = new System.Drawing.Size(92, 17);
             this.cb_drawOptions_worldScreen_showBorders.TabIndex = 1;
@@ -1196,11 +1245,9 @@ namespace Tmos.Romhacks.UI
             this.groupBox7.Controls.Add(this.cb_drawOptions_worldScreenTile_showCollision);
             this.groupBox7.Controls.Add(this.cb_drawOptions_worldScreenTile_showImage);
             this.groupBox7.Controls.Add(this.cb_drawOptions_worldScreenTile_showInfo);
-            this.groupBox7.Controls.Add(this.nud_drawOptions_worldScreen_showTileImages);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(6, 130);
+            this.groupBox7.Location = new System.Drawing.Point(273, 18);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(404, 51);
+            this.groupBox7.Size = new System.Drawing.Size(103, 70);
             this.groupBox7.TabIndex = 21;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Tile";
@@ -1210,7 +1257,7 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreenTile_showCollision.AutoSize = true;
             this.cb_drawOptions_worldScreenTile_showCollision.Checked = true;
             this.cb_drawOptions_worldScreenTile_showCollision.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_drawOptions_worldScreenTile_showCollision.Location = new System.Drawing.Point(177, 19);
+            this.cb_drawOptions_worldScreenTile_showCollision.Location = new System.Drawing.Point(6, 42);
             this.cb_drawOptions_worldScreenTile_showCollision.Name = "cb_drawOptions_worldScreenTile_showCollision";
             this.cb_drawOptions_worldScreenTile_showCollision.Size = new System.Drawing.Size(94, 17);
             this.cb_drawOptions_worldScreenTile_showCollision.TabIndex = 3;
@@ -1222,7 +1269,7 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreenTile_showImage.AutoSize = true;
             this.cb_drawOptions_worldScreenTile_showImage.Checked = true;
             this.cb_drawOptions_worldScreenTile_showImage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_drawOptions_worldScreenTile_showImage.Location = new System.Drawing.Point(86, 19);
+            this.cb_drawOptions_worldScreenTile_showImage.Location = new System.Drawing.Point(6, 27);
             this.cb_drawOptions_worldScreenTile_showImage.Name = "cb_drawOptions_worldScreenTile_showImage";
             this.cb_drawOptions_worldScreenTile_showImage.Size = new System.Drawing.Size(85, 17);
             this.cb_drawOptions_worldScreenTile_showImage.TabIndex = 2;
@@ -1234,7 +1281,7 @@ namespace Tmos.Romhacks.UI
             this.cb_drawOptions_worldScreenTile_showInfo.AutoSize = true;
             this.cb_drawOptions_worldScreenTile_showInfo.Checked = true;
             this.cb_drawOptions_worldScreenTile_showInfo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_drawOptions_worldScreenTile_showInfo.Location = new System.Drawing.Point(6, 19);
+            this.cb_drawOptions_worldScreenTile_showInfo.Location = new System.Drawing.Point(6, 12);
             this.cb_drawOptions_worldScreenTile_showInfo.Name = "cb_drawOptions_worldScreenTile_showInfo";
             this.cb_drawOptions_worldScreenTile_showInfo.Size = new System.Drawing.Size(74, 17);
             this.cb_drawOptions_worldScreenTile_showInfo.TabIndex = 1;
@@ -1248,7 +1295,7 @@ namespace Tmos.Romhacks.UI
             0,
             0,
             0});
-            this.nud_drawOptions_worldScreen_showTileImages.Location = new System.Drawing.Point(284, 24);
+            this.nud_drawOptions_worldScreen_showTileImages.Location = new System.Drawing.Point(39, 56);
             this.nud_drawOptions_worldScreen_showTileImages.Maximum = new decimal(new int[] {
             150,
             0,
@@ -1260,7 +1307,7 @@ namespace Tmos.Romhacks.UI
             0,
             0});
             this.nud_drawOptions_worldScreen_showTileImages.Name = "nud_drawOptions_worldScreen_showTileImages";
-            this.nud_drawOptions_worldScreen_showTileImages.Size = new System.Drawing.Size(120, 20);
+            this.nud_drawOptions_worldScreen_showTileImages.Size = new System.Drawing.Size(43, 20);
             this.nud_drawOptions_worldScreen_showTileImages.TabIndex = 3;
             this.nud_drawOptions_worldScreen_showTileImages.Value = new decimal(new int[] {
             80,
@@ -1272,31 +1319,20 @@ namespace Tmos.Romhacks.UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(274, 16);
+            this.label4.Location = new System.Drawing.Point(6, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Size";
             // 
-            // btn_redraw_worldScreen
-            // 
-            this.btn_redraw_worldScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_redraw_worldScreen.Location = new System.Drawing.Point(167, -10);
-            this.btn_redraw_worldScreen.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_redraw_worldScreen.Name = "btn_redraw_worldScreen";
-            this.btn_redraw_worldScreen.Size = new System.Drawing.Size(63, 20);
-            this.btn_redraw_worldScreen.TabIndex = 20;
-            this.btn_redraw_worldScreen.Text = "Redraw";
-            this.btn_redraw_worldScreen.UseVisualStyleBackColor = true;
-            this.btn_redraw_worldScreen.Click += new System.EventHandler(this.btn_redraw_worldScreen_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.worldScreenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1510, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1177, 24);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -1344,6 +1380,37 @@ namespace Tmos.Romhacks.UI
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // worldScreenToolStripMenuItem
+            // 
+            this.worldScreenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_shuffleWSTileSections,
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem,
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem});
+            this.worldScreenToolStripMenuItem.Name = "worldScreenToolStripMenuItem";
+            this.worldScreenToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.worldScreenToolStripMenuItem.Text = "WorldScreen";
+            // 
+            // menu_shuffleWSTileSections
+            // 
+            this.menu_shuffleWSTileSections.Name = "menu_shuffleWSTileSections";
+            this.menu_shuffleWSTileSections.Size = new System.Drawing.Size(338, 22);
+            this.menu_shuffleWSTileSections.Text = "Shuffle TileSections";
+            this.menu_shuffleWSTileSections.Click += new System.EventHandler(this.menu_shuffleWSTileSections_Click);
+            // 
+            // shuffleTileSectionsKeepCompatableToolStripMenuItem
+            // 
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem.Name = "shuffleTileSectionsKeepCompatableToolStripMenuItem";
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem.Size = new System.Drawing.Size(338, 22);
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem.Text = "Shuffle TileSections Keep Compatable";
+            this.shuffleTileSectionsKeepCompatableToolStripMenuItem.Click += new System.EventHandler(this.shuffleTileSectionsKeepCompatableToolStripMenuItem_Click);
+            // 
+            // shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem
+            // 
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem.Name = "shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem";
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem.Size = new System.Drawing.Size(338, 22);
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem.Text = "Shuffle TileSections Keep Compatable Multiscreen";
+            this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem.Click += new System.EventHandler(this.shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem_Click);
+            // 
             // btn_loadDefaultRom
             // 
             this.btn_loadDefaultRom.Location = new System.Drawing.Point(12, 27);
@@ -1354,60 +1421,230 @@ namespace Tmos.Romhacks.UI
             this.btn_loadDefaultRom.UseVisualStyleBackColor = true;
             this.btn_loadDefaultRom.Click += new System.EventHandler(this.btn_loadDefaultRom_Click);
             // 
-            // nud_drawOptions_map_tileSize
+            // col_name
             // 
-            this.nud_drawOptions_map_tileSize.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.nud_drawOptions_map_tileSize.Location = new System.Drawing.Point(39, 14);
-            this.nud_drawOptions_map_tileSize.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nud_drawOptions_map_tileSize.Name = "nud_drawOptions_map_tileSize";
-            this.nud_drawOptions_map_tileSize.Size = new System.Drawing.Size(120, 20);
-            this.nud_drawOptions_map_tileSize.TabIndex = 4;
-            this.nud_drawOptions_map_tileSize.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            this.nud_drawOptions_map_tileSize.ValueChanged += new System.EventHandler(this.nud_drawOptions_map_tileSize_ValueChanged);
+            this.col_name.Text = "";
+            this.col_name.Width = 125;
             // 
-            // label11
+            // col_value
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 13);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Size";
+            this.col_value.Text = "";
+            this.col_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // col_hint
+            // 
+            this.col_hint.Text = "";
+            this.col_hint.Width = 300;
+            // 
+            // lv_variables
+            // 
+            this.lv_variables.BackColor = System.Drawing.Color.LightGray;
+            this.lv_variables.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lv_variables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.col_name,
+            this.col_value,
+            this.col_hint});
+            this.lv_variables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_variables.FullRowSelect = true;
+            this.lv_variables.GridLines = true;
+            listViewGroup6.Header = "ListViewGroup";
+            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup6.Name = "listViewGroup1";
+            this.lv_variables.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup6});
+            this.lv_variables.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lv_variables.HideSelection = false;
+            listViewItem81.IndentCount = 1;
+            listViewItem81.UseItemStyleForSubItems = false;
+            listViewItem82.UseItemStyleForSubItems = false;
+            listViewItem83.UseItemStyleForSubItems = false;
+            listViewItem84.UseItemStyleForSubItems = false;
+            listViewItem85.UseItemStyleForSubItems = false;
+            listViewItem86.UseItemStyleForSubItems = false;
+            listViewItem87.UseItemStyleForSubItems = false;
+            listViewItem88.UseItemStyleForSubItems = false;
+            listViewItem89.UseItemStyleForSubItems = false;
+            listViewItem90.UseItemStyleForSubItems = false;
+            listViewItem91.UseItemStyleForSubItems = false;
+            listViewItem92.UseItemStyleForSubItems = false;
+            listViewItem93.UseItemStyleForSubItems = false;
+            listViewItem94.UseItemStyleForSubItems = false;
+            listViewItem95.UseItemStyleForSubItems = false;
+            listViewItem96.UseItemStyleForSubItems = false;
+            this.lv_variables.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem81,
+            listViewItem82,
+            listViewItem83,
+            listViewItem84,
+            listViewItem85,
+            listViewItem86,
+            listViewItem87,
+            listViewItem88,
+            listViewItem89,
+            listViewItem90,
+            listViewItem91,
+            listViewItem92,
+            listViewItem93,
+            listViewItem94,
+            listViewItem95,
+            listViewItem96});
+            this.lv_variables.Location = new System.Drawing.Point(6, 381);
+            this.lv_variables.MultiSelect = false;
+            this.lv_variables.Name = "lv_variables";
+            this.lv_variables.Scrollable = false;
+            this.lv_variables.ShowGroups = false;
+            this.lv_variables.Size = new System.Drawing.Size(420, 307);
+            this.lv_variables.TabIndex = 18;
+            this.lv_variables.UseCompatibleStateImageBehavior = false;
+            this.lv_variables.View = System.Windows.Forms.View.Details;
+            // 
+            // timer_shuffle
+            // 
+            this.timer_shuffle.Interval = 10000;
+            this.timer_shuffle.Tick += new System.EventHandler(this.timer_shuffle_Tick);
+            // 
+            // cb_shuffling
+            // 
+            this.cb_shuffling.AutoSize = true;
+            this.cb_shuffling.Location = new System.Drawing.Point(140, 7);
+            this.cb_shuffling.Name = "cb_shuffling";
+            this.cb_shuffling.Size = new System.Drawing.Size(67, 17);
+            this.cb_shuffling.TabIndex = 23;
+            this.cb_shuffling.Text = "Shuffling";
+            this.cb_shuffling.UseVisualStyleBackColor = true;
+            this.cb_shuffling.CheckedChanged += new System.EventHandler(this.cb_shuffling_CheckedChanged);
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label15.Location = new System.Drawing.Point(141, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(149, 48);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Byte 0: WorldScreen\r\nByte 1: MonsterGroup\r\nByte 2: Unknown";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(141, 208);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label12.Location = new System.Drawing.Point(140, 62);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(110, 39);
-            this.label12.TabIndex = 30;
-            this.label12.Text = "Byte 0: WorldScreen\r\nByte 1: MonsterGroup\r\nByte 2: Unknown\r\n";
+            this.label12.Size = new System.Drawing.Size(113, 48);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Byte 0: StartByte\r\nBytes 1-7: Enemy Slots\r\n\r\n";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btn_encounterGroup_save
+            // 
+            this.btn_encounterGroup_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_encounterGroup_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_encounterGroup_save.Location = new System.Drawing.Point(237, 59);
+            this.btn_encounterGroup_save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_encounterGroup_save.Name = "btn_encounterGroup_save";
+            this.btn_encounterGroup_save.Size = new System.Drawing.Size(89, 22);
+            this.btn_encounterGroup_save.TabIndex = 32;
+            this.btn_encounterGroup_save.Text = "Save EncounterGroup";
+            this.btn_encounterGroup_save.UseVisualStyleBackColor = true;
+            this.btn_encounterGroup_save.Click += new System.EventHandler(this.btn_encounterGroup_save_Click);
+            // 
+            // btn_encounterLineup_save
+            // 
+            this.btn_encounterLineup_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_encounterLineup_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_encounterLineup_save.Location = new System.Drawing.Point(364, 59);
+            this.btn_encounterLineup_save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_encounterLineup_save.Name = "btn_encounterLineup_save";
+            this.btn_encounterLineup_save.Size = new System.Drawing.Size(95, 20);
+            this.btn_encounterLineup_save.TabIndex = 34;
+            this.btn_encounterLineup_save.Text = "Save EncounterLineup";
+            this.btn_encounterLineup_save.UseVisualStyleBackColor = true;
+            this.btn_encounterLineup_save.Click += new System.EventHandler(this.btn_encounterLineup_save_Click);
+            // 
+            // btn_tile_save
+            // 
+            this.btn_tile_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_tile_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_tile_save.Location = new System.Drawing.Point(139, 77);
+            this.btn_tile_save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_tile_save.Name = "btn_tile_save";
+            this.btn_tile_save.Size = new System.Drawing.Size(75, 20);
+            this.btn_tile_save.TabIndex = 33;
+            this.btn_tile_save.Text = "Save Tile";
+            this.btn_tile_save.UseVisualStyleBackColor = true;
+            this.btn_tile_save.Click += new System.EventHandler(this.btn_tile_save_Click);
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(140, 208);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label13.Location = new System.Drawing.Point(138, 99);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(137, 39);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "Byte 0: StartByte\r\nBytes 1-7: Enemy Slots\r\n";
+            this.label13.Size = new System.Drawing.Size(149, 48);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Byte 0: TopLeft MiniTile\r\nByte 1: TopRight MiniTile\r\nByte 2: BottomLeft MiniTile\r" +
+    "\nByte 3: BottomRight MiniTile\r\n";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btn_miniTile_save
+            // 
+            this.btn_miniTile_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_miniTile_save.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_miniTile_save.Location = new System.Drawing.Point(130, 78);
+            this.btn_miniTile_save.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_miniTile_save.Name = "btn_miniTile_save";
+            this.btn_miniTile_save.Size = new System.Drawing.Size(75, 20);
+            this.btn_miniTile_save.TabIndex = 34;
+            this.btn_miniTile_save.Text = "Save MiniTile";
+            this.btn_miniTile_save.UseVisualStyleBackColor = true;
+            this.btn_miniTile_save.Click += new System.EventHandler(this.btn_miniTile_save_Click);
+            // 
+            // gb_tileSection
+            // 
+            this.gb_tileSection.Controls.Add(this.label7);
+            this.gb_tileSection.Controls.Add(this.lb_tileSection);
+            this.gb_tileSection.Controls.Add(this.label6);
+            this.gb_tileSection.Controls.Add(this.btn_tileSection_data_save);
+            this.gb_tileSection.Controls.Add(this.lv_tileSection_values);
+            this.gb_tileSection.Controls.Add(this.rtb_tileSection_data);
+            this.gb_tileSection.Location = new System.Drawing.Point(3, 3);
+            this.gb_tileSection.Name = "gb_tileSection";
+            this.gb_tileSection.Size = new System.Drawing.Size(633, 470);
+            this.gb_tileSection.TabIndex = 22;
+            this.gb_tileSection.TabStop = false;
+            this.gb_tileSection.Text = "TileSection";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label7.Location = new System.Drawing.Point(140, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Data";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(131, 181);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Image";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1510, 942);
+            this.ClientSize = new System.Drawing.Size(1177, 882);
+            this.Controls.Add(this.cb_shuffling);
+            this.Controls.Add(this.lbl_worldScreen_relativeIndex);
+            this.Controls.Add(this.lbl_worldScreen_info);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.tb_selectedWorldScreenIndex);
+            this.Controls.Add(this.tb_output);
             this.Controls.Add(this.btn_loadDefaultRom);
             this.Controls.Add(this.gb_drawOptions);
             this.Controls.Add(this.btn_refreshWorldScreenList);
@@ -1425,31 +1662,27 @@ namespace Tmos.Romhacks.UI
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tab_map.ResumeLayout(false);
-            this.tab_map.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_worldMap)).EndInit();
             this.tab_worldScreen.ResumeLayout(false);
             this.tab_worldScreen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_worldScreen)).EndInit();
             this.tab_tileSection.ResumeLayout(false);
-            this.tab_tileSection.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.gb_microTile.ResumeLayout(false);
+            this.gb_microTile.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.gb_miniTile.ResumeLayout(false);
+            this.gb_miniTile.PerformLayout();
+            this.gb_tile.ResumeLayout(false);
+            this.gb_tile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_tile_Image)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_tileSection)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_tile)).EndInit();
             this.tab_encounters.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.gb_drawOptions.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1458,7 +1691,8 @@ namespace Tmos.Romhacks.UI
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_drawOptions_map_tileSize)).EndInit();
+            this.gb_tileSection.ResumeLayout(false);
+            this.gb_tileSection.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1503,24 +1737,17 @@ namespace Tmos.Romhacks.UI
         private System.Windows.Forms.CheckBox cb_link_back;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_testDirections;
-        private System.Windows.Forms.ListView lv_variables;
-        private System.Windows.Forms.ColumnHeader col_name;
-        private System.Windows.Forms.ColumnHeader col_value;
-        private System.Windows.Forms.ColumnHeader col_hint;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tab_map;
 		private System.Windows.Forms.TabPage tab_worldScreen;
 		private System.Windows.Forms.PictureBox pb_worldMap;
 		private System.Windows.Forms.PictureBox pb_worldScreen;
 		private System.Windows.Forms.TabPage tab_tileSection;
-		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox gb_tile;
 		private System.Windows.Forms.ListBox lb_tileSection;
-		private System.Windows.Forms.PictureBox pb_tileSection;
-		private System.Windows.Forms.PictureBox pb_tile;
-		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.GroupBox gb_miniTile;
 		private System.Windows.Forms.ListBox lb_tile;
 		private System.Windows.Forms.ListBox lb_miniTile;
-		private System.Windows.Forms.RichTextBox tb_tileSection_selectedTileSection_data;
 		private System.Windows.Forms.RichTextBox tb_worldScreen_selectedWorldScreen_data;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox tb_worldScreenTile;
@@ -1553,7 +1780,6 @@ namespace Tmos.Romhacks.UI
         private RichTextBox rtb_tileSection_data;
         private Label label6;
         private Button btn_refreshWorldScreenList;
-        private Label label7;
         private TextBox tb_miniTile_data_byte4;
         private TextBox tb_miniTile_data_byte3;
         private TextBox tb_miniTile_data_byte2;
@@ -1563,7 +1789,7 @@ namespace Tmos.Romhacks.UI
         private TextBox tb_tile_data_byte2;
         private TextBox tb_tile_data_byte1;
         private Button btn_loadDefaultRom;
-        private GroupBox groupBox6;
+        private GroupBox gb_microTile;
         private Label label10;
         private Label label9;
         private Label label8;
@@ -1573,11 +1799,36 @@ namespace Tmos.Romhacks.UI
         private GroupBox groupBox10;
         private RichTextBox rtb_encounterGroups_data;
         private ListBox lb_encounterGroups;
-        private Label label3;
         private Label label11;
         private NumericUpDown nud_drawOptions_map_tileSize;
-        private Label label13;
+        private Label lbl_worldScreenTileDataOffsets;
+        private Label btnlbl_worldSection_topTiles_view;
+        private ColumnHeader col_name;
+        private ColumnHeader col_value;
+        private ColumnHeader col_hint;
+        private ListView lv_variables;
+        private Label btnlbl_worldSection_bottomTiles_view;
+        private Label lbl_worldScreen_relativeIndex;
+        private Label label14;
+        private TextBox tb_selectedWorldScreenIndex;
+        private Label lbl_worldScreen_info;
+        private Button btn_worldScreen_save;
+        private ToolStripMenuItem worldScreenToolStripMenuItem;
+        private ToolStripMenuItem menu_shuffleWSTileSections;
+        private ToolStripMenuItem shuffleTileSectionsKeepCompatableToolStripMenuItem;
+        private ToolStripMenuItem shuffleTileSectionsKeepCompatableMultiscreenToolStripMenuItem;
+        private Timer timer_shuffle;
+        private CheckBox cb_shuffling;
         private Label label12;
+        private Label label15;
+        private Button btn_encounterLineup_save;
+        private Button btn_encounterGroup_save;
+        private Label label13;
+        private Button btn_tile_save;
+        private Button btn_miniTile_save;
+        private GroupBox gb_tileSection;
+        private Label label7;
+        private Label label3;
     }
 }
 

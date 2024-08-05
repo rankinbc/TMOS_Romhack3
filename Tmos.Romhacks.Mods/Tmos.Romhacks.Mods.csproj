@@ -65,6 +65,7 @@
     <Compile Include="Utility\ByteDisplayUtility.cs" />
     <Compile Include="Utility\ChapterUtility.cs" />
     <Compile Include="Utility\RomObjectDisplayUtility.cs" />
+    <Compile Include="Utility\TileDataUtility.cs" />
     <Compile Include="Utility\WSIndexUtility.cs" />
   </ItemGroup>
   <ItemGroup>

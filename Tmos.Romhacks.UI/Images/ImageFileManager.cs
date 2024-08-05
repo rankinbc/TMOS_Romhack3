@@ -10,11 +10,11 @@ namespace Tmos.Romhacks.UI.Images
     public static class ImageFileManager
     {
         const string TileImagesPath = "Images/TileImages/{0}";
-        public static string GetTileImagePath(byte tileValue) 
+        public static string GetTileImagePath(int tileValue) 
         {
             return String.Format(TileImagesPath, GetTileFileName(tileValue));
         }
-        private static string GetTileFileName(byte tileValue)
+        private static string GetTileFileName(int tileValue)
         {
             switch (tileValue)
             {

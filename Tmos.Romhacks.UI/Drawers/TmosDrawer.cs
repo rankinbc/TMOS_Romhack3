@@ -169,7 +169,7 @@ namespace Tmos.Romhacks.UI.Drawers
                     g.DrawRectangle(Pens.Black, rect.X, rect.Y, rect.Width, rect.Height);
 
                     
-                    Image image = GetCachedTileImage(tile.Value);
+                    Image image = GetCachedTileImage(tile.WSTileValue);
                     g.DrawImage(image, tileRect);
 
 
@@ -180,6 +180,7 @@ namespace Tmos.Romhacks.UI.Drawers
 
         public void DrawWorldScreen(PictureBox pbSurface, TmosModWorldScreen tmosWorldScreen, TmosWorldScreenDrawOptions options = null, int? WSIndex = null)
         {
+            if (tmosWorldScreen == null) { return; }
             Tile[,] grid = tmosWorldScreen.GetTileGrid();
 
             Font font = new Font("Arial", 7);
@@ -192,7 +193,7 @@ namespace Tmos.Romhacks.UI.Drawers
                 {
                     for (int x = 0; x < 8; x++)
                     {
-                        byte gridTileValue = grid[x, y].Value;
+                        byte gridTileValue = grid[x, y].WSTileValue;
                         bool tileIsTopSection = y < 4; //else isBottomSection
 
                         Tile tile = TileDefinitions.GetTile(tmosWorldScreen.DataPointer, gridTileValue, tileIsTopSection);
@@ -219,11 +220,11 @@ namespace Tmos.Romhacks.UI.Drawers
             Brush groundBrush = new SolidBrush(groundColor);
             g.FillRectangle(groundBrush, rect);
 
-            if (tmosTile.Value != null)
+            if (tmosTile.WSTileValue != null)
             {
                 if (options.ShowImage)
                 {
-                    Image image = GetCachedTileImage(tmosTile.Value);
+                    Image image = GetCachedTileImage(tmosTile.WSTileValue);
                     g.DrawImage(image, rect);
                 }
             }
@@ -237,7 +238,7 @@ namespace Tmos.Romhacks.UI.Drawers
 
             if (options.ShowInfo)
             {
-                g.DrawString(tmosTile.Value.ToString("X2"), BaseFont, BaseBrush, location.X , location.Y );
+                g.DrawString(tmosTile.WSTileValue.ToString("X2"), BaseFont, BaseBrush, location.X , location.Y );
             }
         }
 

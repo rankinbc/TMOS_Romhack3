@@ -11,9 +11,10 @@ namespace Tmos.Romhacks.Core.TmosRomInfo
         WorldScreenDataOffset,
         WorldScreen,
         WorldScreenTile,
-        Tile,
         TileSection,
+        Tile,
         MiniTile,
+        // MicroTile, TODO
         RandomEncounterGroup,
         RandomEncounterLineup,
     }

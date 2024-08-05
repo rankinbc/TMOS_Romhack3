@@ -116,36 +116,12 @@ namespace Tmos.Romhacks.Mods
         }
         public void LoadWorldScreenTileGrid(TmosModWorldScreen tmosWorldScreen)
         {
-            (int topTileDataOffset, int bottomTileDataOffset) = GetTileDataOffsets(tmosWorldScreen.DataPointer);
+            int topTileDataOffset = TileDataUtility.GetTopTileSectionTileDataOffset(tmosWorldScreen.DataPointer);
             tmosWorldScreen.TileSectionTop = _romData.LoadTileSection(tmosWorldScreen.TopTiles, topTileDataOffset);
+
+            int bottomTileDataOffset = TileDataUtility.GetBottomTileSectionTileDataOffset(tmosWorldScreen.DataPointer);
             tmosWorldScreen.TileSectionBottom = _romData.LoadTileSection(tmosWorldScreen.BottomTiles, bottomTileDataOffset);
         }
-
-    
-        public static (int topTileDataOffset, int bottomTileDataOffset) GetTileDataOffsets(byte dataPointer)
-        {
-            int bottomTileDataOffset = 0;
-            int topTileDataOffset = 0;
-            if (dataPointer >= 0x40 && dataPointer < 0x8f)
-            {
-                bottomTileDataOffset = 0x2000; //0x2000 = 8192     8192 / 32 = 256  Maybe this dataoffset just increases index 0 by 256 TileSections?
-                topTileDataOffset = 0x0000;
-            }
-
-            else if (dataPointer >= 0x8f && dataPointer < 0xA0)
-            {
-                bottomTileDataOffset = 0x0000;
-                topTileDataOffset = 0x2000;
-            }
-            else if (dataPointer >= 0xC0)
-            {
-                topTileDataOffset = 0x2000;
-                bottomTileDataOffset = 0x2000;
-            }
-            return (topTileDataOffset, bottomTileDataOffset);
-        }
-
-      
 
         public TmosModWorldScreen[] GetTmosModWorldScreens(bool reload = false)
         {
@@ -161,20 +137,29 @@ namespace Tmos.Romhacks.Mods
 
         public TmosModWorldScreen GetTmosModWorldScreen(int absoluteWorldScreenIndex)
         {
-            TmosModWorldScreen ws = _worldScreens[absoluteWorldScreenIndex];
-            int chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex).ChapterNumber;
-            LoadWorldScreenContent(ws, chapter);
-            LoadWorldScreenTileGrid(ws);
-
-            return ws;
+            if (_worldScreens != null && _worldScreens.Length > 0)
+            {
+                TmosModWorldScreen ws = _worldScreens[absoluteWorldScreenIndex];
+                int chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex).ChapterNumber;
+                LoadWorldScreenContent(ws, chapter);
+                LoadWorldScreenTileGrid(ws);
+                return ws;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public void UpdateTmosModWorldScreen(int worldScreenIndex, TmosModWorldScreen tmosModWorldScreen)
+        public void UpdateTmosModWorldScreen(int absoluteWorldScreenIndex, TmosModWorldScreen tmosModWorldScreen)
         {
             LoadWorldScreenContent(tmosModWorldScreen);
             LoadWorldScreenTileGrid(tmosModWorldScreen);
 
-            _worldScreens[worldScreenIndex] = tmosModWorldScreen;
+            //Update _romData here or wait until Save?
+            _romData.SaveWorldScreen(absoluteWorldScreenIndex, new TmosWorldScreen(tmosModWorldScreen.GetBytes()));
+            RefreshWorldScreen(tmosModWorldScreen);
+          //  _worldScreens[worldScreenIndex] = ws;
         }
 
         #region Retrieving WorldScreens
@@ -263,32 +248,14 @@ namespace Tmos.Romhacks.Mods
         public int GetWSTileSectionTopAbsoluteIndex(int worldScreenAbsoluteIndex)
         {
             TmosModWorldScreen ws = _worldScreens[worldScreenAbsoluteIndex];
-            return GetTmosModTileSectionAbsoluteIndex(ws.TopTiles, ws.DataPointer, true);
+            return TileDataUtility.GetTmosModTileSectionAbsoluteIndex(ws.TopTiles, ws.DataPointer, true);
         }
         public int GetWSTileSectionBottomAbsoluteIndex(int worldScreenAbsoluteIndex)
         {
             TmosModWorldScreen ws = _worldScreens[worldScreenAbsoluteIndex];
-            return GetTmosModTileSectionAbsoluteIndex(ws.BottomTiles, ws.DataPointer, false);
+            return TileDataUtility.GetTmosModTileSectionAbsoluteIndex(ws.BottomTiles, ws.DataPointer, false);
         }
 
-        public int GetTmosModTileSectionAbsoluteIndex(int tileSectionRelativeIndex, byte dataPointer, bool isTopTileSection)
-        {
-            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.TileSection);
-            (int topTileDataOffset, int bottomTileDataOffset) = GetTileDataOffsets(dataPointer);
-
-            int startAbsoluteIndex = 0;
-            if (isTopTileSection)
-            {
-                int objectOffsetFromBeginningOfArray = (def.ObjectSize * tileSectionRelativeIndex) + topTileDataOffset;
-                startAbsoluteIndex = objectOffsetFromBeginningOfArray / def.ObjectSize;
-            }
-            else
-            {
-                int objectOffsetFromBeginningOfArray = (def.ObjectSize * tileSectionRelativeIndex) + bottomTileDataOffset;
-                startAbsoluteIndex = objectOffsetFromBeginningOfArray / def.ObjectSize;
-            }
-            return startAbsoluteIndex;
-        }
         public void UpdateTmosModTileSection(int tileSectionIndex, byte[] tileSectionData)
         {
             TileSections[tileSectionIndex].UpdateBytes(tileSectionData);
@@ -316,6 +283,7 @@ namespace Tmos.Romhacks.Mods
             for (int i = 0; i < Tiles.Length; i++)
             {
                 TmosTile tmosTile = tmosRom.LoadTile(i);
+
                 Tiles[i] = tmosTile;
             }
         }
@@ -372,8 +340,29 @@ namespace Tmos.Romhacks.Mods
 
         #endregion TmosRandomEncounterLineups
 
+        #region Conversion to TmosRom
+
+        public void SaveDataToRom(string filePath)
+        {
+            for (int i = 0; i < TmosRomDataObjectDefinitions.RomInfo_WorldScreen.Count; i++)
+            {
+                byte[] worldScreenData = _worldScreens[i].GetBytes();
+                _romData.SaveWorldScreen(i, new TmosWorldScreen(worldScreenData));
+            }
+
+            _romData.WriteRom(filePath);
+
+            //SaveWorldScreenTilesToRom(_romData);
+            //SaveTileSectionsToRom(_romData);
+            //SaveWorldScreensToRom(_romData);
+            //SaveTilesToRom(_romData);
+            //SaveMiniTilesToRom(_romData);
+            //SaveRandomEncounterGroupsToRom(_romData);
+            //SaveRandomEncounterLineupsToRom(_romData);
+        }
+
+        #endregion Conversion to TmosRom
 
 
-    
     }
 }

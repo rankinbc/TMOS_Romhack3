@@ -22,6 +22,10 @@ namespace TMOS_Romhack.DataViewer
         public TmosModWorldScreen[,] _worldScreens { get; set; }
         public int[,] _worldScreenIds { get; set; }
 
+
+        public TmosModWorldScreen[,] _trimmedWorldScreens { get; private set; }
+        public int[,] _trimmedWorldScreenIds { get; private set; }
+
         int currentFarthestLeftTilePosition;
         int currentFarthestRightTilePosition;
         int currentFarthestTopTilePosition;
@@ -51,11 +55,11 @@ namespace TMOS_Romhack.DataViewer
             TmosModWorldScreen rootWorldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
             TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
 
-            
-
             _mapIndexUsed[absoluteWorldScreenIndex] = true;
 
             CrawlWorldMap(absoluteWorldScreenIndex, x, y, chapter.ChapterNumber);
+
+            TrimArrays();
         }
 
         //Only reason chapter is passed is to avoid loading chapter from ws every time
@@ -136,42 +140,110 @@ namespace TMOS_Romhack.DataViewer
 
         }
 
+        private void TrimArrays()
+        {
+            _trimmedWorldScreenIds = TrimArray(_worldScreenIds);
+            _trimmedWorldScreens = TrimArray(_worldScreens);
+        }
+
         public Dictionary<int, Rectangle> DrawWorldMapGrid(int tileSizeX, int tileSizeY)
         {
             Dictionary<int, Rectangle> rects = new Dictionary<int, Rectangle>();
-            int x = currentFarthestLeftTilePosition;
-            int y = currentFarthestBottomTilePosition;
+            int height = _trimmedWorldScreens.GetLength(1);
 
-            int grid_position_x = 0;
-
-
-            for (x = currentFarthestLeftTilePosition; x <= currentFarthestRightTilePosition; x++, grid_position_x++)
+            for (int x = 0; x < _trimmedWorldScreens.GetLength(0); x++)
             {
-                int grid_position_y = Math.Abs(currentFarthestTopTilePosition - currentFarthestBottomTilePosition);
-
-                for (y = currentFarthestBottomTilePosition; y <= currentFarthestTopTilePosition; y++, grid_position_y--)
+                for (int y = 0; y < height; y++)
                 {
-
-                    if (_worldScreens[x, y] != null)
+                    if (_trimmedWorldScreens[x, y] != null)
                     {
-                        rects.Add(_worldScreenIds[x, y], new Rectangle(grid_position_x * tileSizeX, grid_position_y * tileSizeY, tileSizeX, tileSizeY));
+                        // Flip the y-coordinate
+                        int flippedY = height - 1 - y;
+                        rects.Add(_trimmedWorldScreenIds[x, y], new Rectangle(x * tileSizeX, flippedY * tileSizeY, tileSizeX, tileSizeY));
                     }
                 }
             }
             return rects;
         }
-
         public Point GetWorldScreenCoordsFromGrid(int tileX, int tileY)
         {
-            Point p = new Point();
-            p.X = currentFarthestLeftTilePosition + tileX;
-            p.Y = currentFarthestTopTilePosition - tileY; /// n - tiley
-            return p;
+            return new Point(tileX, _trimmedWorldScreens.GetLength(1) - 1 - tileY);
         }
 
         public int GetWorldScreenRelativeIndexAtPosition(int x, int y)
         {
-            return _worldScreenIds[x, y];
+            if (x >= 0 && x < _trimmedWorldScreenIds.GetLength(0) &&
+                y >= 0 && y < _trimmedWorldScreenIds.GetLength(1))
+            {
+                return _trimmedWorldScreenIds[x, y];
+            }
+            return -1; // Or any other value to indicate an invalid position
+        }
+
+
+        public Point GetWorldScreenGridPosition(int absoluteWorldScreenIndex)
+        {
+            int height = _trimmedWorldScreenIds.GetLength(1);
+            for (int i = 0; i < _trimmedWorldScreenIds.GetLength(0); i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (_trimmedWorldScreenIds[i, j] == absoluteWorldScreenIndex)
+                    {
+                        // Return the coordinates with y-flipped
+                        return new Point(i, height - 1 - j);
+                    }
+                }
+            }
+            return new Point(-1, -1);
+        }
+        public static T[,] TrimArray<T>(T[,] originalArray)
+        {
+            int rows = originalArray.GetLength(0);
+            int cols = originalArray.GetLength(1);
+
+            int minRow = rows, maxRow = 0, minCol = cols, maxCol = 0;
+            bool found = false;
+
+            // Find the bounds of the non-null data
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (!Equals(originalArray[i, j], default(T)))
+                    {
+                        if (i < minRow) minRow = i;
+                        if (i > maxRow) maxRow = i;
+                        if (j < minCol) minCol = j;
+                        if (j > maxCol) maxCol = j;
+                        found = true;
+                    }
+                }
+            }
+
+            // If no non-null elements were found, return an empty array
+            if (!found)
+            {
+                return new T[0, 0];
+            }
+
+            // Determine the size of the new array
+            int newRows = maxRow - minRow + 1;
+            int newCols = maxCol - minCol + 1;
+
+            // Create the new trimmed array
+            T[,] trimmedArray = new T[newRows, newCols];
+
+            // Copy the data to the new array
+            for (int i = 0; i < newRows; i++)
+            {
+                for (int j = 0; j < newCols; j++)
+                {
+                    trimmedArray[i, j] = originalArray[minRow + i, minCol + j];
+                }
+            }
+
+            return trimmedArray;
         }
     }
 }
