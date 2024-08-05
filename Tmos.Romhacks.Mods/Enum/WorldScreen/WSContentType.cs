@@ -58,7 +58,8 @@ namespace Tmos.Romhacks.Mods.Enum
         Princess2,
         NewBornCimaronTree,
         CimaronTree,
-        Supapa,
+		WiseManSpricom,
+		Supapa,
         Mustafa,
         FrozenPalace2,
         Gubibi,
@@ -93,7 +94,8 @@ namespace Tmos.Romhacks.Mods.Enum
         TimeDoorEnter,
         TimeDoorExit_C7,
         TimeDoorExit,
-        Battle
+        Battle,
+
     }
 
 }

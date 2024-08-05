@@ -12,6 +12,7 @@ using Tmos.Romhacks.Mods;
 using Tmos.Romhacks.Mods.Definitions;
 using Tmos.Romhacks.Mods.Enum;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
+using Tmos.Romhacks.Mods.Utility;
 using Tmos.Romhacks.UI.Images;
 using TMOS_Romhack.DataViewer;
 
@@ -62,6 +63,7 @@ namespace Tmos.Romhacks.UI.Drawers
 
         public void DrawMap(PictureBox pbSurface, TmosModWorldScreen[] worldScreens, MapDrawOptions options, int selectedWSAbsoluteIndex)
         {
+            if (worldScreens == null) { return; }
             Map = new TmosRomhack1DrawerWorldMap(worldScreens);
             Map.InitalizeData();
    
@@ -156,7 +158,7 @@ namespace Tmos.Romhacks.UI.Drawers
                     Point location = new Point(tileSize * x, tileSize * y);
 
                     RectangleF tileRectF = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
-                    Tile tile = ws.GetTileGrid()[x, y];
+                    TmosModTile tile = ws.GetTileGrid()[x, y];
 
                    // DrawTile(g, tile, location, tileSize / 20, groundColor, options);
 
@@ -181,7 +183,7 @@ namespace Tmos.Romhacks.UI.Drawers
         public void DrawWorldScreen(PictureBox pbSurface, TmosModWorldScreen tmosWorldScreen, TmosWorldScreenDrawOptions options = null, int? WSIndex = null)
         {
             if (tmosWorldScreen == null) { return; }
-            Tile[,] grid = tmosWorldScreen.GetTileGrid();
+            TmosModTile[,] grid = tmosWorldScreen.GetTileGrid();
 
             Font font = new Font("Arial", 7);
             Brush brush = Pens.Black.Brush;
@@ -196,7 +198,7 @@ namespace Tmos.Romhacks.UI.Drawers
                         byte gridTileValue = grid[x, y].WSTileValue;
                         bool tileIsTopSection = y < 4; //else isBottomSection
 
-                        Tile tile = TileDefinitions.GetTile(tmosWorldScreen.DataPointer, gridTileValue, tileIsTopSection);
+                        TmosModTile tile = new TmosModTile(gridTileValue);
                         int relativeDrawPositionX = options.TileSize * x;
                         int relativeDrawPositionY = options.TileSize * y;
 
@@ -212,7 +214,7 @@ namespace Tmos.Romhacks.UI.Drawers
            
         }
 
-        public void DrawTile(Graphics g, Tile tmosTile, Point location, int drawSizeX, int drawSizeY, Color groundColor, TileDrawOptions options)
+        public void DrawTile(Graphics g, TmosModTile tmosTile, Point location, int drawSizeX, int drawSizeY, Color groundColor, TileDrawOptions options)
         {
             Size size = new Size(drawSizeX, drawSizeY);
             Rectangle rect = new Rectangle(location, size);

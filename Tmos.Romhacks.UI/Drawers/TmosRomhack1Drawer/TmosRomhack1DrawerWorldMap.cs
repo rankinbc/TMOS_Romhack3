@@ -40,7 +40,9 @@ namespace TMOS_Romhack.DataViewer
 
         public void InitalizeData()
         {
+            //INitialize the arrays to have null as the dwefault item value rather than 0
             _worldScreens = new TmosModWorldScreen[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+
             _worldScreenIds = new int[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
             _mapIndexUsed = new bool[_worldScreenCollection.Length];
 
@@ -142,7 +144,8 @@ namespace TMOS_Romhack.DataViewer
 
         private void TrimArrays()
         {
-            _trimmedWorldScreenIds = TrimArray(_worldScreenIds);
+
+			_trimmedWorldScreenIds = TrimArray(_worldScreenIds);
             _trimmedWorldScreens = TrimArray(_worldScreens);
         }
 
@@ -170,14 +173,14 @@ namespace TMOS_Romhack.DataViewer
             return new Point(tileX, _trimmedWorldScreens.GetLength(1) - 1 - tileY);
         }
 
-        public int GetWorldScreenRelativeIndexAtPosition(int x, int y)
+        public int? GetWorldScreenRelativeIndexAtPosition(int x, int y)
         {
             if (x >= 0 && x < _trimmedWorldScreenIds.GetLength(0) &&
                 y >= 0 && y < _trimmedWorldScreenIds.GetLength(1))
             {
                 return _trimmedWorldScreenIds[x, y];
             }
-            return -1; // Or any other value to indicate an invalid position
+            return null; // Or any other value to indicate an invalid position
         }
 
 

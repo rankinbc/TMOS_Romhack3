@@ -10,14 +10,14 @@ using Tmos.Romhacks.Mods.Interfaces;
 
 namespace Tmos.Romhacks.Mods.TypedTmosObjects
 {
-	public class MiniTile : TmosRomObject, IMiniTile
+	public class TmosModMiniTile : TmosRomObject, IMiniTile
 	{
 		bool _isWalkable;
-		public MiniTile(byte[] bytes) : base(bytes)
+		public TmosModMiniTile(byte[] bytes) : base(bytes)
 		{
 			//TODO: Determine what the 4 byters are and update local properties - I think "microtiles" 2x2 divided the same way
 		}
-		public MiniTile(MiniTileDefinition miniTiletDefinition) : base(new byte[] { 0x00, Convert.ToByte(miniTiletDefinition.IsWalkable), 0x00 })
+		public TmosModMiniTile(MiniTileDefinition miniTiletDefinition) : base(new byte[] { 0x00, Convert.ToByte(miniTiletDefinition.IsWalkable), 0x00 })
 		{
 			_isWalkable = miniTiletDefinition.IsWalkable;
 		}

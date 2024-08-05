@@ -5,12 +5,49 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Tmos.Romhacks.Core.TmosRomInfo;
+using Tmos.Romhacks.Mods.Enum;
+using Tmos.Romhacks.Mods.TypedTmosObjects;
 
 namespace Tmos.Romhacks.Mods.Utility
 {
     public static  class TileDataUtility
     {
-        public static int GetTmosModTileSectionAbsoluteIndex(int tileSectionRelativeIndex, byte dataPointer, bool isTopTileSection)
+    
+
+		private static byte GetTileRelativeByte(int WSDataPointer, bool IsFromTopTileSet, byte WSTileByteValue)
+		{
+			int offset = CalculateOffset(WSDataPointer, IsFromTopTileSet);
+			int offsetCount = offset / 4;
+			int relativeTileByte = (WSTileByteValue + offsetCount);
+
+			return (byte)relativeTileByte;
+		}
+
+		private static int CalculateOffset(int dataPointer, bool IsFromTopTileSet)
+		{
+			int bottomTileDataOffset = 0;
+			int topTileDataOffset = 0;
+			if (dataPointer >= 0x40 && dataPointer < 0x8f)
+			{
+				bottomTileDataOffset = 0x2000;
+				topTileDataOffset = 0x0000;
+			}
+
+			else if (dataPointer >= 0x8f && dataPointer < 0xA0)
+			{
+				bottomTileDataOffset = 0x0000;
+				topTileDataOffset = 0x2000;
+			}
+			else if (dataPointer >= 0xC0)
+			{
+				topTileDataOffset = 0x2000;
+				bottomTileDataOffset = 0x2000;
+			}
+
+			return IsFromTopTileSet ? topTileDataOffset : bottomTileDataOffset;
+		}
+
+		public static int GetTmosModTileSectionAbsoluteIndex(int tileSectionRelativeIndex, byte dataPointer, bool isTopTileSection)
         {
             int offsetBytes = isTopTileSection ? GetTopTileSectionTileDataOffset(dataPointer) : GetBottomTileSectionTileDataOffset(dataPointer);
             int offsetIndex = 0;

@@ -9,6 +9,7 @@ using Tmos.Romhacks.Core;
 using Tmos.Romhacks.Mods.Definitions;
 using Tmos.Romhacks.Mods.Enum;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
+using Tmos.Romhacks.Mods.Utility;
 using static Tmos.Romhacks.Core.TmosWorldScreen;
 using static Tmos.Romhacks.Mods.TileDefinitions;
 
@@ -102,8 +103,8 @@ namespace Tmos.Romhacks.Mods
         public bool CollisionTest_Right_IsCompatable(TmosModWorldScreen destinationWS)
         {
 
-            Tile[,] tileGrid = GetTileGrid();
-            Tile[] tileGrid_RightEdge = new Tile[6];
+            TmosModTile[,] tileGrid = GetTileGrid();
+            TmosModTile[] tileGrid_RightEdge = new TmosModTile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 tileGrid_RightEdge[y] = tileGrid[7, y];
@@ -122,9 +123,9 @@ namespace Tmos.Romhacks.Mods
             }
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
-            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
+            TmosModTile[,] destinationTileGrid = destinationWS.GetTileGrid();
 
-            Tile[] destinationTileGrid_LeftEdge = new Tile[6];
+            TmosModTile[] destinationTileGrid_LeftEdge = new TmosModTile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 destinationTileGrid_LeftEdge[y] = destinationTileGrid[0, y];
@@ -150,10 +151,10 @@ namespace Tmos.Romhacks.Mods
         {
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
-            Tile[,] tileGrid = GetTileGrid();
-            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
+            TmosModTile[,] tileGrid = GetTileGrid();
+            TmosModTile[,] destinationTileGrid = destinationWS.GetTileGrid();
 
-            Tile[] tileGrid_LeftEdge = new Tile[6];
+            TmosModTile[] tileGrid_LeftEdge = new TmosModTile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 tileGrid_LeftEdge[y] = tileGrid[0, y];
@@ -171,7 +172,7 @@ namespace Tmos.Romhacks.Mods
                 }
             }
 
-            Tile[] destinationTileGrid_RightEdge = new Tile[6];
+            TmosModTile[] destinationTileGrid_RightEdge = new TmosModTile[6];
             for (int y = 0; y < tileGrid.GetLength(1); y++)
             {
                 destinationTileGrid_RightEdge[y] = destinationTileGrid[7, y];
@@ -197,10 +198,10 @@ namespace Tmos.Romhacks.Mods
           //  if (ScreenIndexUp == 0xFF) return true;
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
-            Tile[,] tileGrid = GetTileGrid();
-            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
+            TmosModTile[,] tileGrid = GetTileGrid();
+            TmosModTile[,] destinationTileGrid = destinationWS.GetTileGrid();
 
-            Tile[] tileGrid_TopEdge = new Tile[8];
+            TmosModTile[] tileGrid_TopEdge = new TmosModTile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 tileGrid_TopEdge[x] = tileGrid[x, 0];
@@ -219,7 +220,7 @@ namespace Tmos.Romhacks.Mods
                 }
             }
 
-            Tile[] destinationTileGrid_BottomEdge = new Tile[8];
+            TmosModTile[] destinationTileGrid_BottomEdge = new TmosModTile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 destinationTileGrid_BottomEdge[x] = destinationTileGrid[x, 5];
@@ -245,10 +246,10 @@ namespace Tmos.Romhacks.Mods
            // if (ScreenIndexDown == 0xFF) return true;
             //take the edge of this screen's grid, and compare it to the opposite edge of the destinationWS 
 
-            Tile[,] tileGrid = GetTileGrid();
-            Tile[,] destinationTileGrid = destinationWS.GetTileGrid();
+            TmosModTile[,] tileGrid = GetTileGrid();
+            TmosModTile[,] destinationTileGrid = destinationWS.GetTileGrid();
 
-            Tile[] tileGrid_BottomEdge = new Tile[8];
+            TmosModTile[] tileGrid_BottomEdge = new TmosModTile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 tileGrid_BottomEdge[x] = tileGrid[x, 5]; 
@@ -268,7 +269,7 @@ namespace Tmos.Romhacks.Mods
             }
 
 
-            Tile[] destinationTileGrid_TopEdge = new Tile[8];
+            TmosModTile[] destinationTileGrid_TopEdge = new TmosModTile[8];
             for (int x = 0; x < tileGrid.GetLength(0); x++)
             {
                 destinationTileGrid_TopEdge[x] = destinationTileGrid[x, 0];
@@ -320,12 +321,12 @@ namespace Tmos.Romhacks.Mods
 
         //}
 
-        public Tile[,] GetTileGrid()
+        public TmosModTile[,] GetTileGrid()
         {
             byte[,] topTileGrid = TileSectionTop.GetTileSectionGrid();
             byte[,] bottomTileGrid = TileSectionBottom.GetTileSectionGrid();
 
-            Tile[,] fullGrid = new Tile[8, 6];   //only 2 rows used from bottom grid
+            TmosModTile[,] fullGrid = new TmosModTile[8, 6];   //only 2 rows used from bottom grid
 
             for (int y = 0; y < 6; y++)
             {
@@ -335,14 +336,14 @@ namespace Tmos.Romhacks.Mods
                     {
 
                         byte tileValue = topTileGrid[x, y];
-                        Tile tile = GetTile(DataPointer, tileValue, true);
+                        TmosModTile tile = new TmosModTile(tileValue);
                         fullGrid[x, y] = tile;
                     }
                     else
                     {
                         byte tileValue = bottomTileGrid[x, y - 4];
-                        Tile tile = GetTile(DataPointer, tileValue, false);
-                        fullGrid[x, y] = tile;
+                        TmosModTile tile = new TmosModTile(tileValue);
+						fullGrid[x, y] = tile;
                     }
 
                 }

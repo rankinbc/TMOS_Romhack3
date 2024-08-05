@@ -17,17 +17,31 @@ namespace Tmos.Romhacks.Mods.Definitions
 
         public static WSContent GetWSContentDefinition(WSContentType contentType, byte? value = null)
         {
-            if (!ContentDefinitions.TryGetValue(contentType, out WSContent wsContent))
-            {
-                wsContent = new WSContent { Name = "UNKNOWN", ContentType = WSContentType.Nothing };
-            }
+			//         if (!ContentDefinitions.TryGetValue(contentType, out WSContent wsContent))
+			//         {
+			//             wsContent = new WSContent { ContentType = WSContentType.Unknown, Name = "Not defined"  };
+			//         }
 
-            if (value.HasValue)
-            {
-                wsContent.Value = value.Value;
-            }
+			//         if (wsContent.Value == -1 && value != wsContent.Value)
+			//         {
+			//             wsContent.Value = value;
+			//}
 
-            return wsContent;
+
+			if (!ContentDefinitions.TryGetValue(contentType, out WSContent wsContent))
+			{
+				wsContent = new WSContent { Name = "UNKNOWN", ContentType = WSContentType.Nothing };
+			}
+
+			if (value.HasValue)
+			{
+				wsContent.Value = value.Value;
+			}
+
+
+
+
+			return wsContent;
         }
 
         public static List<WSContent> GetWSContentDefinitions()
@@ -65,7 +79,7 @@ namespace Tmos.Romhacks.Mods.Definitions
             { WSContentType.Shop_64, new WSContent { ContentType = WSContentType.Shop_64, Name = "Shop 64", Description = "Shop 64" } },
             { WSContentType.Shop_65, new WSContent { ContentType = WSContentType.Shop_65, Name = "Shop 65", Description = "Shop 65" } },
             { WSContentType.Shop_66, new WSContent { ContentType = WSContentType.Shop_66, Name = "Shop 66", Description = "Shop 66" } },
-            { WSContentType.Shop_7B, new WSContent { ContentType = WSContentType.Shop_7B, Name = "Amulet Mashroob <blank> <blank>" } },
+            { WSContentType.Shop_7B, new WSContent { ContentType = WSContentType.Shop_7B, Name = "Shop 7B", Description =  "Amulet Mashroob <blank> <blank>" } },
             { WSContentType.Shop_7C, new WSContent { ContentType = WSContentType.Shop_7C, Name = "Fighter <blank> Raincom <blank>" } },
             { WSContentType.Shop_7D, new WSContent { ContentType = WSContentType.Shop_7D, Name = "Holyrobe Raincom Spricom" } },
             { WSContentType.Mosque, new WSContent { ContentType = WSContentType.Mosque, Name = "Mosque", Description = "Mosque" } },
@@ -87,7 +101,8 @@ namespace Tmos.Romhacks.Mods.Definitions
             { WSContentType.Princess2, new WSContent { ContentType = WSContentType.Princess2, Name = "Princess 2" } },
             { WSContentType.NewBornCimaronTree, new WSContent { ContentType = WSContentType.NewBornCimaronTree, Name = "New Born Cimaron Tree" } },
             { WSContentType.CimaronTree, new WSContent { ContentType = WSContentType.CimaronTree, Name = "Cimaron Tree" } },
-            { WSContentType.Supapa, new WSContent { ContentType = WSContentType.Supapa, Name = "Supapa" } },
+			{ WSContentType.WiseManSpricom, new WSContent { ContentType = WSContentType.WiseManSpricom, Name = "Wiseman Spricome" } },
+			{ WSContentType.Supapa, new WSContent { ContentType = WSContentType.Supapa, Name = "Supapa" } },
             { WSContentType.Mustafa, new WSContent { ContentType = WSContentType.Mustafa, Name = "Mustafa" } },
             { WSContentType.FrozenPalace2, new WSContent { ContentType = WSContentType.FrozenPalace2, Name = "Frozen Palace 2" } },
             { WSContentType.Gubibi, new WSContent { ContentType = WSContentType.Gubibi, Name = "Gubibi" } },
@@ -123,7 +138,7 @@ namespace Tmos.Romhacks.Mods.Definitions
             { WSContentType.TimeDoorExit_C7, new WSContent { ContentType = WSContentType.TimeDoorExit_C7, Name = "Time Door Exit C7" } },
             { WSContentType.TimeDoorExit, new WSContent { ContentType = WSContentType.TimeDoorExit, Name = "Time Door Exit" } },
             { WSContentType.Battle, new WSContent { ContentType = WSContentType.Battle, Name = "Battle" } }
-        };
+		};
 
        
     }

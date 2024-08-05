@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.Mods.Enum
 {
-    public enum WSProperty
-    {
-        ParentWorld, //music and some other things
-        AmbientSound,
-        Content,
-        ObjectSet, //includes doors
-        ScreenIndexRight,
-        ScreenIndexLeft,
-        ScreenIndexDown,
-        ScreenIndexUp,
-        DataPointer,
-        ExitPosition,
-        TopTiles,
-        BottomTiles,
-        WorldScreenColor,
-        SpritesColor,
-        Unknown,
-        Event //dialog
-    }
+    //public enum WSProperty
+    //{
+    //    ParentWorld, //music and some other things
+    //    AmbientSound,
+    //    Content,
+    //    ObjectSet, //includes doors
+    //    ScreenIndexRight,
+    //    ScreenIndexLeft,
+    //    ScreenIndexDown,
+    //    ScreenIndexUp,
+    //    DataPointer,
+    //    ExitPosition,
+    //    TopTiles,
+    //    BottomTiles,
+    //    WorldScreenColor,
+    //    SpritesColor,
+    //    Unknown,
+    //    Event //dialog
+    //}
 }

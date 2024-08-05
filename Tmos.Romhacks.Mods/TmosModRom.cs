@@ -22,7 +22,7 @@ namespace Tmos.Romhacks.Mods
         public TmosModWorldScreenTile[] WorldScreenTiles { get; set; }
         private TmosModWorldScreen[] _worldScreens { get; set; }
         public TmosTileSection[] TileSections { get; set; }
-        public TmosTile[] Tiles { get; set; }
+        public TmosModTile[] Tiles { get; set; }
         public TmosMiniTile[] MiniTiles { get; set; }
         public TmosRandomEncounterGroup[] RandomEncounterGroups { get; set; }
         public TmosRandomEncounterLineup[] RandomEncounterLineups { get; set; }
@@ -47,6 +47,18 @@ namespace Tmos.Romhacks.Mods
             LoadRandomEncounterGroupsFromRom(_romData);
             LoadRandomEncounterLineupsFromRom(_romData);
         }
+
+        private void ReloadDataFromRom()
+		{
+			LoadWorldScreenTilesFromRom(_romData);
+			LoadTileSectionsFromRom(_romData);
+			LoadWorldScreensFromRom(_romData);
+			LoadTileDataFromRom(_romData);
+			LoadTilesFromRom(_romData);
+			LoadMiniTilesFromRom(_romData);
+			LoadRandomEncounterGroupsFromRom(_romData);
+			LoadRandomEncounterLineupsFromRom(_romData);
+		}
 
         public void LoadTileDataFromRom(TmosRom tmosRom)
         {
@@ -188,20 +200,6 @@ namespace Tmos.Romhacks.Mods
             return neighborWsAbsoluteIndex;
         }
 
-        public static int GetTmosWorldScreenChapterIndex(int absoluteWorldScreenIndex)
-        {
-            TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
-            List<TmosChapter> chapters = TmosChapterDefinitions.GetTmosChapters();
-
-
-            int adjustedWorldScreenIndex = absoluteWorldScreenIndex;
-            for (int i = 0; i < chapter.ChapterNumber; i++)
-            {
-                adjustedWorldScreenIndex -= ChapterUtility.CalculateWorldScreenCount(chapters[i], chapters);
-            }
-            int chapterRelativeWorldScreenIndex = absoluteWorldScreenIndex - adjustedWorldScreenIndex;
-            return chapterRelativeWorldScreenIndex;
-        }
 
         #endregion Retrieving WorldScreens
 
@@ -261,10 +259,11 @@ namespace Tmos.Romhacks.Mods
             TileSections[tileSectionIndex].UpdateBytes(tileSectionData);
             //Calculate offset??
             _romData.SaveTileSection(tileSectionIndex, 0, tileSectionData);
-            //WorldScreens that have this tile section need to reload their tile grids
-            //For now reloading all
+			//WorldScreens that have this tile section need to reload their tile grids
+			//For now reloading all
 
-            LoadTileDataFromRom(_romData);
+			//ReloadDataFromRom()?
+			LoadTileDataFromRom(_romData);
             LoadTileSectionsFromRom(_romData);
             LoadWorldScreensFromRom(_romData);
             LoadTilesFromRom(_romData);
@@ -277,23 +276,50 @@ namespace Tmos.Romhacks.Mods
         #region TmosTiles
         public void LoadTilesFromRom(TmosRom tmosRom)
         {
-            var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
-            Tiles = new TmosTile[def.Count];
+			var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.Tile);
+            Tiles = new TmosModTile[def.Count];
 
             for (int i = 0; i < Tiles.Length; i++)
             {
                 TmosTile tmosTile = tmosRom.LoadTile(i);
 
-                Tiles[i] = tmosTile;
+                TmosModTile tmodModTile = new TmosModTile(tmosTile.GetBytes());
+				Tiles[i] = tmodModTile;
             }
         }
 
-        #endregion TmosTiles
+		public TmosModTile GetTmosModTile(int absoluteIndex)
+		{
+			TmosModTile tmosModTile = Tiles[absoluteIndex];
+			return tmosModTile;
+		}
+
+		public void UpdateTmosModTile(int tileIndex, byte[] tileData)
+		{
+            byte wsTileIndex = (byte)tileIndex; //Not sure if this needs to be adjusted or not
+			TmosModTile updatedTmosModTile  = new TmosModTile(wsTileIndex, tileData);
+			TmosTile updatedTile = new TmosTile(updatedTmosModTile.GetBytes());
+
+			Tiles[tileIndex] = updatedTmosModTile;
+
+			_romData.SaveTile(tileIndex, updatedTile);
+
+			//WorldScreens that have this tile need to reload their tile grids
+			//For now reloading all
+			//ReloadDataFromRom()?
+			LoadTileDataFromRom(_romData);
+			LoadTileSectionsFromRom(_romData);
+			LoadWorldScreensFromRom(_romData);
+			LoadTilesFromRom(_romData);
+			LoadMiniTilesFromRom(_romData);
+		}
+
+		#endregion TmosTiles
 
 
-        #region TmosMiniTiles
+		#region TmosMiniTiles
 
-        public void LoadMiniTilesFromRom(TmosRom tmosRom)
+		public void LoadMiniTilesFromRom(TmosRom tmosRom)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.MiniTile);
             MiniTiles = new TmosMiniTile[def.Count];
@@ -305,12 +331,31 @@ namespace Tmos.Romhacks.Mods
             }
         }
 
-        #endregion TmosMiniTiles
+        public void UpdateMiniTile(int miniTileIndex, byte[] miniTileData)
+		{
+			TmosModMiniTile updatedTmosModMiniTile = new TmosModMiniTile(miniTileData);
+			TmosMiniTile updatedMiniTile = new TmosMiniTile(updatedTmosModMiniTile.GetBytes());
+
+			_romData.SaveMiniTile(miniTileIndex, updatedMiniTile);
+
+			MiniTiles[miniTileIndex] = updatedMiniTile; //might need to reload?
+
+			//reloading needed?
+			//ReloadDataFromRom()?
+
+			LoadTileDataFromRom(_romData);
+			LoadTileSectionsFromRom(_romData);
+			LoadWorldScreensFromRom(_romData);
+			LoadTilesFromRom(_romData);
+			LoadMiniTilesFromRom(_romData);
+		}
+
+		#endregion TmosMiniTiles
 
 
-        #region TmosRandomEncounterGroups
+		#region TmosRandomEncounterGroups
 
-        public void LoadRandomEncounterGroupsFromRom(TmosRom tmosRom)
+		public void LoadRandomEncounterGroupsFromRom(TmosRom tmosRom)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.RandomEncounterGroup);
             RandomEncounterGroups = new TmosRandomEncounterGroup[def.Count];
@@ -322,11 +367,22 @@ namespace Tmos.Romhacks.Mods
             }
         }
 
-        #endregion TmosRandomEncounterGroups
+        public void UpdateEncounterGroup(int encounterGroupIndex, TmosRandomEncounterGroup encounterGroup)
+        {
+            _romData.SaveRandomEncounterGroup(encounterGroupIndex, new TmosRandomEncounterGroup(encounterGroup.GetBytes()));
+            //	TmosRandomEncounterGroup tmosRandomEncounterGroup = tmosRom.LoadRandomEncounterGroup(i);
+            RandomEncounterGroups[encounterGroupIndex] = _romData.LoadRandomEncounterGroup(encounterGroupIndex);
 
-        #region TmosRandomEncounterLineups
+            //reloading needed?
+            ReloadDataFromRom();
+        }
 
-        public void LoadRandomEncounterLineupsFromRom(TmosRom tmosRom)
+
+		#endregion TmosRandomEncounterGroups
+
+		#region TmosRandomEncounterLineups
+
+		public void LoadRandomEncounterLineupsFromRom(TmosRom tmosRom)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectType.RandomEncounterLineup);
             RandomEncounterLineups = new TmosRandomEncounterLineup[def.Count];
@@ -338,11 +394,20 @@ namespace Tmos.Romhacks.Mods
             }
         }
 
-        #endregion TmosRandomEncounterLineups
+		public void UpdateEncounterLineup(int encounterLineupIndex, TmosRandomEncounterLineup encounterLineup)
+		{
+			_romData.SaveRandomEncounterLineup(encounterLineupIndex, new TmosRandomEncounterLineup(encounterLineup.GetBytes()));
+			//	TmosRandomEncounterGroup tmosRandomEncounterGroup = tmosRom.LoadRandomEncounterGroup(i);
+			RandomEncounterLineups[encounterLineupIndex] = _romData.LoadRandomEncounterLineup(encounterLineupIndex);
 
-        #region Conversion to TmosRom
+			//reloading needed?
+			ReloadDataFromRom();
+		}
+		#endregion TmosRandomEncounterLineups
 
-        public void SaveDataToRom(string filePath)
+		#region Conversion to TmosRom
+
+		public void SaveDataToRom(string filePath)
         {
             for (int i = 0; i < TmosRomDataObjectDefinitions.RomInfo_WorldScreen.Count; i++)
             {

@@ -15,22 +15,23 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
             //0x80 - 0x8F are Chapter-specific content types
             if (content > 0x8A && content < 0x8F) //Content is different based on the chapter
             {
-                if (chapter == 0)
+                if (chapter == 0) //Chapter 1
                 {
                     switch (content)
                     {
                         case 0x80: return WSContentType.Jad;
                         case 0x81: return WSContentType.Faruk;
-                        case 0x82: return WSContentType.Kebabu;
-                        case 0x83: return WSContentType.AquaPalace;
-                        case 0x84: return WSContentType.WiseManMonecom;
-                        case 0x85: return WSContentType.AchelatoPrincess;
-                        case 0x86: return WSContentType.SabaronTalk;
+                        case 0x82: return WSContentType.Dogos;
+						case 0x83: return WSContentType.Kebabu;
+						case 0x84: return WSContentType.AquaPalace;
+                        case 0x85: return WSContentType.WiseManMonecom;
+                        case 0x86: return WSContentType.AchelatoPrincess;
+                        case 0x87: return WSContentType.SabaronTalk;
                         default: return WSContentType.Nothing;
                     }
                 }
-                else if (chapter == 1)
-                {
+                else if (chapter == 1) //Chapter 2
+				{
                     switch (content)
                     {
                         case 0x80: return WSContentType.GunMeca;
@@ -38,37 +39,40 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x82: return WSContentType.Supica;
                         case 0x83: return WSContentType.Epin;
                         case 0x84: return WSContentType.WisemanRaincome;
-                        case 0x85: return WSContentType.Princess1;
-                        case 0x86: return WSContentType.Princess2;
+                        case 0x87: return WSContentType.Princess1;
+                        case 0x8D: return WSContentType.RupiaSeedPlant;
                         default: return WSContentType.Nothing;
                     }
                 }
-                else if (chapter == 2)
-                {
+                else if (chapter == 2) //Chapter 3
+				{
                     switch (content)
                     {
                         case 0x80: return WSContentType.NewBornCimaronTree;
                         case 0x81: return WSContentType.CimaronTree;
                         case 0x82: return WSContentType.Supapa;
-                        case 0x83: return WSContentType.Mustafa;
-                        case 0x84: return WSContentType.FrozenPalace2;
-                        default: return WSContentType.Nothing;
+
+                        case 0x84: return WSContentType.Mustafa;
+                        case 0x85: return WSContentType.FrozenPalace2;
+                        case 0x87: return WSContentType.WiseManSpricom;
+						default: return WSContentType.Nothing;
                     }
                 }
-                else if (chapter == 3)
-                {
+                else if (chapter == 3) //Chapter 4
+				{
                     switch (content)
                     {
                         case 0x80: return WSContentType.Gubibi;
                         case 0x81: return WSContentType.Rainy;
                         case 0x82: return WSContentType.YuflaPalace;
-                        case 0x83: return WSContentType.Rostam;
-                        case 0x84: return WSContentType.KingFiesal;
-                        default: return WSContentType.Nothing;
+                        case 0x84: return WSContentType.Rostam;
+                        case 0x85: return WSContentType.KingFiesal;
+						case 0x87: return WSContentType.RupiasLady;
+						default: return WSContentType.Nothing;
                     }
                 }
-                else if (chapter == 4)
-                {
+                else//Chapter 5
+				{
                     switch (content)
                     {
                         case 0x80: return WSContentType.WisemanMoscome;
@@ -76,18 +80,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x82: return WSContentType.Kaji;
                         case 0x83: return WSContentType.LegendSword;
                         case 0x84: return WSContentType.ArmorofLight;
-                        default: return WSContentType.Nothing;
-                    }
-                }
-                else //if (chapter == 5)
-                {
-                    switch (content)
-                    {
-                        case 0x80: return WSContentType.PalaceEntrance;
-                        case 0x81: return WSContentType.SabaronFinal;
-                        case 0x82: return WSContentType.OnlyOneJarYouCanGoThrough;
-                        case 0x83: return WSContentType.RupiasLady;
-                        case 0x84: return WSContentType.Rupias;
+                        case 0x86: return WSContentType.OnlyOneJarYouCanGoThrough;
                         default: return WSContentType.Nothing;
                     }
                 }
@@ -425,59 +418,5 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
             Content_0xFE = 0xFE,
             Battle = 0xFF
         }
-
-
-        //enum WSContentTypeCh1
-        //{
-        //    Jad = 0x80,
-        //    Faruk = 0x81,
-        //    Kebabu = 0x82,
-        //    AquaPalace = 0x83,
-        //    WiseManMonecom = 0x84,
-        //    AchelatoPrincess = 0x85,
-        //    Sabaron = 0x86,
-        //}
-
-        //enum WSContentTypeCh2
-        //{
-        //    GunMeca = 0x87,
-        //    Lah = 0x88,
-        //    Supica = 0x89,
-        //    Epin = 0x8A,
-        //    WisemanRaincome = 0x8B,
-        //    Princess = 0x8C,
-        //}
-
-        //enum WSContentTypeCh3
-        //{
-        //    NewBornCimaronTree = 0x80,
-        //    CimaronTree = 0x81,
-        //    Supapa = 0x82,
-        //    Mustafa = 0x83,
-        //    FrozenPalace = 0x84,
-        //}
-        //enum WSContentTypeCh4
-        //{
-        //    Wiseman = 0x86,
-        //    Gubibi = 0x80,
-        //    Rainy = 0x81,
-        //    YuflaPalace = 0x82,
-        //    Rostam = 0x83,
-        //    HeroRostamsSword = 0x84,
-        //    Fiesal = 0x85,
-        //}
-
-        //enum WSContentTypeCh5
-        //{
-        //    Hasan = 0x80,
-        //    Kaji = 0x81,
-        //    LegendSword = 0x82,
-        //    ArmorofLight = 0x83,
-        //    PalaceEntrance = 0x84,
-        //    SabaronFinal = 0x85,
-        //    JarHint = 0x86,
-        //    Libcom = 0x87,
-        //    Rupias = 0x88,
-        //}
     }
 }
