@@ -1,50 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Tmos.Romhacks.Mods;
 using Tmos.Romhacks.Mods.Definitions;
+using Tmos.Romhacks.Mods.Map;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
 using Tmos.Romhacks.Mods.Utility;
+using Tmos.Romhacks.UI.Interfaces;
 
-namespace TMOS_Romhack.DataViewer
+namespace TMOS_Romhack.Romhacks.Mods.Map
 {
-    public class GridMapper1
+    //This class is responsible for generating 2D grid of WorldScreens from the linked Worldscreens
+    public class GridMapper1 //: IMapper
     {
         const int MAX_MAP_SIZE_X = 60;
         const int MAX_MAP_SIZE_Y = 60;
 
         TmosModWorldScreen[] _worldScreenCollection;
         bool[] _mapIndexUsed;
-        public TmosModWorldScreen[,] _worldScreens { get; set; }
-        public int[,] _worldScreenIds { get; set; }
+        private TmosModWorldScreen[,] _worldScreens { get; set; }
+        private int?[,] _worldScreenIds { get; set; }
 
-
-        public TmosModWorldScreen[,] _trimmedWorldScreens { get; private set; }
-        public int[,] _trimmedWorldScreenIds { get; private set; }
+        private TmosModWorldScreen[,] _trimmedWorldScreens { get;  set; }
+        private int?[,] _trimmedWorldScreenIds { get; set; }
 
         int currentFarthestLeftTilePosition;
         int currentFarthestRightTilePosition;
         int currentFarthestTopTilePosition;
         int currentFarthestBottomTilePosition;
 
-        public GridMapper1(TmosModWorldScreen[] worldScreens )
+        public GridMapper1(TmosModWorldScreen[] worldScreens)
         {
             _worldScreenCollection = worldScreens;
-
-            InitalizeData();
-        }
-
-        public void InitalizeData()
-        {
-            //INitialize the arrays to have null as the dwefault item value rather than 0
             _worldScreens = new TmosModWorldScreen[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+            _worldScreenIds = new int?[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
 
-            _worldScreenIds = new int[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+            for (int i = 0; i < _worldScreenIds.GetLength(0); i++)
+            {
+                for (int j = 0; j < _worldScreenIds.GetLength(1); j++)
+                {
+                    _worldScreenIds[i, j] = null;
+                }
+            }
+
             _mapIndexUsed = new bool[_worldScreenCollection.Length];
+
+
 
             currentFarthestLeftTilePosition = MAX_MAP_SIZE_X / 2;
             currentFarthestRightTilePosition = MAX_MAP_SIZE_X / 2;
@@ -52,23 +57,29 @@ namespace TMOS_Romhack.DataViewer
             currentFarthestBottomTilePosition = MAX_MAP_SIZE_Y / 2;
         }
 
-        public void LoadWorldMap(int absoluteWorldScreenIndex, int x, int y)
+        public int?[,] LoadWorldScreenGrid(int absoluteWorldScreenIndex)
         {
-            TmosModWorldScreen rootWorldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
+            
+  
             TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
 
             _mapIndexUsed[absoluteWorldScreenIndex] = true;
 
-            CrawlWorldMap(absoluteWorldScreenIndex, x, y, chapter.ChapterNumber);
+            CrawlWorldMap(absoluteWorldScreenIndex, 30, 30, chapter.ChapterNumber);
 
-            TrimArrays();
+            _trimmedWorldScreenIds = Utility.TrimArray(_worldScreenIds);
+            _trimmedWorldScreens = Utility.TrimArray(_worldScreens);
+
+            return _trimmedWorldScreenIds;
         }
 
         //Only reason chapter is passed is to avoid loading chapter from ws every time
         public void CrawlWorldMap(int absoluteWorldScreenIndex, int x, int y, int chapter)
         {
 
-            TmosModWorldScreen worldScreen = _worldScreenCollection?[absoluteWorldScreenIndex];
+            TmosModWorldScreen worldScreen = _worldScreenCollection[absoluteWorldScreenIndex];
+
+            //TODO determine how to solve wizard screen issue
           //  TmosChapter chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
             /*  if (worldScreen.IsWizardScreen())
               {
@@ -97,7 +108,6 @@ namespace TMOS_Romhack.DataViewer
 
 
             _mapIndexUsed[absoluteWorldScreenIndex] = true;
-           // _parentForm.lv_worldScreens.Items[currentScreenIndex].ForeColor = Color.Green;
             _worldScreens[x, y] = worldScreen;
             _worldScreenIds[x, y] = absoluteWorldScreenIndex;
 
@@ -137,37 +147,11 @@ namespace TMOS_Romhack.DataViewer
                 int yUp = y + 1;
                 if (currentFarthestTopTilePosition < yUp) currentFarthestTopTilePosition = yUp;
                 CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Up, x, yUp, chapter);
-
             }
 
         }
 
-        private void TrimArrays()
-        {
-
-			_trimmedWorldScreenIds = TrimArray(_worldScreenIds);
-            _trimmedWorldScreens = TrimArray(_worldScreens);
-        }
-
-        public Dictionary<int, Rectangle> DrawWorldMapGrid(int tileSizeX, int tileSizeY)
-        {
-            Dictionary<int, Rectangle> rects = new Dictionary<int, Rectangle>();
-            int height = _trimmedWorldScreens.GetLength(1);
-
-            for (int x = 0; x < _trimmedWorldScreens.GetLength(0); x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    if (_trimmedWorldScreens[x, y] != null)
-                    {
-                        // Flip the y-coordinate
-                        int flippedY = height - 1 - y;
-                        rects.Add(_trimmedWorldScreenIds[x, y], new Rectangle(x * tileSizeX, flippedY * tileSizeY, tileSizeX, tileSizeY));
-                    }
-                }
-            }
-            return rects;
-        }
+       
         public Point GetWorldScreenCoordsFromGrid(int tileX, int tileY)
         {
             return new Point(tileX, _trimmedWorldScreens.GetLength(1) - 1 - tileY);
@@ -200,53 +184,6 @@ namespace TMOS_Romhack.DataViewer
             }
             return new Point(-1, -1);
         }
-        public static T[,] TrimArray<T>(T[,] originalArray)
-        {
-            int rows = originalArray.GetLength(0);
-            int cols = originalArray.GetLength(1);
-
-            int minRow = rows, maxRow = 0, minCol = cols, maxCol = 0;
-            bool found = false;
-
-            // Find the bounds of the non-null data
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    if (!Equals(originalArray[i, j], default(T)))
-                    {
-                        if (i < minRow) minRow = i;
-                        if (i > maxRow) maxRow = i;
-                        if (j < minCol) minCol = j;
-                        if (j > maxCol) maxCol = j;
-                        found = true;
-                    }
-                }
-            }
-
-            // If no non-null elements were found, return an empty array
-            if (!found)
-            {
-                return new T[0, 0];
-            }
-
-            // Determine the size of the new array
-            int newRows = maxRow - minRow + 1;
-            int newCols = maxCol - minCol + 1;
-
-            // Create the new trimmed array
-            T[,] trimmedArray = new T[newRows, newCols];
-
-            // Copy the data to the new array
-            for (int i = 0; i < newRows; i++)
-            {
-                for (int j = 0; j < newCols; j++)
-                {
-                    trimmedArray[i, j] = originalArray[minRow + i, minCol + j];
-                }
-            }
-
-            return trimmedArray;
-        }
+      
     }
 }

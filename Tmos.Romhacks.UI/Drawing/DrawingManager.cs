@@ -6,28 +6,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tmos.Romhacks.Mods;
+using Tmos.Romhacks.Mods.Map;
 using Tmos.Romhacks.UI.Drawers;
+using Tmos.Romhacks.UI.Images;
+using Tmos.Romhacks.UI.Interfaces;
+using TMOS_Romhack.Romhacks.Mods.Map;
 
 namespace Tmos.Romhacks.UI.Drawing
 {
 	public class DrawingManager
 	{
-		private TmosDrawer _drawer;
-		private TmosModRom _tmosMod;
+		private ITmosDrawer _drawer;
+		//private IMapper _mapper;
+		//private GridMapper1 _mapper;
 
-		public DrawingManager(TmosDrawer drawer, TmosModRom tmosMod)
+		//private TmosModRom _tmosMod;
+
+
+      
+        public DrawingManager(ITmosDrawer drawer)
 		{
 			_drawer = drawer;
-			_tmosMod = tmosMod;
+			//_mapper = new GridMapper1();
+			//_tmosMod = tmosMod;
 		}
 
 		public void SetDrawOptions()
 		{
-			_drawer.BaseBrush = Pens.Black.Brush;
-			_drawer.BaseFont = new Font("Arial", 7);
+			
 		}
 
-		public TmosWorldScreenDrawOptions GetDrawOptions(bool showBorders, bool showInfo, int tileSize, bool showTileInfo, bool showTileCollision, bool showTileImage)
+        public TmosWorldScreenDrawOptions GetDrawOptions(bool showBorders, bool showInfo, int tileSize, bool showTileInfo, bool showTileCollision, bool showTileImage)
 		{
 			return new TmosWorldScreenDrawOptions()
 			{
@@ -44,25 +53,35 @@ namespace Tmos.Romhacks.UI.Drawing
 			};
 		}
 
-		public void DrawMap(PictureBox pictureBox, int tileSize, TmosWorldScreenDrawOptions wsDrawOptions, int selectedWorldScreenIndex)
+       
+
+        public void DrawMap(PictureBox pictureBox, WorldScreenGrid wsGrid, int tileSize, TmosWorldScreenDrawOptions wsDrawOptions, int selectedWorldScreenIndex)
 		{
-			var mapDrawOptions = new MapDrawOptions()
+
+
+
+            var mapDrawOptions = new MapDrawOptions()
 			{
 				WorldScreenDrawOptions = wsDrawOptions,
 				TileSize = tileSize,
 				TileDrawOptions = wsDrawOptions.TileDrawOptions
 			};
 
-			pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
-			_drawer.DrawMap(pictureBox, _tmosMod.GetTmosModWorldScreens(false), mapDrawOptions, selectedWorldScreenIndex);
+            //Map = new GridMapper1(worldScreens);
+
+            //Map.LoadWorldScreenGrid(selectedWSAbsoluteIndex, 30, 30);
+
+            pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
+
+
+			_drawer.DrawMap(pictureBox,wsGrid, mapDrawOptions, selectedWorldScreenIndex);
 			pictureBox.Refresh();
 		}
 
-		public void DrawWorldScreen(PictureBox pictureBox, int selectedWorldScreenIndex, TmosWorldScreenDrawOptions drawOptions)
+		public void DrawWorldScreen(PictureBox pictureBox,TmosModWorldScreen ws, TmosWorldScreenDrawOptions drawOptions)
 		{
-			TmosModWorldScreen currentWS = _tmosMod.GetTmosModWorldScreen(selectedWorldScreenIndex);
 			pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
-			_drawer.DrawWorldScreen(pictureBox, currentWS, drawOptions, selectedWorldScreenIndex);
+			_drawer.DrawWorldScreen(pictureBox, ws, drawOptions);
 			pictureBox.Refresh();
 		}
 	}

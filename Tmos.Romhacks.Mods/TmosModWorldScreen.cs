@@ -349,7 +349,6 @@ namespace Tmos.Romhacks.Mods
                 }
             }
             return fullGrid;
-
         }
 
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tmos.Romhacks.UI.Drawers
+namespace Tmos.Romhacks.UI.Interfaces
 {
-    public interface IDrawOptions
-    {
-    }
+	public interface IMapper
+	{
+	}
 }

@@ -14,38 +14,38 @@ namespace Tmos.Romhacks.Mods.Utility
     {
     
 
-		private static byte GetTileRelativeByte(int WSDataPointer, bool IsFromTopTileSet, byte WSTileByteValue)
-		{
-			int offset = CalculateOffset(WSDataPointer, IsFromTopTileSet);
-			int offsetCount = offset / 4;
-			int relativeTileByte = (WSTileByteValue + offsetCount);
+		//private static byte GetTileRelativeByte(int WSDataPointer, bool IsFromTopTileSet, byte WSTileByteValue)
+		//{
+		//	int offset = CalculateOffset(WSDataPointer, IsFromTopTileSet);
+		//	int offsetCount = offset / 4;
+		//	int relativeTileByte = (WSTileByteValue + offsetCount);
 
-			return (byte)relativeTileByte;
-		}
+		//	return (byte)relativeTileByte;
+		//}
 
-		private static int CalculateOffset(int dataPointer, bool IsFromTopTileSet)
-		{
-			int bottomTileDataOffset = 0;
-			int topTileDataOffset = 0;
-			if (dataPointer >= 0x40 && dataPointer < 0x8f)
-			{
-				bottomTileDataOffset = 0x2000;
-				topTileDataOffset = 0x0000;
-			}
+		//private static int CalculateOffset(int dataPointer, bool IsFromTopTileSet)
+		//{
+		//	int bottomTileDataOffset = 0;
+		//	int topTileDataOffset = 0;
+		//	if (dataPointer >= 0x40 && dataPointer < 0x8f)
+		//	{
+		//		bottomTileDataOffset = 0x2000;
+		//		topTileDataOffset = 0x0000;
+		//	}
 
-			else if (dataPointer >= 0x8f && dataPointer < 0xA0)
-			{
-				bottomTileDataOffset = 0x0000;
-				topTileDataOffset = 0x2000;
-			}
-			else if (dataPointer >= 0xC0)
-			{
-				topTileDataOffset = 0x2000;
-				bottomTileDataOffset = 0x2000;
-			}
+		//	else if (dataPointer >= 0x8f && dataPointer < 0xA0)
+		//	{
+		//		bottomTileDataOffset = 0x0000;
+		//		topTileDataOffset = 0x2000;
+		//	}
+		//	else if (dataPointer >= 0xC0)
+		//	{
+		//		topTileDataOffset = 0x2000;
+		//		bottomTileDataOffset = 0x2000;
+		//	}
 
-			return IsFromTopTileSet ? topTileDataOffset : bottomTileDataOffset;
-		}
+		//	return IsFromTopTileSet ? topTileDataOffset : bottomTileDataOffset;
+		//}
 
 		public static int GetTmosModTileSectionAbsoluteIndex(int tileSectionRelativeIndex, byte dataPointer, bool isTopTileSection)
         {
@@ -83,28 +83,28 @@ namespace Tmos.Romhacks.Mods.Utility
             return bottomTileDataOffset;
         }
 
-        private static (int topTileDataOffset, int bottomTileDataOffset) GetTileDataOffsets(byte dataPointer)
-        {
-            int bottomTileDataOffset = 0;
-            int topTileDataOffset = 0;
-            if (dataPointer >= 0x40 && dataPointer < 0x8f)
-            {
-                bottomTileDataOffset = 0x2000; //0x2000 = 8192     8192 / 32 = 256  Maybe this dataoffset just increases index 0 by 256 TileSections?
-                topTileDataOffset = 0x0000;
-            }
+        //private static (int topTileDataOffset, int bottomTileDataOffset) GetTileDataOffsets(byte dataPointer)
+        //{
+        //    int bottomTileDataOffset = 0;
+        //    int topTileDataOffset = 0;
+        //    if (dataPointer >= 0x40 && dataPointer < 0x8f)
+        //    {
+        //        bottomTileDataOffset = 0x2000; //0x2000 = 8192     8192 / 32 = 256  Maybe this dataoffset just increases index 0 by 256 TileSections?
+        //        topTileDataOffset = 0x0000;
+        //    }
 
-            else if (dataPointer >= 0x8f && dataPointer < 0xA0)
-            {
-                bottomTileDataOffset = 0x0000;
-                topTileDataOffset = 0x2000;
-            }
-            else if (dataPointer >= 0xC0)
-            {
-                topTileDataOffset = 0x2000;
-                bottomTileDataOffset = 0x2000;
-            }
-            return (topTileDataOffset, bottomTileDataOffset);
-        }
+        //    else if (dataPointer >= 0x8f && dataPointer < 0xA0)
+        //    {
+        //        bottomTileDataOffset = 0x0000;
+        //        topTileDataOffset = 0x2000;
+        //    }
+        //    else if (dataPointer >= 0xC0)
+        //    {
+        //        topTileDataOffset = 0x2000;
+        //        bottomTileDataOffset = 0x2000;
+        //    }
+        //    return (topTileDataOffset, bottomTileDataOffset);
+        //}
 
     }
 }

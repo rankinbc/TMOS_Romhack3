@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,10 @@
     <Compile Include="Enum\WorldScreen\WSProperty.cs" />
     <Compile Include="Interfaces\IMiniTile.cs" />
     <Compile Include="Interfaces\ITile.cs" />
+    <Compile Include="Map\GridMapper1.cs" />
+    <Compile Include="Map\IMapper.cs" />
+    <Compile Include="Map\WorldScreenGrid.cs" />
+    <Compile Include="Map\WSGridCell.cs" />
     <Compile Include="TmosModRom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TmosModWorldScreen.cs" />
@@ -64,7 +69,7 @@
     <Compile Include="Definitions\TileDefinitions.cs" />
     <Compile Include="Utility\ByteDisplayUtility.cs" />
     <Compile Include="Utility\ChapterUtility.cs" />
-    <Compile Include="Utility\RomObjectDisplayUtility.cs" />
+    <Compile Include="Utility\Utility.cs" />
     <Compile Include="Utility\TileDataUtility.cs" />
     <Compile Include="Utility\WSIndexUtility.cs" />
   </ItemGroup>
@@ -74,6 +79,8 @@
       <Name>Tmos.Romhacks.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,7 +19,7 @@ namespace Tmos.Romhacks.UI
             {
                 // Console.WriteLine("case 0x" + b.ToString("X2") + ": return Tile.Tile0x" + b.ToString("X2") + ";");
                 // Console.WriteLine("Tile0x" + b.ToString("X2") + ",");
-                Console.WriteLine("{Tile.Tile0x" + b.ToString("X2") + ",\"" + b.ToString("X2") + "\"},");
+               // Console.WriteLine("{Tile.Tile0x" + b.ToString("X2") + ",\"" + b.ToString("X2") + "\"},");
             }
 
 

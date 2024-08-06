@@ -11,79 +11,55 @@ using Tmos.Romhacks.Core;
 using Tmos.Romhacks.Mods;
 using Tmos.Romhacks.Mods.Definitions;
 using Tmos.Romhacks.Mods.Enum;
+using Tmos.Romhacks.Mods.Map;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
 using Tmos.Romhacks.Mods.Utility;
 using Tmos.Romhacks.UI.Images;
-using TMOS_Romhack.DataViewer;
+using TMOS_Romhack.Romhacks.Mods.Map;
+
 
 namespace Tmos.Romhacks.UI.Drawers
 {
 
-    public class MapDrawOptions
-    {
-        public int TileSize { get; set; }
-        public TmosWorldScreenDrawOptions WorldScreenDrawOptions { get; set; }
-        public TileDrawOptions TileDrawOptions { get; set; }
-    }
+   
 
-    public class TmosWorldScreenDrawOptions
-    {
-        public bool ShowInfo { get; set; }
-        public bool ShowBorders { get; set; }
-        public int TileSize { get; set; }
-       
-        public TileDrawOptions TileDrawOptions { get; set; }
-    }
-
-    public class TileDrawOptions
-    {
-        public bool ShowCollision { get; set; }
-
-        public bool ShowBorders { get; set; }
-        public bool ShowImage { get; set; }
-        public int ImageOpacity { get; set; }
-        public bool ShowInfo { get; set; }
-
-    }
-
-    public class TmosDrawer //TODO: Seperate this class out into different drawers. Make an interface to allow different render strategies
+    public class TmosDrawer : ITmosDrawer
     {
 
         public Font BaseFont { get; set; } = new Font("Arial", 7);
         public Brush BaseBrush { set; get; } = new SolidBrush(Color.Black);
 
-        public MapDrawOptions MapDrawOptions { get; set; }
-        public TmosWorldScreenDrawOptions TmosWorldScreenDrawOptions { get; set; }
-        public TileDrawOptions TileDrawOptions { get; set; }
-
         private static Dictionary<byte, Image> TileImageCache = new Dictionary<byte, Image>();
 
-
-        public GridMapper1 Map;
-
-        public void DrawMap(PictureBox pbSurface, TmosModWorldScreen[] worldScreens, MapDrawOptions options, int selectedWSAbsoluteIndex)
+        public TmosDrawer()
         {
-            if (worldScreens == null) { return; }
-            Map = new GridMapper1(worldScreens);
-            Map.InitalizeData();
-   
-            Map.LoadWorldMap(selectedWSAbsoluteIndex, 30, 30);
+        }
+
+        //public void DrawMap(PictureBox pictureBox, TmosModWorldScreen[] worldScreens, MapDrawOptions drawOptions, int selectedWorldScreenIndex)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public void DrawMap(PictureBox pbSurface, WorldScreenGrid worldScreenGrid, MapDrawOptions options, int selectedWSAbsoluteIndex)
+        {
+
+            if (worldScreenGrid == null) { return; }
+
 
             Dictionary<int, Rectangle> worldScreenRectangles = new Dictionary<int, Rectangle>();
             Rectangle selectionRectangle = new Rectangle();
-
 
             int TILES_Y_COUNT = 6;
             int TILES_X_COUNT = 8;
 
             using (var g = Graphics.FromImage(pbSurface.Image))
             {
-                worldScreenRectangles = Map.DrawWorldMapGrid(options.TileSize, options.TileSize);
+                worldScreenRectangles = DrawWorldMapGrid(worldScreenGrid, options.TileSize);
                 foreach (KeyValuePair<int, Rectangle> item in worldScreenRectangles)
                 {
 
                     int wsIndex = item.Key;
-                    TmosModWorldScreen ws = worldScreens[wsIndex];
+                    TmosModWorldScreen ws = worldScreenGrid.WSDictionary[wsIndex];
                     Rectangle rect = item.Value;
                     Brush bgbrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
 
@@ -92,7 +68,7 @@ namespace Tmos.Romhacks.UI.Drawers
 
                     if (options.TileDrawOptions.ShowImage)
                     {
-                          DrawTilesOnMapWS(g, ws, rect, options.TileSize, TILES_X_COUNT, TILES_Y_COUNT, options.TileDrawOptions);  
+                       DrawTilesOnMapWS(g, ws, rect, options.TileSize, TILES_X_COUNT, TILES_Y_COUNT, options.TileDrawOptions);
                     }
 
                     if (options.TileDrawOptions.ShowBorders)
@@ -114,9 +90,9 @@ namespace Tmos.Romhacks.UI.Drawers
                     if (options.TileDrawOptions.ShowInfo)
                     {
                         Brush infoTextBrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
-                        g.DrawString(wsIndex.ToString("X2") , BaseFont, infoTextBrush, rect.Left + 5, rect.Top + 5);
+                        g.DrawString(wsIndex.ToString("X2"), BaseFont, infoTextBrush, rect.Left + 5, rect.Top + 5);
 
-                       
+
                     }
 
 
@@ -125,7 +101,7 @@ namespace Tmos.Romhacks.UI.Drawers
                     {
                         selectionRectangle = rect;
                     }
-                   
+
                 }
 
                 if (selectedWSAbsoluteIndex > 0)
@@ -138,13 +114,77 @@ namespace Tmos.Romhacks.UI.Drawers
                         g.DrawRectangle(borderPen, selectionRectangle.X, selectionRectangle.Y, selectionRectangle.Width, selectionRectangle.Height);
                     }
                 }
+                g.Dispose();
             }
-
-        
-
         }
 
-        private void DrawTilesOnMapWS(Graphics g, TmosModWorldScreen ws, Rectangle rect, int tileSize, int tilesXCount, int tilesYCount, TileDrawOptions options)
+
+
+            //}
+            // public void DrawMap(PictureBox pbSurface, WorldScreenGrid worldScreenGrid, MapDrawOptions options, int selectedWSAbsoluteIndex)
+            //{
+
+
+                    //            int wsGridIndex = item.Key;
+
+                    //            if (wsGridIndex == -1)
+                    //            {
+                    //                continue;
+                    //            }
+                    //            TmosModWorldScreen ws = worldScreenGrid.WSDictionary[wsGridIndex];
+                    //            Rectangle rect = item.Value;
+                    //            Brush bgbrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
+
+                    //            g.FillRectangle(bgbrush, rect);
+                    //            g.DrawRectangle(Pens.LightGreen, rect.X, rect.Y, rect.Width, rect.Height);
+
+                    //            if (options.TileDrawOptions.ShowImage)
+                    //            {
+                    //                DrawTilesOnMapWS(g, ws, rect, options.TileSize, TILES_X_COUNT, TILES_Y_COUNT, options.TileDrawOptions);
+                    //            }
+
+                    //            if (options.TileDrawOptions.ShowBorders)
+                    //            {
+                    //                g.DrawRectangle(Pens.Black, rect.Left, rect.Top, rect.Width, rect.Height);
+                    //            }
+
+                    //            if (ws.IsBattleScreen())
+                    //            {
+                    //                Brush encScreenBrush = new SolidBrush(Color.FromArgb(110, 255, 0, 210));
+                    //                g.FillRectangle(encScreenBrush, rect);
+                    //            }
+                    //            if (ws.IsWizardScreen())
+                    //            {
+                    //                Brush wizardScreenBrush = new SolidBrush(Color.FromArgb(40, 40, 40, 40));
+                    //                g.FillRectangle(wizardScreenBrush, rect);
+                    //            }
+
+                    //            if (options.TileDrawOptions.ShowInfo)
+                    //            {
+                    //                Brush infoTextBrush = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
+                    //                g.DrawString(((int)ws).ToString("X2"), BaseFont, infoTextBrush, rect.Left + 5, rect.Top + 5);
+                    //            }
+
+                    //            if (selectedWSAbsoluteIndex == worldScreenGrid.WSDictionary[wsGridIndex])
+                    //            {
+                    //                selectionRectangle = rect;
+                    //            }
+                    //        }
+
+                    //        if (selectedWSAbsoluteIndex > 0)
+                    //        {
+                    //            Brush selectedTileBrush = new SolidBrush(Color.FromArgb(50, 50, 50, 50));
+                    //            g.FillRectangle(selectedTileBrush, selectionRectangle);
+
+                    //            using (Pen borderPen = new Pen(Color.Lime, 2))
+                    //            {
+                    //                g.DrawRectangle(borderPen, selectionRectangle.X, selectionRectangle.Y, selectionRectangle.Width, selectionRectangle.Height);
+                    //            }
+                    //        }
+                    //    }
+                    //}
+
+                    private void DrawTilesOnMapWS(Graphics g, TmosModWorldScreen ws, Rectangle rect, int tileSize, int tilesXCount, int tilesYCount, TileDrawOptions options)
         {
             Color groundColor = getWSGroundColor(ws.WorldScreenColor);
 
@@ -155,42 +195,77 @@ namespace Tmos.Romhacks.UI.Drawers
             {
                 for (int x = 0; x < tilesXCount; x++)
                 {
-                    Point location = new Point(tileSize * x, tileSize * y);
-
-                    RectangleF tileRectF = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
                     TmosModTile tile = ws.GetTileGrid()[x, y];
 
-                   // DrawTile(g, tile, location, tileSize / 20, groundColor, options);
+                    // DrawTile(g, tile, location, tileSize / 20, groundColor, options);
 
-
+                    //DrawTile
+                    Point location = new Point(tileSize * x, tileSize * y);
                     RectangleF tileRect = new RectangleF(rect.Left + (x * TILEVIEW_SIZE_X), rect.Top + (y * TILEVIEW_SIZE_Y), TILEVIEW_SIZE_X, TILEVIEW_SIZE_Y);
 
                     Brush brush = new SolidBrush(groundColor);
                     g.FillRectangle(brush, tileRect);
-
                     g.DrawRectangle(Pens.Black, rect.X, rect.Y, rect.Width, rect.Height);
 
-                    
                     Image image = GetCachedTileImage(tile.WSTileValue);
                     g.DrawImage(image, tileRect);
-
-
-
                 }
             }
         }
 
-        public void DrawWorldScreen(PictureBox pbSurface, TmosModWorldScreen tmosWorldScreen, TmosWorldScreenDrawOptions options = null, int? WSIndex = null)
+        public Dictionary<int, Rectangle> DrawWorldMapGrid(WorldScreenGrid worldScreenGrid, int cellSize)
         {
-            if (tmosWorldScreen == null) { return; }
-            TmosModTile[,] grid = tmosWorldScreen.GetTileGrid();
+            Dictionary<int, Rectangle> rects = new Dictionary<int, Rectangle>();
 
-            Font font = new Font("Arial", 7);
-            Brush brush = Pens.Black.Brush;
-            Color groundColor = getWSGroundColor(tmosWorldScreen.WorldScreenColor);
-            using (var g = Graphics.FromImage(pbSurface.Image))
+            for (int x = 0; x < worldScreenGrid.GetGrid().GetLength(0); x++)
             {
-               // g.Clear(Color.LightGray);
+                for (int y = 0; y < worldScreenGrid.GetGrid().GetLength(1); y++)
+                {
+                    // Flip the y-coordinate
+                    int flippedY = worldScreenGrid.GetGrid().GetLength(1) - 1 - y;
+
+                    WSGridCell cell = worldScreenGrid.GetCell(x, y);
+                    if (cell != null && cell.WorldScreenIndex.HasValue && cell.WorldScreenIndex != -1)
+                    {
+                        rects.Add(cell.WorldScreenIndex.Value, new Rectangle(x * cellSize, flippedY * cellSize, cellSize, cellSize));
+                    }
+                }
+            }
+            return rects;
+        }
+
+        //public Dictionary<int, Rectangle> DrawWorldMapGrid(WorldScreenGrid worldScreenGrid, int cellSize)
+        //{
+        //    Dictionary<int, Rectangle> rects = new Dictionary<int, Rectangle>();
+
+        //    for (int x = 0; x < worldScreenGrid.GetGrid().GetLength(0); x++)
+        //    {
+        //        for (int y = 0; y < worldScreenGrid.GetGrid().GetLength(1); y++)
+        //        {
+
+        //                // Flip the y-coordinate
+        //                int flippedY = worldScreenGrid.GetGrid().GetLength(1) - 1 - y; 
+        //                if (worldScreenGrid.GetGrid()[x, y].WorldScreenIndex != null)
+        //                {
+        //                    rects.Add((int)worldScreenGrid.GetCell(x, y).WorldScreenIndex, new Rectangle(x * cellSize, flippedY * cellSize, cellSize, cellSize));
+        //                }
+
+
+        //        }
+        //    }
+        //    return rects;
+        //}
+
+
+
+        public void DrawWorldScreen(PictureBox pictureBox, TmosModWorldScreen worldScreen, TmosWorldScreenDrawOptions drawOptions)
+        {
+            if (worldScreen == null) { return; }
+            TmosModTile[,] grid = worldScreen.GetTileGrid();
+
+            Color groundColor = getWSGroundColor(worldScreen.WorldScreenColor);
+            using (var g = Graphics.FromImage(pictureBox.Image))
+            {
                 for (int y = 0; y < 6; y++)
                 {
                     for (int x = 0; x < 8; x++)
@@ -199,19 +274,15 @@ namespace Tmos.Romhacks.UI.Drawers
                         bool tileIsTopSection = y < 4; //else isBottomSection
 
                         TmosModTile tile = new TmosModTile(gridTileValue);
-                        int relativeDrawPositionX = options.TileSize * x;
-                        int relativeDrawPositionY = options.TileSize * y;
+                        int relativeDrawPositionX = drawOptions.TileSize * x;
+                        int relativeDrawPositionY = drawOptions.TileSize * y;
 
                         Point location = new Point(relativeDrawPositionX, relativeDrawPositionY);
 
-                        DrawTile(g, tile, location, options.TileSize, options.TileSize, groundColor, options.TileDrawOptions);
-
-                      
+                        DrawTile(g, tile, location, drawOptions.TileSize, drawOptions.TileSize, groundColor, drawOptions.TileDrawOptions);  
                     }
                 }
-              
             }
-           
         }
 
         public void DrawTile(Graphics g, TmosModTile tmosTile, Point location, int drawSizeX, int drawSizeY, Color groundColor, TileDrawOptions options)
@@ -244,13 +315,6 @@ namespace Tmos.Romhacks.UI.Drawers
             }
         }
 
-        //public void DrawTile(PictureBox pbSurface, Tile tmosTile, Point location, int drawSize, Color groundColor, TileDrawOptions options)
-        //{
-        //    using (var g = Graphics.FromImage(pbSurface.Image))
-        //    {
-        //        DrawTile(g, tmosTile, location, drawSize, groundColor, options);
-        //    }
-        //}
 
         public static Color getWSGroundColor(byte worldScreenColorByteValue)
         {
@@ -332,6 +396,28 @@ namespace Tmos.Romhacks.UI.Drawers
             }
             return image;
         }
+
+        public void DrawWorldScreen(PictureBox pictureBox, TmosModWorldScreen worldScreen, MapDrawOptions drawOptions, int selectedWorldScreenIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DrawTileSection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DrawTile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DrawMiniTile()
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 
     }

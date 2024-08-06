@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tmos.Romhacks.UI.Interfaces
 {
-	public interface IMapper
-	{
-	}
+	//public interface IMapper
+	//{
+	//	public WorldScreen
+	//}
 }

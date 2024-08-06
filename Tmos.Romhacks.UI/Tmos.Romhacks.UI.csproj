@@ -47,12 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drawing\DrawingManager.cs" />
-    <Compile Include="Drawing\IDrawOptions.cs" />
     <Compile Include="Drawing\ITmosDrawer.cs" />
-    <Compile Include="Drawing\TmosDrawer.cs" />
+    <Compile Include="Drawing\Drawer1\TmosDrawer.cs" />
     <Compile Include="Drawing\DrawOptions.cs" />
-    <Compile Include="Drawing\TmosRomhack1Drawer\TmosRomhack1Drawer.cs" />
-    <Compile Include="Drawing\TmosRomhack1Drawer\GridMapper1.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,7 +57,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Images\ImageFileManager.cs" />
-    <Compile Include="Interfaces\IDrawer.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,7 +100,9 @@
       <Name>Tmos.Romhacks.Mods</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Mapper\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Images\TileImages\00.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
