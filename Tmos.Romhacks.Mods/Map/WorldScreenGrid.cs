@@ -14,53 +14,32 @@ namespace Tmos.Romhacks.Mods.Map
         private WSGridCell[,] WSGrid {  get; set; }
         public WorldScreenGrid(int?[,] worldScreenIndexes, TmosModWorldScreen[] worldScreens)
         {
-            WSDictionary = new Dictionary<int, TmosModWorldScreen>();
-            WSGrid = new WSGridCell[worldScreenIndexes.GetLength(0), worldScreenIndexes.GetLength(1)];
-            for (int x = 0; x < worldScreenIndexes.GetLength(0); x++)
-            {
-                for (int y = 0; y < worldScreenIndexes.GetLength(1); y++)
-                {
-                    if (worldScreenIndexes[x, y] != null && worldScreenIndexes[x, y] > -1)
-                    {
-
-                        TmosModWorldScreen ws = worldScreens[(int)worldScreenIndexes[x, y]];
-                        WSGrid[x, y] = new WSGridCell(worldScreenIndexes[x, y], ws);
-                        WSDictionary.Add(worldScreenIndexes[x,y].Value, ws);
-                    }
-                    else
-                    {
-                        WSGrid[x, y] = new WSGridCell(null, null);
-                        continue;
-                      
-                    }   
-
-                }
-            }
+			ReloadGrid(worldScreenIndexes, worldScreens);
         }
 
         public void ReloadGrid( int?[,] worldScreenIndexes, TmosModWorldScreen[] worldScreens)
         {
-            WSGrid = new WSGridCell[worldScreenIndexes.GetLength(0), worldScreenIndexes.GetLength(1)];
-            for (int x = 0; x < worldScreenIndexes.GetLength(0); x++)
-            {
-                for (int y = 0; y < worldScreenIndexes.GetLength(1); y++)
-                {
-                    if (worldScreenIndexes[x, y] != null && worldScreenIndexes[x, y] > -1)
-                    {
-                        TmosModWorldScreen ws = worldScreens[(int)worldScreenIndexes[x, y]];
-                        WSGrid[x, y] = new WSGridCell(worldScreenIndexes[x, y], ws);
-                    }
-                    else
-                    {
-                        WSGrid[x, y] = new WSGridCell(null, null);
-                        continue;
-
-                    }
-
-                }
-            }
-
-        }
+			WSDictionary = new Dictionary<int, TmosModWorldScreen>();
+			WSGrid = new WSGridCell[worldScreenIndexes.GetLength(0), worldScreenIndexes.GetLength(1)];
+			for (int x = 0; x < worldScreenIndexes.GetLength(0); x++)
+			{
+				for (int y = 0; y < worldScreenIndexes.GetLength(1); y++)
+				{
+					int? wsIndexAtPosition = worldScreenIndexes[x, y];
+					if (wsIndexAtPosition != null)
+					{
+						TmosModWorldScreen ws = worldScreens[(int)wsIndexAtPosition];
+						WSGrid[x, y] = new WSGridCell(worldScreenIndexes[x, y], ws);
+						WSDictionary.Add(worldScreenIndexes[x, y].Value, ws);
+					}
+					else
+					{
+						WSGrid[x, y] = new WSGridCell(null, null);
+						continue;
+					}
+				}
+			}
+		}
 
         public WSGridCell[,] GetGrid()
         {

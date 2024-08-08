@@ -13,15 +13,6 @@ using static Tmos.Romhacks.Mods.TileDefinitions;
 
 namespace Tmos.Romhacks.Mods
 {
-
-    public class TileDefinition
-    {
-        //public (byte dataPointer, byte value) TileKey; //Ideally this object could work without having to include the dataPointer of the parent WorldScreen
-        public TileType TileType { get; set; }
-        public string Name { get; set; }
-        public bool IsWalkable { get; set; } //FUTURE TODO: Figure out how to actually calculate instead of using hard-coded definitions'
-    }
-
     public class TileDefinitions
     {
         private static byte[] KnownCollidableTiles = { 0x22, 0x47, 0x87, 0x89, 0x86, 0x88, 0x8F, 0x94, 0x92, 0x95, 0x41, 0x3F, 0x2F, 0x30, 0xB2, 0xB3,

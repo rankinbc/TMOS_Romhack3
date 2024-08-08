@@ -27,6 +27,8 @@ namespace Tmos.Romhacks.Mods
         public TmosRandomEncounterGroup[] RandomEncounterGroups { get; set; }
         public TmosRandomEncounterLineup[] RandomEncounterLineups { get; set; }
 
+        public Dictionary<GameVariableEnum, byte[]> GameVariables { get; set; }
+
         public byte[] TileData { get; set; } //Entire tile data section from rom
 
         public TmosModRom()
@@ -46,6 +48,7 @@ namespace Tmos.Romhacks.Mods
             LoadMiniTilesFromRom(_romData);
             LoadRandomEncounterGroupsFromRom(_romData);
             LoadRandomEncounterLineupsFromRom(_romData);
+            LoadGameVariables(_romData);
         }
 
         private void ReloadDataFromRom()
@@ -58,6 +61,7 @@ namespace Tmos.Romhacks.Mods
 			LoadMiniTilesFromRom(_romData);
 			LoadRandomEncounterGroupsFromRom(_romData);
 			LoadRandomEncounterLineupsFromRom(_romData);
+			LoadGameVariables(_romData);
 		}
 
         public void LoadTileDataFromRom(TmosRom tmosRom)
@@ -124,7 +128,7 @@ namespace Tmos.Romhacks.Mods
         }
         public void LoadWorldScreenContent(TmosModWorldScreen tmosWorldScreen, int chapter = 0)
         {
-            tmosWorldScreen.WSContent = WSContentDefinitions.GetWSContentDefinition(chapter, tmosWorldScreen.Content);
+            tmosWorldScreen.WSContent = WSContentDefinitions.GetWSContentDefinition(chapter, tmosWorldScreen.Content);			
         }
         public void LoadWorldScreenTileGrid(TmosModWorldScreen tmosWorldScreen)
         {
@@ -404,6 +408,36 @@ namespace Tmos.Romhacks.Mods
 			ReloadDataFromRom();
 		}
 		#endregion TmosRandomEncounterLineups
+
+		#region GameVariables
+
+        public void LoadGameVariables(TmosRom tmosRom)
+        {
+            GameVariables = new Dictionary<GameVariableEnum, byte[]>(KnownGameVariableDefinitions.KnownGameVariableDictionary.Count);
+			foreach (var gameVariableEntry in KnownGameVariableDefinitions.KnownGameVariableDictionary)
+            {
+                GameVariableEnum gv = gameVariableEntry.Key;
+				KnownGameVariableDefinition def = gameVariableEntry.Value;
+                int varAddress = def.Address;
+
+				//Load appropriately (for now only working with byte values)
+				byte[] gameVariableData = tmosRom.LoadGameVariable(varAddress,1);
+				GameVariables.Add(gv, gameVariableData);
+			}
+        }
+
+		public void UpdateGameVariable(GameVariableEnum gameVariable, byte[] data)
+		{
+			KnownGameVariableDefinition def = KnownGameVariableDefinitions.KnownGameVariableDictionary[gameVariable];
+			int varAddress = def.Address;
+
+			_romData.SaveGameVariable(varAddress, data);
+
+			GameVariables[gameVariable] = data;
+		}
+
+
+		#endregion GameVariables
 
 		#region Conversion to TmosRom
 

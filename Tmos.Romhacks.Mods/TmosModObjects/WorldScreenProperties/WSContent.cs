@@ -12,7 +12,7 @@ namespace Tmos.Romhacks.Mods.TypedTmosObjects
 {
 	public class WSContent
 	{
-		public byte Value { get; set; }
+		public byte ContentByteValue { get; set; }
 		public WSContentType ContentType { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }

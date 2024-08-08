@@ -76,11 +76,22 @@ namespace Tmos.Romhacks.UI.Drawers
                         g.DrawRectangle(Pens.Black, rect.Left, rect.Top, rect.Width, rect.Height);
                     }
 
-                    if (ws.IsBattleScreen())
+					Brush contentTextBrush = new SolidBrush(Color.FromArgb(255, 255, 0, 0));
+					if (ws.IsBattleScreen())
                     {
                         Brush encScreenBrush = new SolidBrush(Color.FromArgb(110, 255, 0, 210));
                         g.FillRectangle(encScreenBrush, rect);
                     }
+                    else if (ws.HasWSWarpContentEntrance())
+                    {
+						Brush warpContentTextBrush = new SolidBrush(Color.FromArgb(255, 50, 200, 50));
+						g.DrawString($"►({ws.WSContent.ContentByteValue.ToString("X2")})", BaseFont, contentTextBrush, rect.Left + 5, rect.Top + 15);
+					}
+                    else if (ws.HasContentEntrance())
+                    {
+						g.DrawString(ws.WSContent.ContentByteValue.ToString("X2"), BaseFont, contentTextBrush, rect.Left + 5, rect.Top + 15);
+					}
+
                     if (ws.IsWizardScreen())
                     {
                         Brush wizardScreenBrush = new SolidBrush(Color.FromArgb(40, 40, 40, 40));
@@ -221,13 +232,13 @@ namespace Tmos.Romhacks.UI.Drawers
             {
                 for (int y = 0; y < worldScreenGrid.GetGrid().GetLength(1); y++)
                 {
-                    // Flip the y-coordinate
-                    int flippedY = worldScreenGrid.GetGrid().GetLength(1) - 1 - y;
-
-                    WSGridCell cell = worldScreenGrid.GetCell(x, y);
+					// Flip the y-coordinate
+					//  int flippedY = worldScreenGrid.GetGrid().GetLength(1) - 1 - y;
+					//int flippedY = worldScreenGrid.GetGrid().GetLength(1) - 1 - y;
+					WSGridCell cell = worldScreenGrid.GetCell(x, y);
                     if (cell != null && cell.WorldScreenIndex.HasValue && cell.WorldScreenIndex != -1)
                     {
-                        rects.Add(cell.WorldScreenIndex.Value, new Rectangle(x * cellSize, flippedY * cellSize, cellSize, cellSize));
+                        rects.Add(cell.WorldScreenIndex.Value, new Rectangle(x * cellSize, y * cellSize, cellSize, cellSize));
                     }
                 }
             }

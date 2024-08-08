@@ -62,11 +62,15 @@ namespace Tmos.Romhacks.Core
         {
             return TmosData.GetRandomEncounterGroup(Bytes, index);
         }
+        
+        public byte[] LoadGameVariable(int address, int length)
+		{
+			return TmosData.GetDataVariable(Bytes, address, length);
+		}
+		#endregion Load Data
 
-        #endregion Load Data
-
-        #region SaveData
-        public void SaveWorldScreen(int index, TmosWorldScreen worldScreen)
+		#region SaveData
+		public void SaveWorldScreen(int index, TmosWorldScreen worldScreen)
         {
             TmosData.SaveWorldScreen(Bytes,index, worldScreen.GetBytes());
         }
@@ -101,13 +105,18 @@ namespace Tmos.Romhacks.Core
             TmosData.SaveRandomEncounterGroup(Bytes, index, randomEncounterGroup.GetBytes());
         }
 
-       
-        #endregion SaveData
+		public void SaveGameVariable(int address, byte[] data)
+		{
+			TmosData.SaveDataVariable(Bytes, address, data);
+		}
+
+
+		#endregion SaveData
 
 
 
 
 
 
-    }
+	}
 }

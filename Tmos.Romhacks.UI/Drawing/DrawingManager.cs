@@ -17,18 +17,10 @@ namespace Tmos.Romhacks.UI.Drawing
 	public class DrawingManager
 	{
 		private ITmosDrawer _drawer;
-		//private IMapper _mapper;
-		//private GridMapper1 _mapper;
-
-		//private TmosModRom _tmosMod;
-
-
-      
+ 
         public DrawingManager(ITmosDrawer drawer)
 		{
 			_drawer = drawer;
-			//_mapper = new GridMapper1();
-			//_tmosMod = tmosMod;
 		}
 
 		public void SetDrawOptions()
@@ -36,7 +28,7 @@ namespace Tmos.Romhacks.UI.Drawing
 			
 		}
 
-        public TmosWorldScreenDrawOptions GetDrawOptions(bool showBorders, bool showInfo, int tileSize, bool showTileInfo, bool showTileCollision, bool showTileImage)
+		public TmosWorldScreenDrawOptions GetDrawOptions(bool showBorders, bool showInfo, int tileSize, bool showTileInfo, bool showTileCollision, bool showTileImage)
 		{
 			return new TmosWorldScreenDrawOptions()
 			{
@@ -53,23 +45,14 @@ namespace Tmos.Romhacks.UI.Drawing
 			};
 		}
 
-       
-
         public void DrawMap(PictureBox pictureBox, WorldScreenGrid wsGrid, int tileSize, TmosWorldScreenDrawOptions wsDrawOptions, int selectedWorldScreenIndex)
 		{
-
-
-
             var mapDrawOptions = new MapDrawOptions()
 			{
 				WorldScreenDrawOptions = wsDrawOptions,
 				TileSize = tileSize,
 				TileDrawOptions = wsDrawOptions.TileDrawOptions
 			};
-
-            //Map = new GridMapper1(worldScreens);
-
-            //Map.LoadWorldScreenGrid(selectedWSAbsoluteIndex, 30, 30);
 
             pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
 

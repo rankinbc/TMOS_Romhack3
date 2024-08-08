@@ -27,7 +27,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x85: return WSContentType.WiseManMonecom;
                         case 0x86: return WSContentType.AchelatoPrincess;
                         case 0x87: return WSContentType.SabaronTalk;
-                        default: return WSContentType.Nothing;
+                        default: return WSContentType.Other;
                     }
                 }
                 else if (chapter == 1) //Chapter 2
@@ -41,7 +41,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x84: return WSContentType.WisemanRaincome;
                         case 0x87: return WSContentType.Princess1;
                         case 0x8D: return WSContentType.RupiaSeedPlant;
-                        default: return WSContentType.Nothing;
+                        default: return WSContentType.Other;
                     }
                 }
                 else if (chapter == 2) //Chapter 3
@@ -55,7 +55,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x84: return WSContentType.Mustafa;
                         case 0x85: return WSContentType.FrozenPalace2;
                         case 0x87: return WSContentType.WiseManSpricom;
-						default: return WSContentType.Nothing;
+						default: return WSContentType.Other;
                     }
                 }
                 else if (chapter == 3) //Chapter 4
@@ -68,7 +68,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x84: return WSContentType.Rostam;
                         case 0x85: return WSContentType.KingFiesal;
 						case 0x87: return WSContentType.RupiasLady;
-						default: return WSContentType.Nothing;
+						default: return WSContentType.Other;
                     }
                 }
                 else//Chapter 5
@@ -81,7 +81,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                         case 0x83: return WSContentType.LegendSword;
                         case 0x84: return WSContentType.ArmorofLight;
                         case 0x86: return WSContentType.OnlyOneJarYouCanGoThrough;
-                        default: return WSContentType.Nothing;
+                        default: return WSContentType.Other;
                     }
                 }
             }
@@ -151,7 +151,7 @@ namespace Tmos.Romhacks.Mods.Enum.KnownValueLibrary
                     case WSContentTypeByteValue.TimeDoorExit_C7: return WSContentType.TimeDoorExit_C7;
                     case WSContentTypeByteValue.TimeDoorExit: return WSContentType.TimeDoorExit;
                     case WSContentTypeByteValue.Battle: return WSContentType.Battle;
-                    default: return WSContentType.Nothing;
+                    default: return WSContentType.Other;
                 }
 
             }

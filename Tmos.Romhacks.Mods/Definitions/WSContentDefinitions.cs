@@ -30,12 +30,12 @@ namespace Tmos.Romhacks.Mods.Definitions
 
 			if (!ContentDefinitions.TryGetValue(contentType, out WSContent wsContent))
 			{
-				wsContent = new WSContent { Name = "UNKNOWN", ContentType = WSContentType.Nothing };
+				wsContent = new WSContent { Name = "Other", ContentType = WSContentType.Other };
 			}
 
 			if (value.HasValue)
 			{
-				wsContent.Value = value.Value;
+				wsContent.ContentByteValue = value.Value;
 			}
 
 

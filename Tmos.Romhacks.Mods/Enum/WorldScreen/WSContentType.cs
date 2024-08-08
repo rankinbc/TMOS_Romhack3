@@ -95,7 +95,7 @@ namespace Tmos.Romhacks.Mods.Enum
         TimeDoorExit_C7,
         TimeDoorExit,
         Battle,
-
+        Other
     }
 
 }

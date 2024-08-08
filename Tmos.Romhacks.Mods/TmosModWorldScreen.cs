@@ -84,10 +84,35 @@ namespace Tmos.Romhacks.Mods
 
         public static byte GetContentValue(WSContent wsContent)
         {
-            return wsContent.Value;
+            return wsContent.ContentByteValue;
         }
+		public string GetContentName()
+		{
+			if (HasWSWarpContentEntrance())
+			{
+				return "Warp";
+			}
+			else
+			{
+				return WSContent.Name;
+			}
 
-        public bool IsWizardScreen()
+		}
+		public string GetContentDescription()
+		{
+            if (HasWSWarpContentEntrance()) 
+            {
+				return "Warps to WS " + Content.ToString("X2");
+			}
+            else
+            {
+                return WSContent.Description;
+			}
+
+		}
+
+
+		public bool IsWizardScreen()
         {
             return WSContent.ContentType == WSContentType.WizardBattleOnEnter;
         }
@@ -95,12 +120,27 @@ namespace Tmos.Romhacks.Mods
         {
             return WSContent.ContentType == WSContentType.Battle;
         }
+		public bool HasContentEntrance()
+		{
+			return (WSContent.ContentType != WSContentType.Nothing &&
+				WSContent.ContentType != WSContentType.WizardBattleOnEnter &&
+				WSContent.ContentType != WSContentType.Battle);
+		}
+		public bool HasWSWarpContentEntrance()
+		{
+            return (Event >= 0x40 && Event <= 0x4F &&
+                (WSContent.ContentType != WSContentType.Nothing &&
+                WSContent.ContentType != WSContentType.WizardBattleOnEnter &&
+                WSContent.ContentType != WSContentType.Battle));
+		}
 
 
 
-        #region Directional Tests
 
-        public bool CollisionTest_Right_IsCompatable(TmosModWorldScreen destinationWS)
+
+		#region Directional Tests
+
+		public bool CollisionTest_Right_IsCompatable(TmosModWorldScreen destinationWS)
         {
 
             TmosModTile[,] tileGrid = GetTileGrid();

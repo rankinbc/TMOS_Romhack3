@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definitions\KnownGameVariableDefinitions.cs" />
     <Compile Include="Definitions\TmosChapterDefinitions.cs" />
     <Compile Include="Definitions\MiniTileDefinitions.cs" />
     <Compile Include="Definitions\WSContentDefinitions.cs" />
     <Compile Include="Enum\Direction.cs" />
+    <Compile Include="Enum\GameVariableEnum.cs" />
     <Compile Include="Enum\Tiles\MiniTileType.cs" />
     <Compile Include="Enum\Tiles\TileType.cs" />
     <Compile Include="Enum\WorldScreen\WSContentType.cs" />

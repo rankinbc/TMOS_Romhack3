@@ -20,12 +20,10 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
         const int MAX_MAP_SIZE_X = 60;
         const int MAX_MAP_SIZE_Y = 60;
 
-        TmosModWorldScreen[] _worldScreenCollection;
+        TmosModWorldScreen[] _tmosWorldScreens;
         bool[] _mapIndexUsed;
-        private TmosModWorldScreen[,] _worldScreens { get; set; }
         private int?[,] _worldScreenIds { get; set; }
 
-        private TmosModWorldScreen[,] _trimmedWorldScreens { get;  set; }
         private int?[,] _trimmedWorldScreenIds { get; set; }
 
         int currentFarthestLeftTilePosition;
@@ -35,8 +33,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
 
         public GridMapper1(TmosModWorldScreen[] worldScreens)
         {
-            _worldScreenCollection = worldScreens;
-            _worldScreens = new TmosModWorldScreen[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
+            _tmosWorldScreens = worldScreens;
             _worldScreenIds = new int?[MAX_MAP_SIZE_X, MAX_MAP_SIZE_Y];
 
             for (int i = 0; i < _worldScreenIds.GetLength(0); i++)
@@ -47,7 +44,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
                 }
             }
 
-            _mapIndexUsed = new bool[_worldScreenCollection.Length];
+            _mapIndexUsed = new bool[_tmosWorldScreens.Length];
 
 
 
@@ -68,7 +65,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
             CrawlWorldMap(absoluteWorldScreenIndex, 30, 30, chapter.ChapterNumber);
 
             _trimmedWorldScreenIds = Utility.TrimArray(_worldScreenIds);
-            _trimmedWorldScreens = Utility.TrimArray(_worldScreens);
+           // _trimmedWorldScreens = Utility.TrimArray(_worldScreens);
 
             return _trimmedWorldScreenIds;
         }
@@ -77,7 +74,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
         public void CrawlWorldMap(int absoluteWorldScreenIndex, int x, int y, int chapter)
         {
 
-            TmosModWorldScreen worldScreen = _worldScreenCollection[absoluteWorldScreenIndex];
+            TmosModWorldScreen worldScreen = _tmosWorldScreens[absoluteWorldScreenIndex];
 
             //TODO determine how to solve wizard screen issue
           //  TmosChapter chapter = TmosChapterDefinitions.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
@@ -108,7 +105,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
 
 
             _mapIndexUsed[absoluteWorldScreenIndex] = true;
-            _worldScreens[x, y] = worldScreen;
+          //  _worldScreens[x, y] = worldScreen;
             _worldScreenIds[x, y] = absoluteWorldScreenIndex;
 
             int worldScreenNeighborAbsoluteIndex_Right = WSIndexUtility.GetAbsoluteWorldScreenIndex(chapter, worldScreen.ScreenIndexRight);
@@ -118,7 +115,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
 
 
             if (worldScreen.ScreenIndexRight < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Right] &&
-                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Right].ParentWorld == worldScreen.ParentWorld)
+				_tmosWorldScreens[worldScreenNeighborAbsoluteIndex_Right].ParentWorld == worldScreen.ParentWorld)
             {
                 int xRight = x + 1;
                 if (currentFarthestRightTilePosition < xRight) currentFarthestRightTilePosition = xRight;
@@ -126,7 +123,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
 
             }
             if (worldScreen.ScreenIndexLeft < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Left] &&
-                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Left].ParentWorld == worldScreen.ParentWorld)
+				_tmosWorldScreens[worldScreenNeighborAbsoluteIndex_Left].ParentWorld == worldScreen.ParentWorld)
             {
                 int xLeft = x - 1;
                 if (currentFarthestLeftTilePosition > xLeft) currentFarthestLeftTilePosition = xLeft;
@@ -134,18 +131,18 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
 
             }
             if (worldScreen.ScreenIndexDown < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Down] &&
-                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Down].ParentWorld == worldScreen.ParentWorld)
+				_tmosWorldScreens[worldScreenNeighborAbsoluteIndex_Down].ParentWorld == worldScreen.ParentWorld)
             {
-                int yDown = y - 1;
-                if (currentFarthestBottomTilePosition > yDown) currentFarthestBottomTilePosition = yDown;
+                int yDown = y + 1;
+                if (currentFarthestBottomTilePosition < yDown) currentFarthestBottomTilePosition = yDown;
                 CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Down, x, yDown, chapter);
 
             }
             if (worldScreen.ScreenIndexUp < 0xF0 && !_mapIndexUsed[worldScreenNeighborAbsoluteIndex_Up] &&
-                _worldScreenCollection[worldScreenNeighborAbsoluteIndex_Up].ParentWorld == worldScreen.ParentWorld)
+				_tmosWorldScreens[worldScreenNeighborAbsoluteIndex_Up].ParentWorld == worldScreen.ParentWorld)
             {
-                int yUp = y + 1;
-                if (currentFarthestTopTilePosition < yUp) currentFarthestTopTilePosition = yUp;
+                int yUp = y - 1;
+                if (currentFarthestTopTilePosition > yUp) currentFarthestTopTilePosition = yUp;
                 CrawlWorldMap(worldScreenNeighborAbsoluteIndex_Up, x, yUp, chapter);
             }
 
@@ -154,18 +151,19 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
        
         public Point GetWorldScreenCoordsFromGrid(int tileX, int tileY)
         {
-            return new Point(tileX, _trimmedWorldScreens.GetLength(1) - 1 - tileY);
-        }
+			// return new Point(tileX, _trimmedWorldScreenIds.GetLength(1) - 1 - tileY);
+			return new Point(tileX, tileY);
+		}
 
-        public int? GetWorldScreenRelativeIndexAtPosition(int x, int y)
-        {
-            if (x >= 0 && x < _trimmedWorldScreenIds.GetLength(0) &&
-                y >= 0 && y < _trimmedWorldScreenIds.GetLength(1))
-            {
-                return _trimmedWorldScreenIds[x, y];
-            }
-            return null; // Or any other value to indicate an invalid position
-        }
+        //public int? GetWorldScreenRelativeIndexAtPosition(int x, int y)
+        //{
+        //    if (x >= 0 && x < _trimmedWorldScreenIds.GetLength(0) &&
+        //        y >= 0 && y < _trimmedWorldScreenIds.GetLength(1))
+        //    {
+        //        return _trimmedWorldScreenIds[x, y];
+        //    }
+        //    return null; // Or any other value to indicate an invalid position
+        //}
 
 
         public Point GetWorldScreenGridPosition(int absoluteWorldScreenIndex)
@@ -177,9 +175,10 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
                 {
                     if (_trimmedWorldScreenIds[i, j] == absoluteWorldScreenIndex)
                     {
-                        // Return the coordinates with y-flipped
-                        return new Point(i, height - 1 - j);
-                    }
+						// Return the coordinates with y-flipped
+						return new Point(i, j);
+						//  return new Point(i, height - 1 - j);
+					}
                 }
             }
             return new Point(-1, -1);

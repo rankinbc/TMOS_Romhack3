@@ -159,12 +159,28 @@ namespace Tmos.Romhacks.Core
             Array.Copy(structureByteContent, 0, bytes, address, objectSize);
         }
 
-       
-        #endregion DataStructure
 
-        #region Info
+		#endregion DataStructure
 
-        public static int GetTmosRomObjectOffset(TmosRomObjectType tmosRomObjectType, int index)
+		#region DataVariables
+
+		public static byte[] GetDataVariable(byte[] rom, int address, int length)
+		{
+			byte[] variableValue = new byte[length];
+			Array.Copy(rom, address, variableValue, 0, length);
+			return variableValue;
+		}
+
+        public static void SaveDataVariable(byte[] bytes, int address, byte[] data)
+		{
+			Array.Copy(data, 0, bytes, address, data.Length);
+		}
+
+		#endregion DataVariables
+
+		#region Info
+
+		public static int GetTmosRomObjectOffset(TmosRomObjectType tmosRomObjectType, int index)
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(tmosRomObjectType);
             int objectOffsetFromBeginningOfArray = (def.ObjectSize * index);
