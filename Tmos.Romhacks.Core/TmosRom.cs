@@ -73,6 +73,7 @@ namespace Tmos.Romhacks.Core
 		public void SaveWorldScreen(int index, TmosWorldScreen worldScreen)
         {
             TmosData.SaveWorldScreen(Bytes,index, worldScreen.GetBytes());
+            
         }
 
         public void SaveWorldScreenTile(int index, TmosWorldScreenTile worldScreenTile)

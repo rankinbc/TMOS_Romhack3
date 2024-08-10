@@ -478,7 +478,7 @@ namespace Tmos.Romhacks.UI
 
 			int relativeWorldScreenIndex = WSIndexUtility.GetChapterRelativeWorldScreenIndex(absoluteWorldScreenIndex);
 
-			TmosModWorldScreen selectedScreen = _tmosMod.GetTmosModWorldScreen(absoluteWorldScreenIndex);
+			TmosModWorldScreen selectedScreen = _tmosMod.GetTmosModWorldScreen(absoluteWorldScreenIndex, true);
 			_renderingEnabled = false;
 
 			UpdateWorldScreenContentSelectionComboBox(selectedScreen, chapter.ChapterNumber);
@@ -606,6 +606,8 @@ namespace Tmos.Romhacks.UI
 				var newVariableValue = new byte[] { Convert.ToByte(tb_knownVariables_selectedVariable_value.Text) };
 				_tmosMod.UpdateGameVariable(selectedGameVariableEnum, newVariableValue);
 
+				UpdateKnownVariablesListBox();
+
 				Output("Game Variable updated.");
 			}
 			catch(Exception ex)
@@ -714,7 +716,7 @@ namespace Tmos.Romhacks.UI
 			lv_variables.Items[1].SubItems[1].Text = worldScreen.AmbientSound.ToString("X2");
 			lv_variables.Items[2].SubItems[1].Text = worldScreen.Content.ToString("X2");
 
-			lv_variables.Items[2].SubItems[2].Text = worldScreen.GetContentDescription();
+			lv_variables.Items[2].SubItems[2].Text = worldScreen.GetContentName() + " " + worldScreen.GetContentDescription() ;
 
 			lv_variables.Items[3].SubItems[1].Text = worldScreen.ObjectSet.ToString("X2");
 
@@ -835,10 +837,10 @@ namespace Tmos.Romhacks.UI
 
 				int valueOfSelectedTileSectionTile = Convert.ToInt32(selectedItem.SubItems[1].Text);
 
-				int tileSectionStartAddress = (_selectedTileSectionIndex * TmosRomDataObjectDefinitions.RomInfo_TileSection.ObjectSize);
-				int wsTileOffset = tileSectionStartAddress + selectedIndex;
+				//int tileSectionStartAddress = (_selectedTileSectionIndex * TmosRomDataObjectDefinitions.RomInfo_TileSection.ObjectSize);
+				//int wsTileOffset = tileSectionStartAddress + selectedIndex;
 
-				lb_worldScreenTiles.SelectedIndex = wsTileOffset;
+			//lb_worldScreenTiles.SelectedIndex = wsTileOffset;
 
 				lb_tile.SelectedIndex = valueOfSelectedTileSectionTile;
 			}
@@ -1194,12 +1196,16 @@ namespace Tmos.Romhacks.UI
 
 		private void btn_worldScreen_save_Click(object sender, EventArgs e)
 		{
-			byte[] newWorldScreenData = tb_worldScreen_selectedWorldScreen_data.Text.Replace("0x", "").Split().Select(b => Convert.ToByte(b, 16)).ToArray();
+			string[] byteStrings = tb_worldScreen_selectedWorldScreen_data.Text.Replace("0x", "").Trim().Split();
+			byte[] bytes = byteStrings.Select(b => Convert.ToByte(b, 16)).ToArray();
+            byte[] newWorldScreenData = bytes;
 			TmosModWorldScreen updatedWorldScreen = new TmosModWorldScreen(newWorldScreenData);
 			_tmosMod.UpdateTmosModWorldScreen(_selectedWorldScreenIndex, updatedWorldScreen);
 
-			SelectWorldScreen(_selectedWorldScreenIndex);
-		}
+			
+			UpdateWorldScreenListView();
+            SelectWorldScreen(_selectedWorldScreenIndex);
+        }
 
 		
 

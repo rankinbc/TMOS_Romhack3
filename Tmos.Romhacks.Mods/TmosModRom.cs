@@ -90,6 +90,14 @@ namespace Tmos.Romhacks.Mods
             }
         }
 
+        public void LoadWorldScreenFromRom(int absoluteWSIndex)
+        {
+
+            TmosWorldScreen tmosWorldScreen = _romData.LoadWorldScreen(absoluteWSIndex);
+            TmosModWorldScreen tmosModWorldScreen = LoadWorldScreen(tmosWorldScreen.GetBytes());
+
+            _worldScreens[absoluteWSIndex] = tmosModWorldScreen;
+        }
      
             public TmosModWorldScreen LoadWorldScreen(byte[] bytes)
         {
@@ -120,7 +128,7 @@ namespace Tmos.Romhacks.Mods
         }
 
 
-        public TmosModWorldScreen RefreshWorldScreen(TmosModWorldScreen ws )
+        public TmosModWorldScreen RefreshWorldScreen(TmosModWorldScreen ws, bool reloadFromRomData = false)
         {
             LoadWorldScreenContent(ws);
             LoadWorldScreenTileGrid(ws);
@@ -151,7 +159,7 @@ namespace Tmos.Romhacks.Mods
             return _worldScreens;
         }
 
-        public TmosModWorldScreen GetTmosModWorldScreen(int absoluteWorldScreenIndex)
+        public TmosModWorldScreen GetTmosModWorldScreen(int absoluteWorldScreenIndex, bool reload = false)
         {
             if (_worldScreens != null && _worldScreens.Length > 0)
             {
@@ -169,13 +177,18 @@ namespace Tmos.Romhacks.Mods
 
         public void UpdateTmosModWorldScreen(int absoluteWorldScreenIndex, TmosModWorldScreen tmosModWorldScreen)
         {
+            
             LoadWorldScreenContent(tmosModWorldScreen);
             LoadWorldScreenTileGrid(tmosModWorldScreen);
 
+
+
             //Update _romData here or wait until Save?
-            _romData.SaveWorldScreen(absoluteWorldScreenIndex, new TmosWorldScreen(tmosModWorldScreen.GetBytes()));
-            RefreshWorldScreen(tmosModWorldScreen);
-          //  _worldScreens[worldScreenIndex] = ws;
+            var ws = new TmosWorldScreen(tmosModWorldScreen.GetBytes());
+            _romData.SaveWorldScreen(absoluteWorldScreenIndex, ws);
+
+            LoadWorldScreenFromRom(absoluteWorldScreenIndex);
+            _worldScreens[absoluteWorldScreenIndex] = GetTmosModWorldScreen(absoluteWorldScreenIndex, true);
         }
 
         #region Retrieving WorldScreens
