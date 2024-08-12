@@ -26,5 +26,15 @@ namespace Tmos.Romhacks.Mods.Map
             return _worldScreen;
         }
 
+        public bool IsEmpty()
+        {
+            return _worldScreen == null;
+
+		}
+        public static WSGridCell GetEmptyCell()
+        {
+            return new WSGridCell(null, null);
+		}
+
     }
 }

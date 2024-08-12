@@ -56,6 +56,8 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormUserControlState.cs" />
+    <Compile Include="Forms\FormUserActionState.cs" />
     <Compile Include="Images\ImageFileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

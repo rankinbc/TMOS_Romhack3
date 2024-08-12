@@ -8,7 +8,7 @@ namespace Tmos.Romhacks.Mods.Utility
 {
     public static class Utility
     {
-        public static T[,] TrimArray<T>(T[,] originalArray)
+        public static T[,] TrimArray<T>(T[,] originalArray, int paddingAmount)
         {
             int rows = originalArray.GetLength(0);
             int cols = originalArray.GetLength(1);
@@ -38,8 +38,15 @@ namespace Tmos.Romhacks.Mods.Utility
                 return new T[0, 0];
             }
 
-            // Determine the size of the new array
-            int newRows = maxRow - minRow + 1;
+			// Adjust the bounds to include one row/column of padding on each side
+			minRow = Math.Max(0, minRow - paddingAmount);
+			maxRow = Math.Min(rows - paddingAmount, maxRow + paddingAmount);
+			minCol = Math.Max(0, minCol - paddingAmount);
+			maxCol = Math.Min(cols - paddingAmount, maxCol + paddingAmount);
+
+
+			// Determine the size of the new array
+			int newRows = maxRow - minRow + 1;
             int newCols = maxCol - minCol + 1;
 
             // Create the new trimmed array

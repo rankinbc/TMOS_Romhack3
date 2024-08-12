@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tmos.Romhacks.UI.Interfaces
+namespace Tmos.Romhacks.UI.Forms
 {
-	public interface IMapper
+	public enum FormUserActionState
 	{
+		None,
+		MovingWorldScreen
 	}
 }

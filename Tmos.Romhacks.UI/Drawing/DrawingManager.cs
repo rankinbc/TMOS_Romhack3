@@ -8,8 +8,8 @@ using System.Windows.Forms;
 using Tmos.Romhacks.Mods;
 using Tmos.Romhacks.Mods.Map;
 using Tmos.Romhacks.UI.Drawers;
+using Tmos.Romhacks.UI.Forms;
 using Tmos.Romhacks.UI.Images;
-using Tmos.Romhacks.UI.Interfaces;
 using TMOS_Romhack.Romhacks.Mods.Map;
 
 namespace Tmos.Romhacks.UI.Drawing
@@ -45,7 +45,7 @@ namespace Tmos.Romhacks.UI.Drawing
 			};
 		}
 
-        public void DrawMap(PictureBox pictureBox, WorldScreenGrid wsGrid, int tileSize, TmosWorldScreenDrawOptions wsDrawOptions, int selectedWorldScreenIndex)
+        public void DrawMap(PictureBox pictureBox, WorldAreaGrid wsGrid, int tileSize, TmosWorldScreenDrawOptions wsDrawOptions, FormUserControlState formUserActionState )
 		{
             var mapDrawOptions = new MapDrawOptions()
 			{
@@ -57,7 +57,7 @@ namespace Tmos.Romhacks.UI.Drawing
             pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
 
 
-			_drawer.DrawMap(pictureBox,wsGrid, mapDrawOptions, selectedWorldScreenIndex);
+			_drawer.DrawMap(pictureBox,wsGrid, mapDrawOptions, formUserActionState);
 			pictureBox.Refresh();
 		}
 

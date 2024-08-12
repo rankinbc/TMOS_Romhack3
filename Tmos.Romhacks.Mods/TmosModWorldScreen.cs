@@ -136,7 +136,17 @@ namespace Tmos.Romhacks.Mods
 
 
 
-
+        public byte GetNeighborScreenRelativeIndex(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Right: return ScreenIndexRight;
+				case Direction.Left: return ScreenIndexLeft;
+				case Direction.Up: return ScreenIndexUp;
+				case Direction.Down: return ScreenIndexDown;
+                default : return ScreenIndexDown;
+			}
+        }
 
 		#region Directional Tests
 
