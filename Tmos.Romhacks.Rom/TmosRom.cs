@@ -6,53 +6,31 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Tmos.Romhacks.Rom.Observer;
 using Tmos.Romhacks.Rom.TmosRomDataObjects.Encounters;
 using Tmos.Romhacks.Rom.TmosRomDataObjects.Tiles;
 using Tmos.Romhacks.Rom.TmosRomDataObjects.WorldScreen;
 
 namespace Tmos.Romhacks.Rom
 {
-    public class TmosRom : IRomDataObserver
+    public class TmosRom
 	{
 		protected byte[] RomData { get; private set; }
         bool HasUnsavedChanges;
-		private List<IRomDataObserver> _observers = new List<IRomDataObserver>();
 
 		public TmosRom() { }
-		public void RegisterObserver(IRomDataObserver observer)
-		{
-			_observers.Add(observer);
-		}
 
-		public void UnregisterObserver(IRomDataObserver observer)
-		{
-			_observers.Remove(observer);
-		}
-
-		protected void NotifyObservers(int? wsIndex)
-		{
-			foreach (var observer in _observers)
-			{
-				observer.OnRomDataChanged(wsIndex);
-			}
-		}
 
 		public virtual void LoadRom(string filePath)
 		{
 			RomData = File.ReadAllBytes(filePath);
 			HasUnsavedChanges = false;
-			NotifyObservers(0);
 		}
 
 		public virtual void WriteRom(string filePath)
 		{
 			File.WriteAllBytes(filePath, RomData);
 			HasUnsavedChanges = false;
-		}
-
-		public void OnRomDataChanged(int? wsIndex)
-		{
-            int a = 0;
 		}
 
 
@@ -147,7 +125,6 @@ namespace Tmos.Romhacks.Rom
 		{
 			Array.Copy(newData, 0, RomData, offset, newData.Length);
 			HasUnsavedChanges = true;
-			NotifyObservers(null);
 		}
 
 		// Add methods to get ROM data

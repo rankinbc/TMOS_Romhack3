@@ -484,7 +484,7 @@ namespace Tmos.Romhacks.Forms
 			// tb_direction_up
 			// 
 			tb_direction_up.BorderStyle = BorderStyle.FixedSingle;
-			tb_direction_up.Location = new System.Drawing.Point(79, 13);
+			tb_direction_up.Location = new System.Drawing.Point(79, 12);
 			tb_direction_up.Margin = new Padding(2);
 			tb_direction_up.Name = "tb_direction_up";
 			tb_direction_up.Size = new System.Drawing.Size(33, 23);

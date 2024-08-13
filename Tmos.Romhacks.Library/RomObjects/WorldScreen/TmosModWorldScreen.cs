@@ -13,6 +13,8 @@ using Tmos.Romhacks.Library.RomObjects.Tiles;
 using Tmos.Romhacks.Library.RomObjects.WorldScreen.Properties;
 using Tmos.Romhacks.Library.Utility;
 using Tmos.Romhacks.Rom;
+using Tmos.Romhacks.Rom.Enum;
+using Tmos.Romhacks.Rom.Observer;
 using Tmos.Romhacks.Rom.TmosRomDataObjects.Tiles;
 using Tmos.Romhacks.Rom.TmosRomDataObjects.WorldScreen.Enum;
 using static Tmos.Romhacks.Library.TileDefinitions;
@@ -74,35 +76,16 @@ namespace Tmos.Romhacks.Library.RomObjects.WorldScreen
             Event = data[(int)WSProperty.Event];
 
         }
-		public void OnRomDataChanged(int? wsIndex)
+		public void OnRomDataChanged(RomDataChangeNotificationType changeType, int? index)
 		{
-			if (_index != null)
-			{
-                int a = 0;
-			}
+            int a = 0;
+            //RefreshWorldScreen((int)index);
 		}
-		
 
 
-		//public void RefreshWorldScreen()
-		//{
-		//	LoadWorldScreenContent(_index);
-		//	LoadWorldScreenTileGrid();
-		//}
-		//public void LoadWorldScreenContent(int chapter = 0)
-		//{
-		//	WSContent = WSContentDefinitions.GetWSContentDefinition(chapter, Content);
-		//}
-		//public void LoadWorldScreenTileGrid()
-		//{
-		//	int topTileDataOffset = TileDataUtility.GetTopTileSectionTileDataOffset(DataPointer);
-		//	TileSectionTop = TmosRom.LoadTileSection(TopTiles, topTileDataOffset);
+ 
 
-		//	int bottomTileDataOffset = TileDataUtility.GetBottomTileSectionTileDataOffset(DataPointer);
-		//	TileSectionBottom = TmosRom.LoadTileSection(BottomTiles, bottomTileDataOffset);
-		//}
-
-		public byte GetNeighborWorldScreenRelativeIndex(Direction direction)
+        public byte GetNeighborWorldScreenRelativeIndex(Direction direction)
         {
             switch (direction)
             {
@@ -440,7 +423,7 @@ namespace Tmos.Romhacks.Library.RomObjects.WorldScreen
             return fullGrid;
         }
 
-		
+	
 	}
 
 
