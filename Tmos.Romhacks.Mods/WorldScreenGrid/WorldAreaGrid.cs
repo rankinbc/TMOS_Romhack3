@@ -28,32 +28,59 @@ namespace Tmos.Romhacks.Mods.Map
 	//ReloadGrid(worldScreenIndexes, worldScreens);
 		}
 
-        public void ReloadGrid( int?[,] worldScreenIndexes, TmosModWorldScreen[] worldScreens)
-        {
-			WSDictionary = new Dictionary<int, TmosModWorldScreen>();
-			WSGrid = new WSGridCell[worldScreenIndexes.GetLength(0), worldScreenIndexes.GetLength(1)];
-			for (int x = 0; x < worldScreenIndexes.GetLength(0); x++)
-			{
-				for (int y = 0; y < worldScreenIndexes.GetLength(1); y++)
-				{
-					int? wsIndexAtPosition = worldScreenIndexes[x, y];
-					if (wsIndexAtPosition != null)
-					{
-						TmosModWorldScreen ws = worldScreens[(int)wsIndexAtPosition];
-						WSGrid[x, y] = new WSGridCell(worldScreenIndexes[x, y], ws);
-						WSDictionary.Add(worldScreenIndexes[x, y].Value, ws);
-					}
-				}
-			}
-		}
+  //      public void ReloadGrid( int?[,] worldScreenIndexes, TmosModWorldScreen[] worldScreens)
+  //      {
+		//	WSDictionary = new Dictionary<int, TmosModWorldScreen>();
+		//	WSGrid = new WSGridCell[worldScreenIndexes.GetLength(0), worldScreenIndexes.GetLength(1)];
+		//	for (int x = 0; x < worldScreenIndexes.GetLength(0); x++)
+		//	{
+		//		for (int y = 0; y < worldScreenIndexes.GetLength(1); y++)
+		//		{
+		//			int? wsIndexAtPosition = worldScreenIndexes[x, y];
+		//			if (wsIndexAtPosition != null)
+		//			{
+		//				TmosModWorldScreen ws = worldScreens[(int)wsIndexAtPosition];
+		//				WSGrid[x, y] = new WSGridCell(worldScreenIndexes[x, y], ws);
+		//				WSDictionary.Add(worldScreenIndexes[x, y].Value, ws);
+		//			}
+		//		}
+		//	}
+		//}
 
-		public void AddGridCell(int x, int y, int wsIndex, TmosModWorldScreen ws)
+		public void SetGridCell(int x, int y, int wsIndex, TmosModWorldScreen ws, bool updateNeighborPointers = false)
 		{
-			WSGrid[x, y] = new WSGridCell(wsIndex, ws);
-			WSDictionary[wsIndex] = ws;
+			if (WSDictionary.ContainsKey(wsIndex))
+			{
+				WSDictionary[wsIndex] = ws;
+			}
+			else
+			{
+				WSDictionary.Add(wsIndex, ws);
+			}
+
+			Point existingPositionOfScreenIndex = GetGridPositionOfWorldScreen(wsIndex);
+			if (existingPositionOfScreenIndex.X == -1 && existingPositionOfScreenIndex.Y == -1)
+			{
+				WSGrid[x, y] = new WSGridCell(wsIndex, ws);
+				UpdateScreenConnections(x, y);
+			}
+			//else
+			//{
+			//	WSGrid[existingPositionOfScreenIndex.X, existingPositionOfScreenIndex.Y] = WSGridCell.GetEmptyCell();
+			//	UpdateScreenConnections(existingPositionOfScreenIndex.X, existingPositionOfScreenIndex.Y);
+			//}
 		}
 
-        public WSGridCell[,] GetGrid()
+		public int GetGridSizeX()
+		{
+			return WSGrid.GetLength(0);
+		}
+		public int GetGridSizeY()
+		{
+			return WSGrid.GetLength(1);
+		}
+
+		public WSGridCell[,] GetGrid()
         {
             return WSGrid;
         }
@@ -61,6 +88,7 @@ namespace Tmos.Romhacks.Mods.Map
         {
             return WSGrid[x, y];
         }
+
 
 		public int? GetWorldScreenIndexAtPosition(int gridPositionX, int gridPositionY)
 		{
@@ -78,7 +106,7 @@ namespace Tmos.Romhacks.Mods.Map
 			return new Point(tileX, tileY);
 		}
 
-		public Point GetWorldScreenGridPosition(int absoluteWorldScreenIndex)
+		public Point GetGridPositionOfWorldScreen(int absoluteWorldScreenIndex)
 		{
 			int height = WSGrid.GetLength(1);
 			for (int i = 0; i < WSGrid.GetLength(0); i++)
@@ -110,6 +138,20 @@ namespace Tmos.Romhacks.Mods.Map
 			WSGrid[sourceX, sourceY] = WSGridCell.GetEmptyCell();
 			UpdateScreenConnections(sourceX, sourceY);
 		}
+
+		//public void SetWorldScreen(int destinationX, int destinationY, byte[] wsContent)
+		//{
+		//	WSGridCell dest = WSGrid[destinationX, destinationY];
+		//	//WSGridCell dest = WSGrid[destinationX, destinationY];
+
+		//	int? index = dest.WorldScreenIndex;
+
+		//	if (index.HasValue)
+		//	{
+		//		WSGrid[destinationX, destinationY] = new WSGridCell((int)index, new TmosModWorldScreen(wsContent));
+		//		UpdateScreenConnections(destinationX, destinationY);
+		//	}
+		//}
 
 		public void UpdateScreenConnections(int x, int y)
 		{
@@ -189,8 +231,9 @@ namespace Tmos.Romhacks.Mods.Map
 					cell_down.GetWorldScreen().ScreenIndexUp = 0xFF;
 				}
 			}
-
 		}
+
+
 
 
 	}

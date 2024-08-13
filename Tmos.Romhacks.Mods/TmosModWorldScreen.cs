@@ -26,7 +26,7 @@ namespace Tmos.Romhacks.Mods
         private byte[] _data;
 
         public byte[] GetBytes() { return _data; }
-        public byte ParentWorld { get { return _data[(int)WSProperty.ParentWorld]; } set { _data[(int)WSProperty.ParentWorld] = value; } }
+		public byte ParentWorld { get { return _data[(int)WSProperty.ParentWorld]; } set { _data[(int)WSProperty.ParentWorld] = value; } }
         public byte AmbientSound { get { return _data[(int)WSProperty.AmbientSound]; } set { _data[(int)WSProperty.AmbientSound] = value; } }
         public byte Content { get { return _data[(int)WSProperty.Content]; } set { _data[(int)WSProperty.Content] = value; } }
         public byte ObjectSet { get { return _data[(int)WSProperty.ObjectSet]; } set { _data[(int)WSProperty.ObjectSet] = value; } }

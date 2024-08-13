@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Xsl;
+using Tmos.Romhacks.Core;
+using Tmos.Romhacks.Mods;
 using Tmos.Romhacks.Mods.Map;
 
 namespace Tmos.Romhacks.UI.Forms
@@ -22,6 +25,8 @@ namespace Tmos.Romhacks.UI.Forms
 		public Point SelectedWorldMapGridCell { get; set; }
 		public Point SelectedWorldMapGridCell_Secondary { get; set; }
 
+		private byte[] WorldScreenClipBoard { get; set; }
+
 		public FormUserControlState()
 		{
 			CurrentUserAction = FormUserActionState.None;
@@ -35,5 +40,39 @@ namespace Tmos.Romhacks.UI.Forms
 			SelectedWorldMapGridCell = new Point(-1, -1);
 			SelectedWorldMapGridCell_Secondary = new Point(-1, -1);
 		}
+
+		public void CopyWorldScreen(TmosModWorldScreen tmosWorldScreen)
+		{
+			WorldScreenClipBoard = tmosWorldScreen.GetBytes();
+		}
+		public TmosModWorldScreen GetWorldScreenInClipboard()
+		{
+			return new TmosModWorldScreen(WorldScreenClipBoard);
+		}
+
+		public void SelectWorldMapGridCell(int x, int y, ref WorldAreaGrid grid)
+		{
+			if (x > grid.GetGridSizeX() || x < 0)
+			{
+				throw new IndexOutOfRangeException($"X coordinate {x} is outsite the X range of {grid.GetGridSizeX()}");
+			}
+			if (y > grid.GetGridSizeY() || y < 0)
+			{
+				throw new IndexOutOfRangeException($"Y coordinate {y} is outisde the Y range of {grid.GetGridSizeY()}");
+			}
+
+
+			SelectedWorldMapGridCell = new Point(x, y);
+			WSGridCell selectedCell = grid.GetCell(x, y);
+			if (grid.GetCell(x, y).IsEmpty())
+			{
+				SelectedWorldScreenIndex = -1;
+			}
+			else
+			{
+				SelectedWorldScreenIndex = (int)selectedCell.WorldScreenIndex ;
+			}
+		}
+
 	}
 }

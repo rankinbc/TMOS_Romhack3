@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Policy;
@@ -471,6 +472,7 @@ namespace Tmos.Romhacks.UI
 
 		private void SelectWorldScreen(Point gridPosition)
 		{
+			_userControlState.SelectWorldMapGridCell(gridPosition.X, gridPosition.Y, ref _worldScreenGrid);
 			int? wSIndexAtPosition = _worldScreenGrid.GetWorldScreenIndexAtPosition(gridPosition.X, gridPosition.Y);
 
 			if (wSIndexAtPosition != null)
@@ -481,60 +483,90 @@ namespace Tmos.Romhacks.UI
 		}
 			private void SelectWorldScreen(int absoluteWorldScreenIndex)
 		{
-			_userControlState.SelectedWorldScreenIndex = absoluteWorldScreenIndex;
-			
-			if (absoluteWorldScreenIndex == null || absoluteWorldScreenIndex < 0)
+			if (absoluteWorldScreenIndex < 0)
 			{
-				Output("Invalid World Screen Index");
-				return;
+				lv_worldScreens.SelectedIndices.Clear();
 			}
-		
-			TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
-			if (_previousChapter != chapter.ChapterNumber)
+			else if (lv_worldScreens.SelectedIndices[0] != absoluteWorldScreenIndex)
 			{
-				//Chapter changed
-				//UpdateWorldScreenContentSelectionComboBox(chapter.ChapterNumber);
+				lv_worldScreens.Items[absoluteWorldScreenIndex].Selected = true;
+				lv_worldScreens.Items[absoluteWorldScreenIndex].Focused = true;
+				lv_worldScreens.TopItem = lv_worldScreens.Items[absoluteWorldScreenIndex];
+				lv_worldScreens.Select();
+			}
+			else
+			{
+				_userControlState.SelectedWorldScreenIndex = absoluteWorldScreenIndex;
+
+				if (absoluteWorldScreenIndex == null || absoluteWorldScreenIndex < 0)
+				{
+					Output("Invalid World Screen Index");
+					return;
+				}
+
+				TmosChapter chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex);
+				if (_previousChapter != chapter.ChapterNumber)
+				{
+					//Chapter changed
+					//UpdateWorldScreenContentSelectionComboBox(chapter.ChapterNumber);
+				}
+
+				int relativeWorldScreenIndex = WSIndexUtility.GetChapterRelativeWorldScreenIndex(absoluteWorldScreenIndex);
+
+
+				TmosModWorldScreen selectedScreen = _tmosMod.GetTmosModWorldScreen(absoluteWorldScreenIndex, true);
+				_renderingEnabled = false;
+
+				UpdateWorldScreenContentSelectionComboBox(selectedScreen, chapter.ChapterNumber);
+				UpdateWorldScreenDataListView(selectedScreen);
+				UpdateWorldScreenDataEditTextbox(selectedScreen);
+				UpdateDirectionSection(selectedScreen);
+				UpdateTileSectionListBoxes(selectedScreen);
+
+				ReloadGrid(absoluteWorldScreenIndex);
+
+				//UpdateWorldScreenGrid(absoluteWorldScreenIndex);
+				_renderingEnabled = true;
+
+				tb_selectedWorldScreenIndex.Text = absoluteWorldScreenIndex.ToString();
+
+				Point gridPosition = _worldScreenGrid.GetGridPositionOfWorldScreen(absoluteWorldScreenIndex);
+				lbl_worldScreen_info.Text = $"Chapter: {chapter.ChapterNumber}{Environment.NewLine};" +
+					$"Relative WSIndex: 0x{relativeWorldScreenIndex.ToString("X2")}{Environment.NewLine}" +
+					$"Grid Position: {gridPosition}";
+
+				gb_worldScreen.Text = $"World Screen: {_userControlState.SelectedWorldScreenIndex}";
 			}
 
-			int relativeWorldScreenIndex = WSIndexUtility.GetChapterRelativeWorldScreenIndex(absoluteWorldScreenIndex);
-			
+		}
 
-			TmosModWorldScreen selectedScreen = _tmosMod.GetTmosModWorldScreen(absoluteWorldScreenIndex, true);
-			_renderingEnabled = false;
-
-			UpdateWorldScreenContentSelectionComboBox(selectedScreen, chapter.ChapterNumber);
-			UpdateWorldScreenDataListView(selectedScreen);
-			UpdateWorldScreenDataEditTextbox(selectedScreen);
-			UpdateDirectionSection(selectedScreen);
-			UpdateTileSectionListBoxes(selectedScreen);
-
-			_worldScreenGrid = _gridGenerator.LoadWorldScreenGrid(absoluteWorldScreenIndex, _tmosMod.GetTmosModWorldScreens(false));
-			_userControlState.SelectedWorldMapGridCell = _worldScreenGrid.GetWorldScreenGridPosition(absoluteWorldScreenIndex);
-
-			//UpdateWorldScreenGrid(absoluteWorldScreenIndex);
-			_renderingEnabled = true;
-
-			tb_selectedWorldScreenIndex.Text = absoluteWorldScreenIndex.ToString();
-
-			Point gridPosition = _worldScreenGrid.GetWorldScreenGridPosition(absoluteWorldScreenIndex);
-			lbl_worldScreen_info.Text = $"Chapter: {chapter.ChapterNumber}{Environment.NewLine};" +
-				$"Relative WSIndex: 0x{relativeWorldScreenIndex.ToString("X2")}{Environment.NewLine}" + 
-				$"Grid Position: {gridPosition}";
-
-			gb_worldScreen.Text = $"World Screen: {_userControlState.SelectedWorldScreenIndex}";
-
+		private void ReloadGrid(int startingWSIndex)
+		{
+			_worldScreenGrid = _gridGenerator.LoadWorldScreenGrid(startingWSIndex, _tmosMod.GetTmosModWorldScreens(false));
+			_userControlState.SelectedWorldMapGridCell = _worldScreenGrid.GetGridPositionOfWorldScreen(startingWSIndex);
 		}
 
 		private void lv_worldScreens_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (lv_worldScreens.SelectedIndices.Count > 0 && lv_worldScreens.SelectedIndices[0] != _userControlState.SelectedWorldScreenIndex)
-			{
-				_userControlState.SelectedWorldScreenIndex = lv_worldScreens.SelectedIndices[0];
-				
-				SelectWorldScreen(_userControlState.SelectedWorldScreenIndex);
+			if (lv_worldScreens.SelectedIndices.Count > 0)
+			{ 
+			SelectWorldScreen(lv_worldScreens.SelectedIndices[0]);
+			Draw();
+		}
+			//if (lv_worldScreens.SelectedIndices.Count <= 0)
+			//{
+			//	//_userControlState.SelectedWorldScreenIndex = -1;
+			//	//_userControlState.SelectedWorldMapGridCell = new Point(-1, -1);
+			//	///SelectWorldScreen(-1);
 
-				Draw();
-			}
+			//}
+			//else if (lv_worldScreens.SelectedIndices[0] != _userControlState.SelectedWorldScreenIndex)
+			//{
+
+
+			//	SelectWorldScreen(_userControlState.SelectedWorldScreenIndex);
+			//	Draw();
+			//}
 		}
 
 		private void lb_tileSection_SelectedIndexChanged(object sender, EventArgs e)
@@ -1300,6 +1332,7 @@ namespace Tmos.Romhacks.UI
 
 		private void pb_worldMap_Click(object sender, EventArgs e)
 		{
+			if (_worldScreenGrid == null) return;
 			try
 			{
 				Point mousePosition = pb_worldMap.PointToClient(Cursor.Position);
@@ -1321,23 +1354,18 @@ namespace Tmos.Romhacks.UI
 				{
 					if (_userControlState.CurrentUserAction == FormUserActionState.MovingWorldScreen)
 					{
-
-						_worldScreenGrid.MoveWorldScreen(_userControlState.SelectedWorldMapGridCell_Secondary.X, _userControlState.SelectedWorldMapGridCell_Secondary.Y, gridCellClickedX, gridCellClickedY);
-						_userControlState.CurrentUserAction = FormUserActionState.None;
-
-						//SelectWorldScreen(new Point(gridCellClickedX, gridCellClickedY));
-
-						Draw();
-						SelectWorldScreen(new Point(gridCellClickedX, gridCellClickedY));
+						MoveWorldScreen(_userControlState.SelectedWorldMapGridCell_Secondary.X, _userControlState.SelectedWorldMapGridCell_Secondary.Y, gridCellClickedX, gridCellClickedY);
 						Cursor = Cursors.Default;
+						SelectWorldScreen(new Point(gridCellClickedX, gridCellClickedY));
+						Draw();
 					}
 					else //Normal click - select
 					{
-						if (_worldScreenGrid != null)
-						{
-							SelectGridCell(gridCellClickedX, gridCellClickedY);
-						}
+
+						//SelectGridCell(gridCellClickedX, gridCellClickedY);
+						SelectGridCell(gridCellClickedX, gridCellClickedY);
 					}
+					
 
 				}
 
@@ -1352,30 +1380,27 @@ namespace Tmos.Romhacks.UI
 
 		private void SelectGridCell(int x, int y)
 		{
-			Point gridCellClickedCoords = _worldScreenGrid.GetWorldScreenCoordsFromGrid(x, y); //pull from grid
-			WSGridCell clickedCell = _worldScreenGrid.GetCell(gridCellClickedCoords.X, gridCellClickedCoords.Y);
+			_userControlState.SelectWorldMapGridCell(x, y, ref _worldScreenGrid);
 
-			_userControlState.SelectedWorldMapGridCell = new Point(gridCellClickedCoords.X, gridCellClickedCoords.Y);
-
-			if (lv_worldScreens.Items.Count > 0)
+			if (lv_worldScreens.Items.Count > 0 )
 			{
-				if (_worldScreenGrid.GetGrid().GetLength(0) > gridCellClickedCoords.X &&
-					_worldScreenGrid.GetGrid().GetLength(1) > gridCellClickedCoords.Y &&
-					gridCellClickedCoords.X >= 0 &&
-					gridCellClickedCoords.Y >= 0)
+				WSGridCell wsGridCell = _worldScreenGrid.GetCell(x, y);
+				if (!wsGridCell.IsEmpty())
 				{
-					int selectedWorldIndex = _worldScreenGrid.GetGrid()[gridCellClickedCoords.X, gridCellClickedCoords.Y].WorldScreenIndex ?? -1;
+					if ((int)wsGridCell.WorldScreenIndex < 0) { throw new Exception("wsGrid Not Empty but wsIndex is < 0"); }
 
-					if (selectedWorldIndex > -1)
-					{
-						lv_worldScreens.Items[selectedWorldIndex].Selected = true;
-						lv_worldScreens.Items[selectedWorldIndex].Focused = true;
-						lv_worldScreens.TopItem = lv_worldScreens.Items[selectedWorldIndex];
-						lv_worldScreens.Select();
-					}
+					lv_worldScreens.Items[(int)wsGridCell.WorldScreenIndex].Selected = true;
+					lv_worldScreens.Items[(int)wsGridCell.WorldScreenIndex].Focused = true;
+					lv_worldScreens.TopItem = lv_worldScreens.Items[_userControlState.SelectedWorldScreenIndex];
+					lv_worldScreens.Select();
+				}
+				else
+				{
+					lv_worldScreens.SelectedItems.Clear();
 				}
 			}
 		}
+		
 
 		//Seperate shuffling out into a Shuffler class with an interface so that multiple methods of shuffling can be used
 		#region WorldScreen Modification
@@ -1501,7 +1526,12 @@ namespace Tmos.Romhacks.UI
 		{
 			tb_output.Text += s + Environment.NewLine;
 		}
-
+		private void MoveWorldScreen(int sourceX, int sourceY, int destinationX, int destinationY)
+		{
+			_worldScreenGrid.MoveWorldScreen(sourceX, sourceY, destinationX, destinationY);
+			_userControlState.CurrentUserAction = FormUserActionState.None;
+			
+		}
 		private void menu_pb_worldMap_moveWorldScreen_Click(object sender, EventArgs e)
 		{
 			_userControlState.CurrentUserAction = FormUserActionState.MovingWorldScreen;
@@ -1513,7 +1543,9 @@ namespace Tmos.Romhacks.UI
 
 		private void btn_map_fix_screen_references_Click(object sender, EventArgs e)
 		{
+
 			_worldScreenGrid.UpdateScreenConnections(_userControlState.SelectedWorldMapGridCell.X, _userControlState.SelectedWorldMapGridCell.Y);
+			DrawMap();
 			UpdateGridWorldScreens();
 		}
 
@@ -1555,10 +1587,6 @@ namespace Tmos.Romhacks.UI
 
 						_tmosMod.UpdateTmosModWorldScreen((int)wsIndex, selectedScreen);
 						_tmosMod.GetTmosModWorldScreen((int)wsIndex, true);
-
-						
-
-
 					}
 				}
 
@@ -1584,6 +1612,36 @@ namespace Tmos.Romhacks.UI
 					}
 				}
 			}
+		}
+
+		public void SelectWorldScreenMapCell(int x, int y)
+		{
+			_userControlState.SelectedWorldMapGridCell = new Point(x, y);
+			WSGridCell selectedWSGridCell = _worldScreenGrid.GetCell(x, y);
+
+			if (!selectedWSGridCell.IsEmpty())
+			{
+				_userControlState.SelectedWorldScreenIndex = (int)selectedWSGridCell.WorldScreenIndex;
+			}
+			else
+			{
+				lv_worldScreens.SelectedItems.Clear();
+				_userControlState.SelectedWorldScreenIndex = -1;
+			}
+		}
+
+		private void menu_pb_worldMap_copyWorldSceen_Click(object sender, EventArgs e)
+		{
+
+		}
+
+	
+
+	
+
+		private void menu_pb_worldMap_pasteWorldSceen_Click(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

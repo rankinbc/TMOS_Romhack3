@@ -11,6 +11,7 @@ using Tmos.Romhacks.Core.TmosRomDataObjects;
 using Tmos.Romhacks.Core.TmosRomInfo;
 using Tmos.Romhacks.Mods.Definitions;
 using Tmos.Romhacks.Mods.Enum;
+using Tmos.Romhacks.Mods.Map;
 using Tmos.Romhacks.Mods.TypedTmosObjects;
 using Tmos.Romhacks.Mods.Utility;
 
@@ -26,10 +27,14 @@ namespace Tmos.Romhacks.Mods
         public TmosMiniTile[] MiniTiles { get; set; }
         public TmosRandomEncounterGroup[] RandomEncounterGroups { get; set; }
         public TmosRandomEncounterLineup[] RandomEncounterLineups { get; set; }
-
         public Dictionary<GameVariableEnum, byte[]> GameVariables { get; set; }
 
-        public byte[] TileData { get; set; } //Entire tile data section from rom
+
+
+		private IWorldScreenGridGenerator _gridGenerator;
+		private WorldAreaGrid _worldScreenGrid;
+
+		public byte[] TileData { get; set; } //Entire tile data section from rom
 
         public TmosModRom()
         {
@@ -161,7 +166,7 @@ namespace Tmos.Romhacks.Mods
 
         public TmosModWorldScreen GetTmosModWorldScreen(int absoluteWorldScreenIndex, bool reload = false)
         {
-            if (_worldScreens != null && _worldScreens.Length > 0)
+            if (_worldScreens != null && _worldScreens.Length > 0 && absoluteWorldScreenIndex >= 0)
             {
                 TmosModWorldScreen ws = _worldScreens[absoluteWorldScreenIndex];
                 int chapter = ChapterUtility.GetChapterOfWorldScreen(absoluteWorldScreenIndex).ChapterNumber;

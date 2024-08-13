@@ -12,29 +12,28 @@ namespace Tmos.Romhacks.Mods.Map
     {
         public int? WorldScreenIndex { get; set; }//Hide true WorldScreenIndex until grid is converted back to worldscreen array
 
-        public TmosModTile[,] Tiles { get; set; }
+       // public TmosModTile[,] Tiles { get; set; }
 
         private TmosModWorldScreen _worldScreen { get; set; }
 
         public WSGridCell(int? worldScreenIndex, TmosModWorldScreen worldScreen)
         {
             WorldScreenIndex = worldScreenIndex;
-            _worldScreen = worldScreen;
+           _worldScreen = worldScreen;
         }
         public TmosModWorldScreen GetWorldScreen()
         {
             return _worldScreen;
         }
 
-        public bool IsEmpty()
+		public bool IsEmpty()
         {
-            return _worldScreen == null;
+            return WorldScreenIndex == null || WorldScreenIndex < 0;
 
 		}
         public static WSGridCell GetEmptyCell()
         {
             return new WSGridCell(null, null);
 		}
-
-    }
+	}
 }

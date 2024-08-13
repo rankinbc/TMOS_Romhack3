@@ -87,7 +87,7 @@ namespace TMOS_Romhack.Romhacks.Mods.Map
                     if (wsId != null)
                     {
 						TmosModWorldScreen ws = _tmosWorldScreens[(int)wsId];
-                        worldScreenGrid.AddGridCell(x, y, (int)wsId, ws);
+                        worldScreenGrid.SetGridCell(x, y, (int)wsId, ws);
 
 					}
 				}
