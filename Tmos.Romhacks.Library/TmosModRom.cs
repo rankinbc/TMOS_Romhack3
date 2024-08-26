@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Tmos.Romhacks.Library.Definitions;
+using Tmos.Romhacks.Library.Definitions.Encounters;
 using Tmos.Romhacks.Library.Enum;
-
+using Tmos.Romhacks.Library.RomObjects.Encounters;
 using Tmos.Romhacks.Library.RomObjects.Tiles;
 using Tmos.Romhacks.Library.RomObjects.WorldScreen;
 using Tmos.Romhacks.Library.Utility;
@@ -31,6 +32,8 @@ namespace Tmos.Romhacks.Library
 
 		private Dictionary<RomDataChangeNotificationType, List<IRomDataObserver>> _observers = new Dictionary<RomDataChangeNotificationType, List<IRomDataObserver>>();
 		public TmosModRomContent RomContent { get; private set; }
+
+       
 		byte[] IRomDataManager.RomData { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
 		public TmosModRom()
@@ -415,29 +418,39 @@ namespace Tmos.Romhacks.Library
 		public void LoadRandomEncounterLineupsFromRom()
         {
             var def = TmosRomDataObjectDefinitions.GetTmosRomObjectInfoDefinition(TmosRomObjectArrayType.RandomEncounterLineup);
-			RomContent.RandomEncounterLineups = new TmosRandomEncounterLineup[def.Count];
+			RomContent.RandomEncounterLineups = new TmosModRandomEncounterLineup[def.Count];
 
             for (int i = 0; i < RomContent.RandomEncounterLineups.Length; i++)
             {
-                TmosRandomEncounterLineup tmosRandomEncounterLineup = base.LoadRandomEncounterLineup(i);
-				RomContent.RandomEncounterLineups[i] = tmosRandomEncounterLineup;
+                LoadRandomEncounterLineupFromRom(i);
             }
         }
 
         public void LoadRandomEncounterLineupFromRom(int index)
 		{
 			TmosRandomEncounterLineup tmosRandomEncounterLineup = base.LoadRandomEncounterLineup(index);
-			RomContent.RandomEncounterLineups[index] = tmosRandomEncounterLineup;
-		}
 
-		public void UpdateEncounterLineup(int encounterLineupIndex, TmosRandomEncounterLineup encounterLineup)
+            TmosModRandomEncounterLineup modLineup = new TmosModRandomEncounterLineup();
+            modLineup.Startbyte = tmosRandomEncounterLineup.Startbyte;
+            modLineup.EncounterEnemySlot1 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot1);
+            modLineup.EncounterEnemySlot2 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot2);
+            modLineup.EncounterEnemySlot3 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot3);
+            modLineup.EncounterEnemySlot4 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot4);
+            modLineup.EncounterEnemySlot5 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot5);
+            modLineup.EncounterEnemySlot6 = EncounterEnemyDefinitions.GetEncounterEnemy(tmosRandomEncounterLineup.Slot6);
+
+            RomContent.RandomEncounterLineups[index] = modLineup;
+
+        }
+
+		public void UpdateEncounterLineup(int encounterLineupIndex, TmosModRandomEncounterLineup encounterLineup)
 		{
 			base.SaveRandomEncounterLineup(encounterLineupIndex, new TmosRandomEncounterLineup(encounterLineup.GetBytes()));
 			//	TmosRandomEncounterGroup tmosRandomEncounterGroup = base.LoadRandomEncounterGroup(i);
-			RomContent.RandomEncounterLineups[encounterLineupIndex] = base.LoadRandomEncounterLineup(encounterLineupIndex);
+		     LoadRandomEncounterLineupFromRom(encounterLineupIndex);
 
 			//reloading needed?
-			LoadObjectsFromRom();
+			//LoadObjectsFromRom();
 
 			NotifyObservers(RomDataChangeNotificationType.RandomEncounterLineup, encounterLineupIndex);
 			}

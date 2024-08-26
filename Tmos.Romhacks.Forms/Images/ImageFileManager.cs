@@ -1,17 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Tmos.Romhacks.Library.Definitions.Encounters;
+using Tmos.Romhacks.Library.Enum.Enemies.Encounters;
 
 namespace Tmos.Romhacks.Forms.Images
 {
+    //Credit to https://www.flyingomelette.com for the images found in the folders:
+    //EncounterEnemyImages, OverworldEnemyImages, DemonImages
     public static class ImageFileManager
     {
         const string TileImagesPath = "Images/TileImages/{0}";
+        const string EncounterEnemyImagesPath = "Images/EncounterEnemies/Images/{0}"; //Credit to https://www.flyingomelette.com for the images in this folder
+        const string OverworldEnemyImagesPath = "Images/OverworldEnemies/Images/{0}"; //Credit to https://www.flyingomelette.com for the images in this folder
+        const string DemonImagesPath = "Images/DemonImages/Images/{0}"; //Credit to https://www.flyingomelette.com for the images in this folder
+
         public static string GetTileImagePath(int tileValue) 
         {
             return String.Format(TileImagesPath, GetTileFileName(tileValue));
+        }
+        public static string GetEncounterEnemyImagePath(EncounterEnemyType encounterEnemy)
+        {
+            return String.Format(EncounterEnemyImagesPath, GetEncounterEnemyImageFileName(encounterEnemy));
         }
         private static string GetTileFileName(int tileValue)
         {
@@ -214,6 +228,40 @@ namespace Tmos.Romhacks.Forms.Images
                 case 0xFD: return "FD.png";
                 case 0xFE: return "FE.png";
                 case 0xFF: return "FF.png";
+                default: return "unknown.png";
+            }
+        }
+
+        private static string GetEncounterEnemyImageFileName(EncounterEnemyType encounterEnemy)
+        {
+            switch (encounterEnemy)
+            {
+                case EncounterEnemyType.Amaries: return "amaries.gif";    
+                case EncounterEnemyType.Berlah: return "berlah.gif";
+                case EncounterEnemyType.Derol: return "derol.gif";
+                    case EncounterEnemyType.Gangar: return "gangar.gif";
+                    case EncounterEnemyType.Gazeil: return "gazeil.gif";
+                    case EncounterEnemyType.Gigadan: return "gigadan.gif";
+                    case EncounterEnemyType.Gorgon1: return "gorgon.gif";
+                    case EncounterEnemyType.Gorgon2: return "gorgonx.gif";
+                    case EncounterEnemyType.Gorla: return "gorla.gif";
+                    case EncounterEnemyType.Kakkara: return "kakkara.gif";
+                    case EncounterEnemyType.Medusa: return "medusa.gif";
+                    case EncounterEnemyType.Megarl: return "megarl.gif";
+                    case EncounterEnemyType.Meldo: return "meldo.gif";
+                    case EncounterEnemyType.Miniyad: return "miniyad.gif";
+                    case EncounterEnemyType.Pandarm: return "pandarm.gif";
+                    case EncounterEnemyType.Pharyad: return "pharyad.gif";
+                    case EncounterEnemyType.Razaleo: return "razaleo.gif";
+                    case EncounterEnemyType.Romsarb: return "romsarb.gif";
+                    case EncounterEnemyType.Samrima: return "samrima.gif";
+                    case EncounterEnemyType.Wazarn: return "wazarn.gif";
+                    case EncounterEnemyType.Zahhark: return "zahhark.gif";  
+                    case EncounterEnemyType.Corsa: return "corsa.gif";
+                    case EncounterEnemyType.Curgot: return "curgot.gif";
+                    case EncounterEnemyType.Cytron: return "cytron.gif";
+                    case EncounterEnemyType.Dalzark: return "dalzark.gif";
+                    case EncounterEnemyType.Blimro: return "blimro.gif";
                 default: return "unknown.png";
             }
         }

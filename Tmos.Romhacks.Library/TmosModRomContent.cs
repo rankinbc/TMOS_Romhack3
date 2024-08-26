@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tmos.Romhacks.Library.Definitions;
 using Tmos.Romhacks.Library.Enum;
+using Tmos.Romhacks.Library.RomObjects.Encounters;
 using Tmos.Romhacks.Library.RomObjects.Tiles;
 using Tmos.Romhacks.Library.RomObjects.WorldScreen;
 using Tmos.Romhacks.Library.Utility;
@@ -24,7 +25,7 @@ namespace Tmos.Romhacks.Library
         public TmosModTile[] Tiles { get; set; }
         public TmosMiniTile[] MiniTiles { get; set; }
         public TmosRandomEncounterGroup[] RandomEncounterGroups { get; set; }
-        public TmosRandomEncounterLineup[] RandomEncounterLineups { get; set; }
+        public TmosModRandomEncounterLineup[] RandomEncounterLineups { get; set; }
         public Dictionary<GameVariableEnum, byte[]> GameVariables { get; set; }
 
 

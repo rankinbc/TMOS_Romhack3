@@ -108,7 +108,7 @@ namespace Tmos.Romhacks.Rom
             Name = "RandomEncounterLineup",
             Address = TmosRomKnownAddresses.TmosRomObjectArrays.RandomEncounterLineupStartAddress,
             ObjectSize = 8,
-            Count = 255 // UNKNOWN - THIS IS A GUESS TODO: Find actual count
+            Count = 40
         };
 
     }

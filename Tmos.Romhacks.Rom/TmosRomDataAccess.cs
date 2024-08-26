@@ -127,8 +127,6 @@ namespace Tmos.Romhacks.Rom
         }
         #endregion RandomEncounterLineup
 
-
-
         #region DataStructure
 
 

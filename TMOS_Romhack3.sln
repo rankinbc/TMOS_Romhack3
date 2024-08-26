@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tmos.Romhacks.Editor", "Tmo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tmos.Romhacks.Forms", "Tmos.Romhacks.Forms\Tmos.Romhacks.Forms.csproj", "{E8F909D4-5C57-43E0-B312-8FD90CEE14DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tmos.Romhacks.FormComponents", "Tmos.Romhacks.FormComponents\Tmos.Romhacks.FormComponents.csproj", "{A4FC40BE-FE4A-4EDE-9931-E84969B39B26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyingOmelette.MOS.Knowlegebase", "FlyingOmelette.MOS.Knowlegebase\FlyingOmelette.MOS.Knowlegebase.csproj", "{49E2B070-E8F9-4657-906D-EF60B31F4F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tmos.Community.Knowledgebase", "Tmos.Community.Knowledgebase\Tmos.Community.Knowledgebase.csproj", "{EF926A7E-E6F9-402B-858C-1CC93C0F6023}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,14 @@ Global
 		{E8F909D4-5C57-43E0-B312-8FD90CEE14DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8F909D4-5C57-43E0-B312-8FD90CEE14DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8F909D4-5C57-43E0-B312-8FD90CEE14DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4FC40BE-FE4A-4EDE-9931-E84969B39B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4FC40BE-FE4A-4EDE-9931-E84969B39B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4FC40BE-FE4A-4EDE-9931-E84969B39B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4FC40BE-FE4A-4EDE-9931-E84969B39B26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E2B070-E8F9-4657-906D-EF60B31F4F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E2B070-E8F9-4657-906D-EF60B31F4F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E2B070-E8F9-4657-906D-EF60B31F4F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E2B070-E8F9-4657-906D-EF60B31F4F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF926A7E-E6F9-402B-858C-1CC93C0F6023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF926A7E-E6F9-402B-858C-1CC93C0F6023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF926A7E-E6F9-402B-858C-1CC93C0F6023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF926A7E-E6F9-402B-858C-1CC93C0F6023}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

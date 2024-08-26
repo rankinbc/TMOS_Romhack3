@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -156,8 +157,6 @@ namespace Tmos.Romhacks.Library.Enum.KnownValueLibrary
 
             }
         }
-
-
 
         public enum WSContentTypeByteValue  //The values that are used on world screens to represent the content
         {
